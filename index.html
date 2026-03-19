@@ -49,7 +49,7 @@
     }
 
     body.panel-open {
-      margin-left: 500px;
+      margin-left: 560px;
     }
 
     ::-webkit-scrollbar {
@@ -1059,6 +1059,7 @@
 
     #super-panel {
       background: #FFF8F0;
+      width: 560px;
     }
 
     .side-panel::before {
@@ -3011,9 +3012,26 @@
       document.getElementById('login-user').value = ''; document.getElementById('login-pass').value = '';
       document.getElementById('login-err').style.display = 'none';
     }
-    function openPanel(id) { document.getElementById(id).classList.add('show'); document.body.classList.add('panel-open'); }
-    function closePanel(id) { document.getElementById(id).classList.remove('show'); document.body.classList.remove('panel-open'); }
-    function togglePanel(id) { const p = document.getElementById(id); if (p.classList.contains('show')) p.classList.remove('show'); else { openPanel(id); if (id === 'admin-panel') { fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin(); } if (id === 'super-panel') { fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect(); } } }
+    function openPanel(id) {
+      document.getElementById(id).classList.add('show');
+      document.body.classList.add('panel-open');
+      document.body.style.marginLeft = id === 'super-panel' ? '560px' : '500px';
+    }
+    function closePanel(id) {
+      document.getElementById(id).classList.remove('show');
+      document.body.classList.remove('panel-open');
+      document.body.style.marginLeft = '';
+    }
+    function togglePanel(id) {
+      const p = document.getElementById(id);
+      if (p.classList.contains('show')) {
+        closePanel(id);
+      } else {
+        openPanel(id);
+        if (id === 'admin-panel') { fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin(); }
+        if (id === 'super-panel') { fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect(); }
+      }
+    }
     async function doLogout() {
       await addLog(`🚪 "${user}" logout`);
       role = null; user = null;
