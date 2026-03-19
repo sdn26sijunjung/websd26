@@ -45,6 +45,11 @@
       background: var(--white);
       color: var(--navy);
       overflow-x: hidden;
+      transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body.panel-open {
+      margin-left: 460px;
     }
 
     ::-webkit-scrollbar {
@@ -1037,7 +1042,7 @@
       top: 0;
       left: 0;
       height: 100vh;
-      width: 480px;
+      width: 460px;
       z-index: 500;
       flex-direction: column;
       overflow: hidden;
@@ -2943,8 +2948,8 @@
       document.getElementById('login-user').value = ''; document.getElementById('login-pass').value = '';
       document.getElementById('login-err').style.display = 'none';
     }
-    function openPanel(id) { document.getElementById(id).classList.add('show'); }
-    function closePanel(id) { document.getElementById(id).classList.remove('show'); }
+    function openPanel(id) { document.getElementById(id).classList.add('show'); document.body.classList.add('panel-open'); }
+    function closePanel(id) { document.getElementById(id).classList.remove('show'); document.body.classList.remove('panel-open'); }
     function togglePanel(id) { const p = document.getElementById(id); if (p.classList.contains('show')) p.classList.remove('show'); else { openPanel(id); if (id === 'admin-panel') { fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin(); } if (id === 'super-panel') { fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect(); } } }
     async function doLogout() {
       await addLog(`🚪 "${user}" logout`);
