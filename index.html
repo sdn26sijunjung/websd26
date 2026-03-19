@@ -2984,15 +2984,26 @@
       }
       list.innerHTML = pesans.map(p => `
     <div style="background:white;border:1.5px solid rgba(21,101,192,0.1);border-radius:10px;padding:14px;margin-bottom:10px;">
-      <div style="margin-bottom:8px;">
-        <strong style="font-size:0.88rem;color:#0B2545;">👤 ${p.nama}</strong>
-        <span style="font-size:0.72rem;color:#90A4AE;margin-left:8px;">📅 ${new Date(p.waktu).toLocaleString('id-ID')}</span>
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
+        <div>
+          <strong style="font-size:0.88rem;color:#0B2545;">👤 ${p.nama}</strong>
+          <span style="font-size:0.72rem;color:#90A4AE;margin-left:8px;">📅 ${new Date(p.waktu).toLocaleString('id-ID')}</span>
+        </div>
+        <button onclick="hapusPesanAdmin('${p.id}')" style="background:#FFEBEE;color:#C62828;border:1px solid #FFCDD2;padding:4px 10px;border-radius:6px;font-size:0.72rem;font-weight:700;cursor:pointer;">Hapus</button>
       </div>
       ${p.telp ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">📞 ${p.telp}</p>` : ''}
       ${p.email ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">✉️ ${p.email}</p>` : ''}
       ${p.subjek ? `<p style="font-size:0.82rem;font-weight:700;color:#1565C0;margin-bottom:6px;">📌 ${p.subjek}</p>` : ''}
       <p style="font-size:0.85rem;color:#0B2545;line-height:1.6;background:#F0F6FF;padding:10px;border-radius:7px;">${p.isi}</p>
     </div>`).join('');
+    }
+
+    async function hapusPesanAdmin(id) {
+      if (confirm('Hapus pesan ini?')) {
+        await fsDel('pesan', id);
+        renderPesanAdmin();
+        showToast('Pesan dihapus', 'success');
+      }
     }
 
     async function hapusPesan(id) {
@@ -3125,4 +3136,6 @@
     window.kirimPesan = kirimPesan;
     window.hapusPesan = hapusPesan;
     window.renderPesanAdmin = renderPesanAdmin;
+    window.hapusPesanAdmin = hapusPesanAdmin;
+
   </script>
