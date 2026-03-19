@@ -915,8 +915,8 @@
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(5, 10, 20, 0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(11, 37, 69, 0.85);
+      backdrop-filter: blur(10px);
       align-items: center;
       justify-content: center;
     }
@@ -926,108 +926,72 @@
     }
 
     .login-box {
-      background: linear-gradient(160deg, #0a1628, #0d1f3c);
-      border: 1px solid rgba(66, 165, 245, 0.15);
+      background: white;
       border-radius: 18px;
       padding: 36px;
       width: 380px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(66, 165, 245, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .login-box::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(21, 101, 192, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(21, 101, 192, 0.04) 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
-    }
-
-    .login-box::after {
-      content: '';
-      position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(66, 165, 245, 0.08) 0%, transparent 70%);
-      pointer-events: none;
+      box-shadow: 0 24px 80px rgba(11, 37, 69, 0.25), 0 0 0 1px rgba(21, 101, 192, 0.08);
     }
 
     .login-icon {
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(21, 101, 192, 0.3), rgba(66, 165, 245, 0.15));
-      border: 1px solid rgba(66, 165, 245, 0.25);
+      background: linear-gradient(135deg, #0B2545, #1976D2);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
       margin-bottom: 18px;
-      box-shadow: 0 0 20px rgba(66, 165, 245, 0.15);
-      position: relative;
-      z-index: 1;
+      box-shadow: 0 4px 16px rgba(21, 101, 192, 0.3);
     }
 
     .login-box h2 {
       font-family: 'DM Sans', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
-      color: white;
+      color: #0B2545;
       margin-bottom: 4px;
-      position: relative;
-      z-index: 1;
     }
 
     .login-sub {
-      color: rgba(255, 255, 255, 0.4);
+      color: #78909C;
       font-size: 0.82rem;
       margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
     }
 
     .login-box input {
       width: 100%;
       padding: 11px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(21, 101, 192, 0.15);
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.85);
+      color: #0B2545;
       outline: none;
       margin-bottom: 10px;
       transition: all 0.2s;
-      background: rgba(255, 255, 255, 0.05);
-      position: relative;
-      z-index: 1;
-    }
-
-    .login-box input::placeholder {
-      color: rgba(255, 255, 255, 0.2);
+      background: white;
     }
 
     .login-box input:focus {
-      border-color: rgba(66, 165, 245, 0.4);
-      background: rgba(66, 165, 245, 0.07);
-      box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+      border-color: #1976D2;
+      box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+    }
+
+    .login-box input::placeholder {
+      color: #B0BEC5;
     }
 
     .login-err {
-      color: #ef9a9a;
+      color: #C62828;
       font-size: 0.8rem;
       margin-bottom: 10px;
       display: none;
-      background: rgba(198, 40, 40, 0.12);
+      background: #FFEBEE;
       padding: 9px 12px;
       border-radius: 8px;
-      border: 1px solid rgba(198, 40, 40, 0.2);
-      position: relative;
-      z-index: 1;
+      border: 1px solid #FFCDD2;
     }
 
     .login-btn {
@@ -1035,110 +999,90 @@
       padding: 12px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.22s;
       margin-bottom: 8px;
-      position: relative;
-      z-index: 1;
       letter-spacing: 0.3px;
     }
 
     .login-btn.go {
-      background: linear-gradient(135deg, #1565C0, #1976D2);
+      background: linear-gradient(135deg, #0B2545, #1976D2);
       color: white;
       border: none;
-      box-shadow: 0 4px 20px rgba(21, 101, 192, 0.4);
+      box-shadow: 0 4px 16px rgba(21, 101, 192, 0.3);
     }
 
     .login-btn.go:hover {
-      background: linear-gradient(135deg, #0d47a1, #1565C0);
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(21, 101, 192, 0.5);
+      box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
     }
 
     .login-btn.cancel {
       background: transparent;
-      color: rgba(255, 255, 255, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #78909C;
+      border: 1.5px solid #CFD8DC;
     }
 
     .login-btn.cancel:hover {
-      background: rgba(255, 255, 255, 0.06);
-      color: rgba(255, 255, 255, 0.6);
+      background: #F5F7FA;
+      color: #546E7A;
     }
 
-    /* ═══ SIDE PANEL — FUTURISTIC REDESIGN ═══ */
+    /* ═══ SIDE PANEL — BLUE WHITE REDESIGN ═══ */
     .side-panel {
       display: none;
       position: fixed;
       top: 0;
-      right: 0;
+      left: 0;
       height: 100vh;
-      width: 420px;
+      width: 460px;
       z-index: 500;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: -4px 0 60px rgba(0, 0, 0, 0.4);
+      box-shadow: 4px 0 60px rgba(11, 37, 69, 0.18);
     }
 
     .side-panel.show {
       display: flex;
     }
 
-    /* Admin panel — dark blue */
     #admin-panel {
-      background: linear-gradient(160deg, #0a1628 0%, #0d1f3c 50%, #0a1628 100%);
+      background: #F0F6FF;
     }
 
-    /* Super panel — dark with gold accent */
     #super-panel {
-      background: linear-gradient(160deg, #1a0e00 0%, #2d1800 50%, #1a0e00 100%);
+      background: #FFF8F0;
     }
 
-    /* Animated background grid */
     .side-panel::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(21, 101, 192, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(21, 101, 192, 0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
       pointer-events: none;
       z-index: 0;
     }
 
-    #super-panel::before {
-      background-image: linear-gradient(rgba(245, 127, 23, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 127, 23, 0.05) 1px, transparent 1px);
-    }
-
     /* HEAD */
     .ap-head {
-      padding: 20px 22px 16px;
+      padding: 20px 24px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
       position: relative;
       z-index: 1;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .ap-head::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 22px;
-      right: 22px;
-      height: 1px;
+    #admin-panel .ap-head {
+      background: linear-gradient(135deg, #0B2545, #1565C0);
+      border-bottom: 3px solid #42A5F5;
     }
 
-    #admin-panel .ap-head::after {
-      background: linear-gradient(90deg, transparent, rgba(66, 165, 245, 0.5), transparent);
-    }
-
-    #super-panel .ap-head::after {
-      background: linear-gradient(90deg, transparent, rgba(245, 127, 23, 0.5), transparent);
+    #super-panel .ap-head {
+      background: linear-gradient(135deg, #7B3F00, #E65100);
+      border-bottom: 3px solid #F57F17;
     }
 
     .ap-head-left {
@@ -1148,55 +1092,38 @@
     }
 
     .ap-head-icon {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       flex-shrink: 0;
     }
 
     #admin-panel .ap-head-icon {
-      background: linear-gradient(135deg, rgba(21, 101, 192, 0.3), rgba(66, 165, 245, 0.15));
-      border: 1px solid rgba(66, 165, 245, 0.25);
-      box-shadow: 0 0 16px rgba(66, 165, 245, 0.15);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     #super-panel .ap-head-icon {
-      background: linear-gradient(135deg, rgba(230, 81, 0, 0.3), rgba(245, 127, 23, 0.15));
-      border: 1px solid rgba(245, 127, 23, 0.3);
-      box-shadow: 0 0 16px rgba(245, 127, 23, 0.2);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     .ap-head-info h3 {
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-
-    #admin-panel .ap-head-info h3 {
       color: white;
-    }
-
-    #super-panel .ap-head-info h3 {
-      color: #FFE0B2;
+      letter-spacing: 0.2px;
     }
 
     .ap-head-info small {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    #admin-panel .ap-head-info small {
-      color: rgba(66, 165, 245, 0.7);
-    }
-
-    #super-panel .ap-head-info small {
-      color: rgba(245, 127, 23, 0.7);
+      color: rgba(255, 255, 255, 0.65);
     }
 
     .ap-status-dot {
@@ -1209,13 +1136,13 @@
     }
 
     #admin-panel .ap-status-dot {
-      background: #42A5F5;
-      box-shadow: 0 0 6px #42A5F5;
+      background: #90CAF9;
+      box-shadow: 0 0 6px #90CAF9;
     }
 
     #super-panel .ap-status-dot {
-      background: #F57F17;
-      box-shadow: 0 0 6px #F57F17;
+      background: #FFCC80;
+      box-shadow: 0 0 6px #FFCC80;
     }
 
     @keyframes pulse-dot {
@@ -1226,14 +1153,14 @@
       }
 
       50% {
-        opacity: 0.4;
+        opacity: 0.3;
       }
     }
 
     .ap-close {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
       width: 32px;
       height: 32px;
       border-radius: 8px;
@@ -1246,79 +1173,90 @@
     }
 
     .ap-close:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: white;
-      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.25);
     }
 
     /* TABS */
     .ap-tabs {
       display: flex;
       flex-shrink: 0;
-      background: rgba(0, 0, 0, 0.2);
       overflow-x: auto;
       position: relative;
       z-index: 1;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .ap-tabs::-webkit-scrollbar {
       height: 0;
     }
 
+    #admin-panel .ap-tabs {
+      background: #1976D2;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #super-panel .ap-tabs {
+      background: #E65100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
     .ap-tab {
       flex-shrink: 0;
-      padding: 11px 13px;
+      padding: 11px 15px;
       border: none;
       background: transparent;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.55);
       cursor: pointer;
       transition: all 0.2s;
       border-bottom: 2px solid transparent;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       white-space: nowrap;
     }
 
     .ap-tab:hover {
-      color: rgba(255, 255, 255, 0.65);
-      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     #admin-panel .ap-tab.active {
-      color: #42A5F5;
-      border-bottom-color: #42A5F5;
-      background: rgba(66, 165, 245, 0.06);
+      color: white;
+      border-bottom-color: white;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     #super-panel .ap-tab.active {
-      color: #F57F17;
-      border-bottom-color: #F57F17;
-      background: rgba(245, 127, 23, 0.06);
+      color: white;
+      border-bottom-color: white;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     /* BODY */
     .ap-body {
       flex: 1;
       overflow-y: auto;
-      padding: 18px;
+      padding: 20px 22px;
       position: relative;
       z-index: 1;
     }
 
     .ap-body::-webkit-scrollbar {
-      width: 3px;
+      width: 4px;
     }
 
     .ap-body::-webkit-scrollbar-track {
       background: transparent;
     }
 
-    .ap-body::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
+    #admin-panel .ap-body::-webkit-scrollbar-thumb {
+      background: rgba(21, 101, 192, 0.2);
+      border-radius: 2px;
+    }
+
+    #super-panel .ap-body::-webkit-scrollbar-thumb {
+      background: rgba(230, 81, 0, 0.2);
       border-radius: 2px;
     }
 
@@ -1337,12 +1275,19 @@
 
     .field-group>label {
       display: block;
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.35);
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.7px;
       margin-bottom: 6px;
+    }
+
+    #admin-panel .field-group>label {
+      color: #1565C0;
+    }
+
+    #super-panel .field-group>label {
+      color: #E65100;
     }
 
     .field-group input,
@@ -1350,70 +1295,69 @@
     .field-group select {
       width: 100%;
       padding: 10px 13px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.85);
+      color: #0B2545;
       outline: none;
       transition: all 0.2s;
       resize: vertical;
-      background: rgba(255, 255, 255, 0.05);
+      background: white;
     }
 
-    .field-group input:focus,
-    .field-group textarea:focus {
-      border-color: rgba(66, 165, 245, 0.4);
-      background: rgba(66, 165, 245, 0.06);
-      box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.08);
+    #admin-panel .field-group input,
+    #admin-panel .field-group textarea,
+    #admin-panel .field-group select {
+      border: 1.5px solid rgba(21, 101, 192, 0.18);
+    }
+
+    #admin-panel .field-group input:focus,
+    #admin-panel .field-group textarea:focus {
+      border-color: #1976D2;
+      box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+    }
+
+    #super-panel .field-group input,
+    #super-panel .field-group textarea,
+    #super-panel .field-group select {
+      border: 1.5px solid rgba(230, 81, 0, 0.18);
     }
 
     #super-panel .field-group input:focus,
     #super-panel .field-group textarea:focus {
-      border-color: rgba(245, 127, 23, 0.4);
-      background: rgba(245, 127, 23, 0.05);
-      box-shadow: 0 0 0 3px rgba(245, 127, 23, 0.08);
-    }
-
-    .field-group input::placeholder,
-    .field-group textarea::placeholder {
-      color: rgba(255, 255, 255, 0.2);
+      border-color: #E65100;
+      box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.1);
     }
 
     .field-group textarea {
       min-height: 68px;
     }
 
-    .field-group select option {
-      background: #0d1f3c;
-      color: white;
-    }
-
     /* DIVIDER */
     .ap-divider {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.68rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin: 20px 0 12px;
       padding: 8px 12px;
-      border-radius: 6px;
+      border-radius: 7px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
     #admin-panel .ap-divider {
-      color: rgba(66, 165, 245, 0.8);
-      background: rgba(66, 165, 245, 0.07);
-      border: 1px solid rgba(66, 165, 245, 0.12);
+      color: #1565C0;
+      background: rgba(21, 101, 192, 0.08);
+      border-left: 3px solid #1976D2;
     }
 
     #super-panel .ap-divider {
-      color: rgba(245, 127, 23, 0.8);
-      background: rgba(245, 127, 23, 0.07);
-      border: 1px solid rgba(245, 127, 23, 0.12);
+      color: #E65100;
+      background: rgba(230, 81, 0, 0.08);
+      border-left: 3px solid #F57F17;
     }
 
     /* BUTTONS */
@@ -1423,26 +1367,24 @@
       padding: 12px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.22s;
       margin-top: 6px;
       letter-spacing: 0.3px;
-      position: relative;
-      overflow: hidden;
     }
 
     #admin-panel .ap-save {
       background: linear-gradient(135deg, #1565C0, #1976D2);
       color: white;
-      box-shadow: 0 4px 20px rgba(21, 101, 192, 0.35);
+      box-shadow: 0 4px 16px rgba(21, 101, 192, 0.3);
     }
 
     #admin-panel .ap-save:hover {
       background: linear-gradient(135deg, #0d47a1, #1565C0);
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(21, 101, 192, 0.45);
+      box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
     }
 
     #super-panel .ap-save,
@@ -1454,68 +1396,66 @@
       padding: 12px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.22s;
       margin-top: 6px;
-      box-shadow: 0 4px 20px rgba(230, 81, 0, 0.35);
+      box-shadow: 0 4px 16px rgba(230, 81, 0, 0.3);
     }
 
     #super-panel .ap-save:hover,
     .super-save:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(230, 81, 0, 0.45);
+      box-shadow: 0 6px 20px rgba(230, 81, 0, 0.4);
     }
 
     .ap-logout {
       width: 100%;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: white;
+      color: #546E7A;
+      border: 1.5px solid #CFD8DC;
       padding: 10px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
       margin-top: 8px;
-      letter-spacing: 0.3px;
     }
 
     .ap-logout:hover {
-      background: rgba(198, 40, 40, 0.15);
-      color: #ef9a9a;
-      border-color: rgba(198, 40, 40, 0.25);
+      background: #FFEBEE;
+      color: #C62828;
+      border-color: #EF9A9A;
     }
 
-    /* GALERI ADMIN */
+    /* UPLOAD ZONE */
     .upload-zone {
-      border: 1.5px dashed rgba(66, 165, 245, 0.25);
+      border: 2px dashed rgba(21, 101, 192, 0.25);
       border-radius: 12px;
       padding: 24px 20px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s;
-      background: rgba(66, 165, 245, 0.04);
+      background: white;
       margin-bottom: 14px;
       position: relative;
     }
 
     .upload-zone:hover {
-      border-color: rgba(66, 165, 245, 0.5);
-      background: rgba(66, 165, 245, 0.08);
+      border-color: #1976D2;
+      background: #E3F2FD;
     }
 
     #super-panel .upload-zone {
-      border-color: rgba(245, 127, 23, 0.25);
-      background: rgba(245, 127, 23, 0.04);
+      border-color: rgba(230, 81, 0, 0.25);
     }
 
     #super-panel .upload-zone:hover {
-      border-color: rgba(245, 127, 23, 0.5);
-      background: rgba(245, 127, 23, 0.08);
+      border-color: #E65100;
+      background: #FFF3E0;
     }
 
     .upload-zone input[type=file] {
@@ -1530,18 +1470,21 @@
     .upload-zone .uz-icon {
       font-size: 2rem;
       margin-bottom: 8px;
-      filter: drop-shadow(0 0 8px rgba(66, 165, 245, 0.4));
     }
 
     .upload-zone p {
       font-size: 0.82rem;
-      color: rgba(66, 165, 245, 0.85);
+      color: #1565C0;
       font-weight: 600;
+    }
+
+    #super-panel .upload-zone p {
+      color: #E65100;
     }
 
     .upload-zone small {
       font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.3);
+      color: #78909C;
     }
 
     .upload-meta {
@@ -1556,32 +1499,33 @@
       height: 130px;
       object-fit: cover;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(21, 101, 192, 0.15);
       margin-bottom: 10px;
       display: none;
     }
 
     .add-photo-btn {
       width: 100%;
-      background: linear-gradient(135deg, rgba(21, 101, 192, 0.8), rgba(25, 118, 210, 0.9));
+      background: linear-gradient(135deg, #1565C0, #1976D2);
       color: white;
-      border: 1px solid rgba(66, 165, 245, 0.2);
+      border: none;
       padding: 11px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
       margin-bottom: 14px;
+      box-shadow: 0 3px 12px rgba(21, 101, 192, 0.25);
     }
 
     .add-photo-btn:hover {
-      background: linear-gradient(135deg, #1258a8, #1565C0);
       transform: translateY(-1px);
+      box-shadow: 0 5px 16px rgba(21, 101, 192, 0.35);
     }
 
-    /* Galeri list */
+    /* GALERI LIST */
     .g-admin-list {
       display: flex;
       flex-direction: column;
@@ -1592,15 +1536,16 @@
       display: flex;
       gap: 12px;
       align-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: white;
+      border: 1.5px solid rgba(21, 101, 192, 0.1);
       border-radius: 10px;
       padding: 11px;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
 
     .g-admin-item:hover {
-      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(21, 101, 192, 0.25);
+      box-shadow: 0 2px 12px rgba(21, 101, 192, 0.08);
     }
 
     .g-admin-thumb {
@@ -1609,7 +1554,7 @@
       object-fit: cover;
       border-radius: 7px;
       flex-shrink: 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(21, 101, 192, 0.1);
     }
 
     .g-admin-thumb-emoji {
@@ -1617,12 +1562,12 @@
       height: 48px;
       border-radius: 7px;
       flex-shrink: 0;
-      background: rgba(255, 255, 255, 0.06);
+      background: #E3F2FD;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.6rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(21, 101, 192, 0.1);
     }
 
     .g-admin-info {
@@ -1634,7 +1579,7 @@
       display: block;
       font-size: 0.82rem;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.85);
+      color: #0B2545;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1642,13 +1587,13 @@
 
     .g-admin-info span {
       font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.35);
+      color: #78909C;
     }
 
     .g-admin-del {
-      background: rgba(198, 40, 40, 0.15);
-      color: #ef9a9a;
-      border: 1px solid rgba(198, 40, 40, 0.2);
+      background: #FFEBEE;
+      color: #C62828;
+      border: 1px solid #FFCDD2;
       padding: 6px 10px;
       border-radius: 7px;
       font-size: 0.72rem;
@@ -1659,29 +1604,30 @@
     }
 
     .g-admin-del:hover {
-      background: rgba(198, 40, 40, 0.35);
+      background: #C62828;
       color: white;
     }
 
     .g-admin-empty {
       text-align: center;
       padding: 24px;
-      color: rgba(255, 255, 255, 0.25);
+      color: #90A4AE;
       font-size: 0.85rem;
     }
 
-    /* Berita admin */
+    /* BERITA ADMIN */
     .b-admin-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: white;
+      border: 1.5px solid rgba(21, 101, 192, 0.1);
       border-radius: 10px;
       padding: 14px;
       margin-bottom: 10px;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
 
     .b-admin-item:hover {
-      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(21, 101, 192, 0.2);
+      box-shadow: 0 2px 10px rgba(21, 101, 192, 0.07);
     }
 
     .b-admin-head {
@@ -1692,17 +1638,17 @@
     }
 
     .b-admin-head span {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.5);
+      color: #1565C0;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .b-del-btn {
-      background: rgba(198, 40, 40, 0.15);
-      color: #ef9a9a;
-      border: 1px solid rgba(198, 40, 40, 0.2);
+      background: #FFEBEE;
+      color: #C62828;
+      border: 1px solid #FFCDD2;
       padding: 4px 10px;
       border-radius: 6px;
       font-size: 0.72rem;
@@ -1712,19 +1658,19 @@
     }
 
     .b-del-btn:hover {
-      background: rgba(198, 40, 40, 0.35);
+      background: #C62828;
       color: white;
     }
 
     .add-berita-btn {
       width: 100%;
-      background: rgba(46, 125, 50, 0.15);
-      color: #81C784;
-      border: 1px dashed rgba(129, 199, 132, 0.3);
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1.5px dashed #81C784;
       padding: 11px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
       margin-bottom: 12px;
@@ -1732,18 +1678,17 @@
     }
 
     .add-berita-btn:hover {
-      background: rgba(46, 125, 50, 0.25);
-      border-color: rgba(129, 199, 132, 0.5);
+      background: #C8E6C9;
     }
 
-    /* Superadmin extras */
+    /* SUPERADMIN EXTRAS */
     .super-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(245, 127, 23, 0.1);
-      color: #F57F17;
-      border: 1px solid rgba(245, 127, 23, 0.25);
+      background: #FFF3E0;
+      color: #E65100;
+      border: 1px solid rgba(230, 81, 0, 0.2);
       padding: 5px 12px;
       border-radius: 6px;
       font-size: 0.68rem;
@@ -1754,16 +1699,17 @@
     }
 
     .admin-account-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: white;
+      border: 1.5px solid rgba(230, 81, 0, 0.12);
       border-radius: 10px;
       padding: 14px;
       margin-bottom: 10px;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
 
     .admin-account-card:hover {
-      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(230, 81, 0, 0.25);
+      box-shadow: 0 2px 10px rgba(230, 81, 0, 0.07);
     }
 
     .admin-account-card .ac-head {
@@ -1775,14 +1721,14 @@
 
     .ac-name {
       font-weight: 700;
-      font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      color: #0B2545;
     }
 
     .ac-del {
-      background: rgba(198, 40, 40, 0.15);
-      color: #ef9a9a;
-      border: 1px solid rgba(198, 40, 40, 0.2);
+      background: #FFEBEE;
+      color: #C62828;
+      border: 1px solid #FFCDD2;
       padding: 4px 10px;
       border-radius: 6px;
       font-size: 0.72rem;
@@ -1792,19 +1738,19 @@
     }
 
     .ac-del:hover {
-      background: rgba(198, 40, 40, 0.35);
+      background: #C62828;
       color: white;
     }
 
     .add-admin-btn {
       width: 100%;
-      background: rgba(46, 125, 50, 0.15);
-      color: #81C784;
-      border: 1px dashed rgba(129, 199, 132, 0.3);
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1.5px dashed #81C784;
       padding: 11px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
       margin-bottom: 12px;
@@ -1812,38 +1758,37 @@
     }
 
     .add-admin-btn:hover {
-      background: rgba(46, 125, 50, 0.25);
+      background: #C8E6C9;
     }
 
     .log-item {
       padding: 10px 12px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: white;
+      border: 1px solid rgba(21, 101, 192, 0.1);
       margin-bottom: 8px;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
 
     .log-item:hover {
-      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(21, 101, 192, 0.2);
     }
 
     .log-item .log-time {
-      color: rgba(245, 127, 23, 0.6);
+      color: #1976D2;
       font-size: 0.68rem;
       margin-bottom: 3px;
       font-weight: 600;
-      letter-spacing: 0.3px;
     }
 
     .log-item .log-msg {
-      color: rgba(255, 255, 255, 0.7);
+      color: #0B2545;
       font-weight: 500;
       font-size: 0.8rem;
     }
 
     .log-empty {
-      color: rgba(255, 255, 255, 0.2);
+      color: #90A4AE;
       font-size: 0.85rem;
       text-align: center;
       padding: 24px 0;
@@ -1851,13 +1796,13 @@
 
     .reset-btn {
       width: 100%;
-      background: rgba(198, 40, 40, 0.12);
-      color: #ef9a9a;
-      border: 1px solid rgba(198, 40, 40, 0.2);
+      background: #FFEBEE;
+      color: #C62828;
+      border: 1.5px solid #FFCDD2;
       padding: 12px;
       border-radius: 9px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       margin-top: 6px;
@@ -1865,24 +1810,24 @@
     }
 
     .reset-btn:hover {
-      background: rgba(198, 40, 40, 0.25);
+      background: #C62828;
       color: white;
     }
 
     .my-pw-info {
-      background: rgba(245, 127, 23, 0.08);
-      border: 1px solid rgba(245, 127, 23, 0.15);
+      background: #FFF3E0;
+      border: 1px solid rgba(230, 81, 0, 0.2);
       border-radius: 9px;
       padding: 12px 14px;
       margin-bottom: 14px;
       font-size: 0.82rem;
-      color: rgba(245, 127, 23, 0.8);
+      color: #E65100;
       font-weight: 600;
     }
 
     .add-admin-form-box {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #FFF8F0;
+      border: 1.5px solid rgba(230, 81, 0, 0.12);
       border-radius: 10px;
       padding: 14px;
       margin-bottom: 14px;
