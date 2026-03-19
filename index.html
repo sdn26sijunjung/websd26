@@ -1982,6 +1982,7 @@
       <button class="ap-tab" onclick="switchTab('admin','at-profil',this)">Profil</button>
       <button class="ap-tab" onclick="switchTab('admin','at-galeri',this)">Galeri</button>
       <button class="ap-tab" onclick="switchTab('admin','at-berita',this)">Berita</button>
+      <button class="ap-tab" onclick="switchTab('admin','at-pesan',this)">📬 Pesan</button>
       <button class="ap-tab" onclick="switchTab('admin','at-kontak',this)">Kontak</button>
     </div>
     <div class="ap-body">
@@ -2058,6 +2059,15 @@
         <button class="add-berita-btn" onclick="addBerita()">+ Tambah Berita Baru</button>
         <div id="berita-admin-list"></div>
         <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- PESAN TAB -->
+      <div class="ap-section" id="at-pesan">
+        <div class="ap-divider">Pesan Masuk</div>
+        <div id="pesan-list-admin">
+          <p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Memuat pesan...</p>
+        </div>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
 
@@ -2964,6 +2974,27 @@
         </div>`).join('');
     }
 
+    async function renderPesanAdmin() {
+      const list = document.getElementById('pesan-list-admin'); if (!list) return;
+      const pesans = await fsGetAll('pesan');
+      pesans.sort((a, b) => (b.waktu || '').localeCompare(a.waktu || ''));
+      if (!pesans.length) {
+        list.innerHTML = '<p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Belum ada pesan masuk.</p>';
+        return;
+      }
+      list.innerHTML = pesans.map(p => `
+    <div style="background:white;border:1.5px solid rgba(21,101,192,0.1);border-radius:10px;padding:14px;margin-bottom:10px;">
+      <div style="margin-bottom:8px;">
+        <strong style="font-size:0.88rem;color:#0B2545;">👤 ${p.nama}</strong>
+        <span style="font-size:0.72rem;color:#90A4AE;margin-left:8px;">📅 ${new Date(p.waktu).toLocaleString('id-ID')}</span>
+      </div>
+      ${p.telp ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">📞 ${p.telp}</p>` : ''}
+      ${p.email ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">✉️ ${p.email}</p>` : ''}
+      ${p.subjek ? `<p style="font-size:0.82rem;font-weight:700;color:#1565C0;margin-bottom:6px;">📌 ${p.subjek}</p>` : ''}
+      <p style="font-size:0.85rem;color:#0B2545;line-height:1.6;background:#F0F6FF;padding:10px;border-radius:7px;">${p.isi}</p>
+    </div>`).join('');
+    }
+
     async function hapusPesan(id) {
       if (confirm('Hapus pesan ini?')) {
         await fsDel('pesan', id);
@@ -3053,6 +3084,7 @@
       if (id === 'st-akun') renderAdminAccounts();
       if (id === 'st-pw') populatePwSelect();
       if (id === 'st-pesan') renderPesan();
+      if (id === 'at-pesan') renderPesanAdmin();
     }
 
     // ═══ TOAST ═══
@@ -3092,5 +3124,5 @@
     window.renderAdminAccounts = renderAdminAccounts;
     window.kirimPesan = kirimPesan;
     window.hapusPesan = hapusPesan;
-
+    window.renderPesanAdmin = renderPesanAdmin;
   </script>
