@@ -1,870 +1,2414 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SDN 26 Sijunjung</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy:#0B2545;--blue:#1565C0;--blue-m:#1976D2;--blue-l:#42A5F5;
-  --sky:#E3F2FD;--white:#FFFFFF;--offwhite:#F7FAFD;--slate:#546E7A;
-  --border:rgba(21,101,192,0.12);--shadow:0 4px 24px rgba(11,37,69,0.10);
-  --green:#2E7D32;--green-l:#E8F5E9;--red:#C62828;--red-l:#FFEBEE;
-  --gold:#F57F17;--gold-l:#FFF8E1;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden;}
-::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--sky);}::-webkit-scrollbar-thumb{background:var(--blue-m);border-radius:3px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDN 26 Sijunjung</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B2545;
+      --blue: #1565C0;
+      --blue-m: #1976D2;
+      --blue-l: #42A5F5;
+      --sky: #E3F2FD;
+      --white: #FFFFFF;
+      --offwhite: #F7FAFD;
+      --slate: #546E7A;
+      --border: rgba(21, 101, 192, 0.12);
+      --shadow: 0 4px 24px rgba(11, 37, 69, 0.10);
+      --green: #2E7D32;
+      --green-l: #E8F5E9;
+      --red: #C62828;
+      --red-l: #FFEBEE;
+      --gold: #F57F17;
+      --gold-l: #FFF8E1;
+    }
 
-/* NAV */
-nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(11,37,69,0.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;}
-.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
-.nav-emblem{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--blue-m),var(--blue-l));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.1rem;color:white;border:1.5px solid rgba(255,255,255,0.2);box-shadow:0 2px 12px rgba(21,101,192,0.4);}
-.nav-name strong{display:block;color:white;font-size:0.95rem;font-weight:600;}
-.nav-name span{color:var(--blue-l);font-size:0.78rem;}
-.nav-links{display:flex;align-items:center;gap:2px;}
-.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:7px;font-size:0.9rem;font-weight:500;transition:all 0.2s;}
-.nav-links a:hover{color:white;background:rgba(255,255,255,0.1);}
-.nav-cta{background:var(--blue-m)!important;color:white!important;}
-.nav-admin-btn{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.15);padding:7px 14px;border-radius:7px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;margin-left:8px;}
-.nav-admin-btn:hover{background:rgba(255,255,255,0.2);color:white;}
-.nav-admin-btn.active-admin{background:var(--blue-m);color:white;border-color:var(--blue-m);}
-.nav-admin-btn.active-super{background:linear-gradient(135deg,#E65100,#F57F17);color:white;border-color:#F57F17;}
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* HERO */
-#beranda{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:100px 6% 80px;position:relative;overflow:hidden;}
-#beranda::before{content:'';position:absolute;inset:0;background:linear-gradient(60deg,transparent 40%,rgba(21,101,192,0.08) 41%,rgba(21,101,192,0.08) 60%,transparent 61%),linear-gradient(120deg,transparent 30%,rgba(66,165,245,0.05) 31%,rgba(66,165,245,0.05) 55%,transparent 56%);}
-#beranda::after{content:'';position:absolute;right:-180px;top:50%;transform:translateY(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,192,0.18) 0%,transparent 70%);pointer-events:none;}
-.hero-inner{position:relative;z-index:1;max-width:680px;}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(66,165,245,0.12);border:1px solid rgba(66,165,245,0.25);color:var(--blue-l);padding:6px 14px;border-radius:100px;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;margin-bottom:28px;}
-.hero-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--blue-l);display:inline-block;}
-h1.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,6vw,5.2rem);color:white;line-height:1.05;margin-bottom:24px;font-weight:400;}
-h1.hero-title em{color:var(--blue-l);font-style:italic;}
-.hero-desc{color:rgba(255,255,255,0.6);font-size:1.05rem;line-height:1.75;margin-bottom:40px;max-width:500px;}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-primary{background:var(--blue-m);color:white;padding:13px 28px;border-radius:9px;text-decoration:none;font-weight:600;font-size:0.95rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.22s;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(21,101,192,0.35);}
-.btn-primary:hover{background:#1258a8;transform:translateY(-2px);}
-.btn-ghost{background:transparent;color:rgba(255,255,255,0.75);padding:13px 28px;border-radius:9px;text-decoration:none;font-weight:600;font-size:0.95rem;display:inline-flex;align-items:center;gap:8px;transition:all 0.22s;border:1.5px solid rgba(255,255,255,0.2);}
-.btn-ghost:hover{border-color:rgba(255,255,255,0.55);color:white;transform:translateY(-2px);}
-.hero-stats{display:flex;gap:36px;margin-top:52px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;}
-.h-stat .num{font-family:'DM Serif Display',serif;font-size:2rem;color:white;line-height:1;}
-.h-stat .lbl{font-size:0.78rem;color:rgba(255,255,255,0.45);font-weight:500;letter-spacing:0.5px;margin-top:4px;text-transform:uppercase;}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* SECTIONS */
-section{padding:90px 6%;}
-.label-tag{display:inline-block;background:var(--sky);color:var(--blue);padding:5px 13px;border-radius:100px;font-size:0.75rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:14px;border:1px solid var(--border);}
-.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:400;line-height:1.15;margin-bottom:14px;}
-.sec-title em{color:var(--blue-m);font-style:italic;}
-.sec-sub{color:var(--slate);font-size:1rem;line-height:1.7;max-width:520px;}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
 
-/* PROFIL */
-#profil{background:var(--offwhite);}
-.profil-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start;margin-top:56px;}
-.info-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.ic{background:white;border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow);transition:transform 0.2s,box-shadow 0.2s;}
-.ic:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(11,37,69,0.12);}
-.ic .ico{font-size:1.6rem;margin-bottom:10px;}
-.ic label{display:block;font-size:0.72rem;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:4px;}
-.ic p{font-weight:600;color:var(--navy);font-size:0.9rem;line-height:1.4;}
-.visi-box{grid-column:1/-1;background:linear-gradient(135deg,var(--blue),var(--navy));border-radius:12px;padding:26px;color:white;}
-.visi-box label{display:block;font-size:0.72rem;font-weight:700;color:var(--blue-l);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;}
-.visi-box p{font-size:0.92rem;line-height:1.65;opacity:0.88;}
-.misi-side h3{font-family:'DM Serif Display',serif;font-size:1.5rem;font-weight:400;margin-bottom:20px;}
-.misi-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
-.misi-list li{display:flex;gap:14px;align-items:flex-start;}
-.misi-num{width:28px;height:28px;border-radius:8px;background:var(--blue-m);color:white;font-size:0.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.misi-list li p{color:var(--slate);line-height:1.6;font-size:0.92rem;padding-top:4px;}
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
 
-/* GALERI */
-#galeri{background:white;}
-.galeri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
-.g-item{border-radius:12px;overflow:hidden;cursor:pointer;position:relative;transition:transform 0.25s,box-shadow 0.25s;border:1px solid var(--border);aspect-ratio:4/3;background:var(--offwhite);display:flex;align-items:center;justify-content:center;}
-.g-item:hover{transform:scale(1.02);box-shadow:0 12px 32px rgba(11,37,69,0.15);z-index:2;}
-.g-item img{width:100%;height:100%;object-fit:cover;display:block;}
-.g-item .g-emoji{font-size:3rem;}
-.g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,37,69,0.8) 0%,transparent 55%);opacity:0;transition:opacity 0.2s;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:16px;}
-.g-overlay .g-caption{color:white;font-size:0.88rem;font-weight:700;line-height:1.3;}
-.g-overlay .g-desc-text{color:rgba(255,255,255,0.75);font-size:0.75rem;margin-top:2px;}
-.g-item:hover .g-overlay{opacity:1;}
-.galeri-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--slate);}
-.galeri-empty span{font-size:3rem;display:block;margin-bottom:12px;}
-.galeri-empty p{font-size:0.95rem;}
+    ::-webkit-scrollbar-track {
+      background: var(--sky);
+    }
 
-/* LIGHTBOX */
-#lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;flex-direction:column;gap:14px;}
-#lightbox.show{display:flex;}
-#lightbox img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:10px;}
-#lightbox .lb-caption{color:white;font-size:1rem;font-weight:600;text-align:center;}
-#lightbox .lb-desc{color:rgba(255,255,255,0.6);font-size:0.85rem;text-align:center;}
-#lightbox .lb-close{position:absolute;top:20px;right:24px;background:rgba(255,255,255,0.1);border:none;color:white;width:40px;height:40px;border-radius:10px;font-size:1.2rem;cursor:pointer;transition:background 0.2s;}
-#lightbox .lb-close:hover{background:rgba(255,255,255,0.2);}
-#lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;color:white;width:44px;height:44px;border-radius:10px;font-size:1.4rem;cursor:pointer;transition:background 0.2s;}
-#lightbox .lb-nav:hover{background:rgba(255,255,255,0.2);}
-#lightbox .lb-prev{left:16px;}
-#lightbox .lb-next{right:16px;}
+    ::-webkit-scrollbar-thumb {
+      background: var(--blue-m);
+      border-radius: 3px;
+    }
 
-/* BERITA */
-#berita{background:var(--offwhite);}
-.berita-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
-.b-card{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
-.b-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(11,37,69,0.1);}
-.b-img{height:150px;display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden;}
-.b-img img{width:100%;height:100%;object-fit:cover;}
-.b-body{padding:20px;}
-.b-tag{font-size:0.72rem;font-weight:700;color:var(--blue-m);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;}
-.b-card h3{font-size:0.95rem;font-weight:700;line-height:1.4;margin-bottom:8px;}
-.b-card p{font-size:0.85rem;color:var(--slate);line-height:1.6;margin-bottom:10px;}
-.b-date{font-size:0.78rem;color:var(--slate);}
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 200;
+      background: rgba(11, 37, 69, 0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      height: 68px;
+    }
 
-/* KONTAK */
-#kontak{background:white;}
-.kontak-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;margin-top:56px;}
-.k-info{display:flex;flex-direction:column;}
-.k-row{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--border);}
-.k-row:first-child{padding-top:0;}
-.k-icon{width:44px;height:44px;border-radius:10px;background:var(--sky);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;border:1px solid var(--border);}
-.k-row label{display:block;font-size:0.72rem;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px;}
-.k-row p{font-weight:600;color:var(--navy);font-size:0.92rem;line-height:1.5;}
-.k-form{display:flex;flex-direction:column;gap:14px;}
-.k-form h3{font-family:'DM Serif Display',serif;font-size:1.6rem;font-weight:400;margin-bottom:8px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.k-form input,.k-form textarea{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.92rem;color:var(--navy);background:white;outline:none;transition:border-color 0.2s;resize:vertical;}
-.k-form input:focus,.k-form textarea:focus{border-color:var(--blue-m);box-shadow:0 0 0 3px rgba(21,101,192,0.1);}
-.k-form input::placeholder,.k-form textarea::placeholder{color:rgba(84,110,122,0.55);}
-.k-form textarea{min-height:110px;}
-.k-form button{width:100%;background:var(--blue-m);color:white;border:none;padding:14px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
-.k-form button:hover{background:var(--blue);transform:translateY(-1px);}
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
 
-/* FOOTER */
-footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:48px 6% 36px;}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:24px;}
-.fb-name{font-family:'DM Serif Display',serif;color:white;font-size:1.3rem;margin-bottom:4px;}
-.footer-links{display:flex;gap:6px;flex-wrap:wrap;}
-.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;padding:6px 10px;border-radius:6px;transition:color 0.2s;}
-.footer-links a:hover{color:var(--blue-l);}
-.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.8rem;}
-.footer-bottom span{color:var(--blue-l);}
+    .nav-emblem {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue-m), var(--blue-l));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 12px rgba(21, 101, 192, 0.4);
+    }
 
-/* LOGIN */
-#login-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(11,37,69,0.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
-#login-overlay.show{display:flex;}
-.login-box{background:white;border-radius:18px;padding:40px;width:380px;box-shadow:0 24px 64px rgba(0,0,0,0.3);}
-.login-box h2{font-family:'DM Serif Display',serif;font-size:1.8rem;font-weight:400;margin-bottom:4px;}
-.login-sub{color:var(--slate);font-size:0.88rem;margin-bottom:24px;}
-.login-box input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.92rem;color:var(--navy);outline:none;margin-bottom:10px;transition:border-color 0.2s;}
-.login-box input:focus{border-color:var(--blue-m);box-shadow:0 0 0 3px rgba(21,101,192,0.1);}
-.login-err{color:var(--red);font-size:0.82rem;margin-bottom:10px;display:none;background:var(--red-l);padding:8px 12px;border-radius:7px;}
-.login-btn{width:100%;padding:12px;border:none;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.2s;margin-bottom:8px;}
-.login-btn.go{background:var(--blue-m);color:white;}
-.login-btn.go:hover{background:var(--blue);}
-.login-btn.cancel{background:transparent;color:var(--slate);border:1.5px solid var(--border);}
-.login-btn.cancel:hover{background:var(--offwhite);}
-.login-hint{font-size:0.73rem;color:var(--slate);text-align:center;margin-top:10px;line-height:1.7;}
-.login-hint code{background:var(--offwhite);padding:2px 6px;border-radius:4px;font-family:monospace;color:var(--navy);}
+    .nav-name strong {
+      display: block;
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
 
-/* SIDE PANEL */
-.side-panel{display:none;position:fixed;top:0;right:0;height:100vh;width:400px;z-index:500;background:white;box-shadow:-8px 0 40px rgba(11,37,69,0.15);flex-direction:column;overflow:hidden;}
-.side-panel.show{display:flex;}
-.ap-head{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.ap-head-info h3{font-family:'DM Serif Display',serif;font-size:1.15rem;font-weight:400;}
-.ap-head-info small{font-size:0.72rem;}
-.ap-close{background:rgba(255,255,255,0.15);border:none;color:white;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
-.ap-close:hover{background:rgba(255,255,255,0.3);}
-#admin-panel .ap-head{background:var(--navy);}
-#admin-panel .ap-head-info h3,#admin-panel .ap-head-info small{color:white;}
-#admin-panel .ap-head-info small{color:var(--blue-l);}
-#super-panel .ap-head{background:linear-gradient(135deg,#E65100,#F57F17);}
-#super-panel .ap-head-info h3,#super-panel .ap-head-info small{color:white;}
-.ap-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--offwhite);overflow-x:auto;}
-.ap-tab{flex-shrink:0;padding:11px 12px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--slate);cursor:pointer;transition:all 0.2s;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap;}
-.ap-tab.active{color:var(--blue-m);border-bottom-color:var(--blue-m);background:white;}
-#super-panel .ap-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
-.ap-body{flex:1;overflow-y:auto;padding:20px;}
-.ap-body::-webkit-scrollbar{width:4px;}
-.ap-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
-.ap-section{display:none;}
-.ap-section.active{display:block;}
-.field-group{margin-bottom:16px;}
-.field-group>label{display:block;font-size:0.72rem;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;}
-.field-group input,.field-group textarea,.field-group select{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--navy);outline:none;transition:border-color 0.2s;resize:vertical;background:white;}
-.field-group input:focus,.field-group textarea:focus{border-color:var(--blue-m);box-shadow:0 0 0 3px rgba(21,101,192,0.08);}
-.field-group textarea{min-height:68px;}
-.ap-divider{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--navy);margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
-.ap-save{width:100%;background:var(--blue-m);color:white;border:none;padding:12px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:6px;}
-.ap-save:hover{background:var(--blue);}
-.ap-logout{width:100%;background:transparent;color:var(--slate);border:1.5px solid var(--border);padding:10px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer;transition:all 0.2s;margin-top:8px;}
-.ap-logout:hover{background:var(--red-l);color:var(--red);border-color:rgba(198,40,40,0.3);}
+    .nav-name span {
+      color: var(--blue-l);
+      font-size: 0.78rem;
+    }
 
-/* GALERI ADMIN */
-.upload-zone{border:2px dashed var(--blue-l);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--sky);margin-bottom:16px;position:relative;}
-.upload-zone:hover{border-color:var(--blue-m);background:#DCEEFB;}
-.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.upload-zone .uz-icon{font-size:2.2rem;margin-bottom:8px;}
-.upload-zone p{font-size:0.85rem;color:var(--blue-m);font-weight:600;}
-.upload-zone small{font-size:0.75rem;color:var(--slate);}
-.upload-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
-.upload-preview{width:100%;height:140px;object-fit:cover;border-radius:8px;border:1px solid var(--border);margin-bottom:10px;display:none;}
-.add-photo-btn{width:100%;background:var(--blue-m);color:white;border:none;padding:11px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;transition:all 0.2s;margin-bottom:16px;}
-.add-photo-btn:hover{background:var(--blue);}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
 
-/* Galeri list in admin */
-.g-admin-list{display:flex;flex-direction:column;gap:12px;}
-.g-admin-item{display:flex;gap:12px;align-items:center;background:var(--offwhite);border:1px solid var(--border);border-radius:10px;padding:12px;}
-.g-admin-thumb{width:64px;height:52px;object-fit:cover;border-radius:7px;flex-shrink:0;border:1px solid var(--border);}
-.g-admin-thumb-emoji{width:64px;height:52px;border-radius:7px;flex-shrink:0;background:var(--sky);display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:1px solid var(--border);}
-.g-admin-info{flex:1;min-width:0;}
-.g-admin-info strong{display:block;font-size:0.85rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.g-admin-info span{font-size:0.75rem;color:var(--slate);}
-.g-admin-del{background:var(--red-l);color:var(--red);border:none;padding:6px 10px;border-radius:7px;font-size:0.75rem;font-weight:600;cursor:pointer;flex-shrink:0;}
-.g-admin-del:hover{background:var(--red);color:white;}
-.g-admin-empty{text-align:center;padding:20px;color:var(--slate);font-size:0.88rem;}
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 7px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
 
-/* Berita admin */
-.b-admin-item{background:var(--offwhite);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px;}
-.b-admin-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.b-admin-head span{font-size:0.8rem;font-weight:700;color:var(--navy);}
-.b-del-btn{background:var(--red-l);color:var(--red);border:none;padding:4px 10px;border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;}
-.b-del-btn:hover{background:var(--red);color:white;}
-.add-berita-btn{width:100%;background:var(--green-l);color:var(--green);border:1.5px dashed #81C784;padding:11px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;margin-bottom:14px;}
-.add-berita-btn:hover{background:#C8E6C9;}
+    .nav-links a:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
 
-/* Superadmin extras */
-.super-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold-l);color:var(--gold);border:1px solid rgba(245,127,23,0.3);padding:4px 10px;border-radius:6px;font-size:0.72rem;font-weight:700;margin-bottom:16px;}
-.admin-account-card{background:var(--offwhite);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px;}
-.admin-account-card .ac-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
-.ac-name{font-weight:700;font-size:0.9rem;color:var(--navy);}
-.ac-del{background:var(--red-l);color:var(--red);border:none;padding:4px 10px;border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;}
-.ac-del:hover{background:var(--red);color:white;}
-.add-admin-btn{width:100%;background:var(--green-l);color:var(--green);border:1.5px dashed #81C784;padding:11px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;margin-bottom:14px;}
-.add-admin-btn:hover{background:#C8E6C9;}
-.log-item{padding:10px 12px;border-radius:8px;background:var(--offwhite);border:1px solid var(--border);margin-bottom:8px;}
-.log-item .log-time{color:var(--slate);font-size:0.72rem;margin-bottom:2px;}
-.log-item .log-msg{color:var(--navy);font-weight:500;font-size:0.82rem;}
-.log-empty{color:var(--slate);font-size:0.88rem;text-align:center;padding:20px 0;}
-.reset-btn{width:100%;background:var(--red-l);color:var(--red);border:1.5px solid rgba(198,40,40,0.2);padding:12px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;margin-top:6px;}
-.reset-btn:hover{background:var(--red);color:white;}
-.super-save{width:100%;background:linear-gradient(135deg,#E65100,#F57F17);color:white;border:none;padding:12px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;margin-top:6px;}
-.super-save:hover{opacity:0.9;}
-.my-pw-info{background:var(--gold-l);border:1px solid rgba(245,127,23,0.2);border-radius:9px;padding:12px 14px;margin-bottom:14px;font-size:0.85rem;color:var(--gold);font-weight:600;}
-.add-admin-form-box{background:var(--offwhite);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px;display:none;}
+    .nav-cta {
+      background: var(--blue-m) !important;
+      color: white !important;
+    }
 
-/* TOAST */
-.save-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);color:white;padding:12px 24px;border-radius:10px;font-weight:600;font-size:0.9rem;z-index:9999;opacity:0;transition:all 0.3s;pointer-events:none;}
-.save-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.save-toast.success{background:var(--green);}
-.save-toast.error{background:var(--red);}
+    .nav-admin-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 7px 14px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-left: 8px;
+    }
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-.hero-chip{animation:fadeUp 0.5s ease both;}h1.hero-title{animation:fadeUp 0.55s ease 0.08s both;}.hero-desc{animation:fadeUp 0.55s ease 0.16s both;}.hero-actions{animation:fadeUp 0.55s ease 0.24s both;}.hero-stats{animation:fadeUp 0.55s ease 0.32s both;}
+    .nav-admin-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
 
-@media(max-width:900px){
-  .nav-links{display:none;}
-  .profil-layout,.kontak-layout{grid-template-columns:1fr;gap:40px;}
-  .galeri-grid{grid-template-columns:repeat(2,1fr);}
-  .berita-grid{grid-template-columns:1fr;}
-  .form-row{grid-template-columns:1fr;}
-  .side-panel{width:100%;}
-  .upload-meta{grid-template-columns:1fr;}
-}
-</style>
+    .nav-admin-btn.active-admin {
+      background: var(--blue-m);
+      color: white;
+      border-color: var(--blue-m);
+    }
+
+    .nav-admin-btn.active-super {
+      background: linear-gradient(135deg, #E65100, #F57F17);
+      color: white;
+      border-color: #F57F17;
+    }
+
+    /* HERO */
+    #beranda {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 100px 6% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #beranda::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(60deg, transparent 40%, rgba(21, 101, 192, 0.08) 41%, rgba(21, 101, 192, 0.08) 60%, transparent 61%), linear-gradient(120deg, transparent 30%, rgba(66, 165, 245, 0.05) 31%, rgba(66, 165, 245, 0.05) 55%, transparent 56%);
+    }
+
+    #beranda::after {
+      content: '';
+      position: absolute;
+      right: -180px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(21, 101, 192, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(66, 165, 245, 0.12);
+      border: 1px solid rgba(66, 165, 245, 0.25);
+      color: var(--blue-l);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+    }
+
+    .hero-chip .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-l);
+      display: inline-block;
+    }
+
+    h1.hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      color: white;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    h1.hero-title em {
+      color: var(--blue-l);
+      font-style: italic;
+    }
+
+    .hero-desc {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue-m);
+      color: white;
+      padding: 13px 28px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.22s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(21, 101, 192, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #1258a8;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 13px 28px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.22s;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.55);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 52px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .h-stat .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: white;
+      line-height: 1;
+    }
+
+    .h-stat .lbl {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 6%;
+    }
+
+    .label-tag {
+      display: inline-block;
+      background: var(--sky);
+      color: var(--blue);
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .sec-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .sec-title em {
+      color: var(--blue-m);
+      font-style: italic;
+    }
+
+    .sec-sub {
+      color: var(--slate);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* PROFIL */
+    #profil {
+      background: var(--offwhite);
+    }
+
+    .profil-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 70px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .ic {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .ic:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(11, 37, 69, 0.12);
+    }
+
+    .ic .ico {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .ic label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 4px;
+    }
+
+    .ic p {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .visi-box {
+      grid-column: 1/-1;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      border-radius: 12px;
+      padding: 26px;
+      color: white;
+    }
+
+    .visi-box label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--blue-l);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .visi-box p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      opacity: 0.88;
+    }
+
+    .misi-side h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .misi-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .misi-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .misi-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--blue-m);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .misi-list li p {
+      color: var(--slate);
+      line-height: 1.6;
+      font-size: 0.92rem;
+      padding-top: 4px;
+    }
+
+    /* GALERI */
+    #galeri {
+      background: white;
+    }
+
+    .galeri-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .g-item {
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/3;
+      background: var(--offwhite);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .g-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 32px rgba(11, 37, 69, 0.15);
+      z-index: 2;
+    }
+
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .g-item .g-emoji {
+      font-size: 3rem;
+    }
+
+    .g-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 37, 69, 0.8) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 16px;
+    }
+
+    .g-overlay .g-caption {
+      color: white;
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .g-overlay .g-desc-text {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.75rem;
+      margin-top: 2px;
+    }
+
+    .g-item:hover .g-overlay {
+      opacity: 1;
+    }
+
+    .galeri-empty {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--slate);
+    }
+
+    .galeri-empty span {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .galeri-empty p {
+      font-size: 0.95rem;
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.92);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    #lightbox.show {
+      display: flex;
+    }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    #lightbox .lb-caption {
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    #lightbox .lb-desc {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    #lightbox .lb-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #lightbox .lb-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #lightbox .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #lightbox .lb-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #lightbox .lb-prev {
+      left: 16px;
+    }
+
+    #lightbox .lb-next {
+      right: 16px;
+    }
+
+    /* BERITA */
+    #berita {
+      background: var(--offwhite);
+    }
+
+    .berita-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .b-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .b-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(11, 37, 69, 0.1);
+    }
+
+    .b-img {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      overflow: hidden;
+    }
+
+    .b-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .b-body {
+      padding: 20px;
+    }
+
+    .b-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--blue-m);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .b-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .b-card p {
+      font-size: 0.85rem;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .b-date {
+      font-size: 0.78rem;
+      color: var(--slate);
+    }
+
+    /* KONTAK */
+    #kontak {
+      background: white;
+    }
+
+    .kontak-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 70px;
+      margin-top: 56px;
+    }
+
+    .k-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .k-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .k-row:first-child {
+      padding-top: 0;
+    }
+
+    .k-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--sky);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .k-row label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 5px;
+    }
+
+    .k-row p {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .k-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .k-form h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .k-form input,
+    .k-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--navy);
+      background: white;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .k-form input:focus,
+    .k-form textarea:focus {
+      border-color: var(--blue-m);
+      box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+    }
+
+    .k-form input::placeholder,
+    .k-form textarea::placeholder {
+      color: rgba(84, 110, 122, 0.55);
+    }
+
+    .k-form textarea {
+      min-height: 110px;
+    }
+
+    .k-form button {
+      width: 100%;
+      background: var(--blue-m);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .k-form button:hover {
+      background: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 48px 6% 36px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 24px;
+    }
+
+    .fb-name {
+      font-family: 'DM Serif Display', serif;
+      color: white;
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--blue-l);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom span {
+      color: var(--blue-l);
+    }
+
+    /* LOGIN */
+    #login-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(11, 37, 69, 0.88);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    #login-overlay.show {
+      display: flex;
+    }
+
+    .login-box {
+      background: white;
+      border-radius: 18px;
+      padding: 40px;
+      width: 380px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-box h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .login-sub {
+      color: var(--slate);
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--navy);
+      outline: none;
+      margin-bottom: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .login-box input:focus {
+      border-color: var(--blue-m);
+      box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+    }
+
+    .login-err {
+      color: var(--red);
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+      display: none;
+      background: var(--red-l);
+      padding: 8px 12px;
+      border-radius: 7px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 8px;
+    }
+
+    .login-btn.go {
+      background: var(--blue-m);
+      color: white;
+    }
+
+    .login-btn.go:hover {
+      background: var(--blue);
+    }
+
+    .login-btn.cancel {
+      background: transparent;
+      color: var(--slate);
+      border: 1.5px solid var(--border);
+    }
+
+    .login-btn.cancel:hover {
+      background: var(--offwhite);
+    }
+
+    .login-hint {
+      font-size: 0.73rem;
+      color: var(--slate);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+
+    .login-hint code {
+      background: var(--offwhite);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--navy);
+    }
+
+    /* SIDE PANEL */
+    .side-panel {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 400px;
+      z-index: 500;
+      background: white;
+      box-shadow: -8px 0 40px rgba(11, 37, 69, 0.15);
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .side-panel.show {
+      display: flex;
+    }
+
+    .ap-head {
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .ap-head-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+
+    .ap-head-info small {
+      font-size: 0.72rem;
+    }
+
+    .ap-close {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .ap-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    #admin-panel .ap-head {
+      background: var(--navy);
+    }
+
+    #admin-panel .ap-head-info h3,
+    #admin-panel .ap-head-info small {
+      color: white;
+    }
+
+    #admin-panel .ap-head-info small {
+      color: var(--blue-l);
+    }
+
+    #super-panel .ap-head {
+      background: linear-gradient(135deg, #E65100, #F57F17);
+    }
+
+    #super-panel .ap-head-info h3,
+    #super-panel .ap-head-info small {
+      color: white;
+    }
+
+    .ap-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      background: var(--offwhite);
+      overflow-x: auto;
+    }
+
+    .ap-tab {
+      flex-shrink: 0;
+      padding: 11px 12px;
+      border: none;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--slate);
+      cursor: pointer;
+      transition: all 0.2s;
+      border-bottom: 2px solid transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+
+    .ap-tab.active {
+      color: var(--blue-m);
+      border-bottom-color: var(--blue-m);
+      background: white;
+    }
+
+    #super-panel .ap-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .ap-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .ap-body::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .ap-body::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .ap-section {
+      display: none;
+    }
+
+    .ap-section.active {
+      display: block;
+    }
+
+    .field-group {
+      margin-bottom: 16px;
+    }
+
+    .field-group>label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 6px;
+    }
+
+    .field-group input,
+    .field-group textarea,
+    .field-group select {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+      background: white;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      border-color: var(--blue-m);
+      box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.08);
+    }
+
+    .field-group textarea {
+      min-height: 68px;
+    }
+
+    .ap-divider {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--navy);
+      margin: 20px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ap-save {
+      width: 100%;
+      background: var(--blue-m);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 6px;
+    }
+
+    .ap-save:hover {
+      background: var(--blue);
+    }
+
+    .ap-logout {
+      width: 100%;
+      background: transparent;
+      color: var(--slate);
+      border: 1.5px solid var(--border);
+      padding: 10px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+
+    .ap-logout:hover {
+      background: var(--red-l);
+      color: var(--red);
+      border-color: rgba(198, 40, 40, 0.3);
+    }
+
+    /* GALERI ADMIN */
+    .upload-zone {
+      border: 2px dashed var(--blue-l);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--sky);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--blue-m);
+      background: #DCEEFB;
+    }
+
+    .upload-zone input[type=file] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .upload-zone .uz-icon {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .upload-zone p {
+      font-size: 0.85rem;
+      color: var(--blue-m);
+      font-weight: 600;
+    }
+
+    .upload-zone small {
+      font-size: 0.75rem;
+      color: var(--slate);
+    }
+
+    .upload-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .upload-preview {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .add-photo-btn {
+      width: 100%;
+      background: var(--blue-m);
+      color: white;
+      border: none;
+      padding: 11px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 16px;
+    }
+
+    .add-photo-btn:hover {
+      background: var(--blue);
+    }
+
+    /* Galeri list in admin */
+    .g-admin-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .g-admin-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .g-admin-thumb {
+      width: 64px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 7px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .g-admin-thumb-emoji {
+      width: 64px;
+      height: 52px;
+      border-radius: 7px;
+      flex-shrink: 0;
+      background: var(--sky);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      border: 1px solid var(--border);
+    }
+
+    .g-admin-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .g-admin-info strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .g-admin-info span {
+      font-size: 0.75rem;
+      color: var(--slate);
+    }
+
+    .g-admin-del {
+      background: var(--red-l);
+      color: var(--red);
+      border: none;
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .g-admin-del:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    .g-admin-empty {
+      text-align: center;
+      padding: 20px;
+      color: var(--slate);
+      font-size: 0.88rem;
+    }
+
+    /* Berita admin */
+    .b-admin-item {
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .b-admin-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .b-admin-head span {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .b-del-btn {
+      background: var(--red-l);
+      color: var(--red);
+      border: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .b-del-btn:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    .add-berita-btn {
+      width: 100%;
+      background: var(--green-l);
+      color: var(--green);
+      border: 1.5px dashed #81C784;
+      padding: 11px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+
+    .add-berita-btn:hover {
+      background: #C8E6C9;
+    }
+
+    /* Superadmin extras */
+    .super-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold-l);
+      color: var(--gold);
+      border: 1px solid rgba(245, 127, 23, 0.3);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .admin-account-card {
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .admin-account-card .ac-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .ac-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+
+    .ac-del {
+      background: var(--red-l);
+      color: var(--red);
+      border: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .ac-del:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    .add-admin-btn {
+      width: 100%;
+      background: var(--green-l);
+      color: var(--green);
+      border: 1.5px dashed #81C784;
+      padding: 11px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+
+    .add-admin-btn:hover {
+      background: #C8E6C9;
+    }
+
+    .log-item {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    .log-item .log-time {
+      color: var(--slate);
+      font-size: 0.72rem;
+      margin-bottom: 2px;
+    }
+
+    .log-item .log-msg {
+      color: var(--navy);
+      font-weight: 500;
+      font-size: 0.82rem;
+    }
+
+    .log-empty {
+      color: var(--slate);
+      font-size: 0.88rem;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .reset-btn {
+      width: 100%;
+      background: var(--red-l);
+      color: var(--red);
+      border: 1.5px solid rgba(198, 40, 40, 0.2);
+      padding: 12px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .reset-btn:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    .super-save {
+      width: 100%;
+      background: linear-gradient(135deg, #E65100, #F57F17);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .super-save:hover {
+      opacity: 0.9;
+    }
+
+    .my-pw-info {
+      background: var(--gold-l);
+      border: 1px solid rgba(245, 127, 23, 0.2);
+      border-radius: 9px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .add-admin-form-box {
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+      display: none;
+    }
+
+    /* TOAST */
+    .save-toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .save-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .save-toast.success {
+      background: var(--green);
+    }
+
+    .save-toast.error {
+      background: var(--red);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-chip {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    h1.hero-title {
+      animation: fadeUp 0.55s ease 0.08s both;
+    }
+
+    .hero-desc {
+      animation: fadeUp 0.55s ease 0.16s both;
+    }
+
+    .hero-actions {
+      animation: fadeUp 0.55s ease 0.24s both;
+    }
+
+    .hero-stats {
+      animation: fadeUp 0.55s ease 0.32s both;
+    }
+
+    @media(max-width:900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .profil-layout,
+      .kontak-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .galeri-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .berita-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .side-panel {
+        width: 100%;
+      }
+
+      .upload-meta {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="save-toast" id="toast"></div>
+  <div class="save-toast" id="toast"></div>
 
-<!-- LIGHTBOX -->
-<div id="lightbox">
-  <button class="lb-close" onclick="closeLightbox()">✕</button>
-  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
-  <img id="lb-img" src="" alt=""/>
-  <div class="lb-caption" id="lb-caption"></div>
-  <div class="lb-desc" id="lb-desc"></div>
-  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
-</div>
-
-<!-- LOGIN -->
-<div id="login-overlay">
-  <div class="login-box">
-    <h2>Masuk ke Panel</h2>
-    <p class="login-sub">Masukkan kredensial untuk mengelola website SDN 26 Sijunjung.</p>
-    <div class="login-err" id="login-err"></div>
-    <input type="text" id="login-user" placeholder="Username" autocomplete="off"/>
-    <input type="password" id="login-pass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/>
-    <button class="login-btn go" onclick="doLogin()">Masuk →</button>
-    <button class="login-btn cancel" onclick="closeLogin()">Batal</button>
-    <p class="login-hint">Admin: <code>admin</code> / <code>admin123</code><br>Superadmin: <code>dimas19</code> / <code>super123</code></p>
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+    <img id="lb-img" src="" alt="" />
+    <div class="lb-caption" id="lb-caption"></div>
+    <div class="lb-desc" id="lb-desc"></div>
+    <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
   </div>
-</div>
 
-<!-- ADMIN PANEL -->
-<div class="side-panel" id="admin-panel">
-  <div class="ap-head">
-    <div class="ap-head-info"><h3>Panel Admin</h3><small>SDN 26 Sijunjung</small></div>
-    <button class="ap-close" onclick="closePanel('admin-panel')">✕</button>
-  </div>
-  <div class="ap-tabs">
-    <button class="ap-tab active" onclick="switchTab('admin','at-beranda',this)">Beranda</button>
-    <button class="ap-tab" onclick="switchTab('admin','at-profil',this)">Profil</button>
-    <button class="ap-tab" onclick="switchTab('admin','at-galeri',this)">Galeri</button>
-    <button class="ap-tab" onclick="switchTab('admin','at-berita',this)">Berita</button>
-    <button class="ap-tab" onclick="switchTab('admin','at-kontak',this)">Kontak</button>
-  </div>
-  <div class="ap-body">
-
-    <!-- BERANDA TAB -->
-    <div class="ap-section active" id="at-beranda">
-      <div class="ap-divider">Teks Hero</div>
-      <div class="field-group"><label>Chip / Label Atas</label><input id="f-chip" type="text"/></div>
-      <div class="field-group"><label>Judul Baris 1</label><input id="f-h1a" type="text"/></div>
-      <div class="field-group"><label>Judul Baris 2 (miring/biru)</label><input id="f-h1b" type="text"/></div>
-      <div class="field-group"><label>Judul Baris 3</label><input id="f-h1c" type="text"/></div>
-      <div class="field-group"><label>Deskripsi Hero</label><textarea id="f-desc"></textarea></div>
-      <div class="ap-divider">Statistik</div>
-      <div class="field-group"><label>Angka Siswa Aktif</label><input id="f-s1" type="text"/></div>
-      <div class="field-group"><label>Label Siswa</label><input id="f-s1l" type="text"/></div>
-      <div class="field-group"><label>Angka Pengajar</label><input id="f-s2" type="text"/></div>
-      <div class="field-group"><label>Label Pengajar</label><input id="f-s2l" type="text"/></div>
-      <div class="field-group"><label>Angka Rombel</label><input id="f-s3" type="text"/></div>
-      <div class="field-group"><label>Label Rombel</label><input id="f-s3l" type="text"/></div>
-      <div class="field-group"><label>Angka/Teks Stat 4</label><input id="f-s4" type="text"/></div>
-      <div class="field-group"><label>Label Stat 4</label><input id="f-s4l" type="text"/></div>
-      <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+  <!-- LOGIN -->
+  <div id="login-overlay">
+    <div class="login-box">
+      <h2>Masuk ke Panel</h2>
+      <p class="login-sub">Masukkan kredensial untuk mengelola website SDN 26 Sijunjung.</p>
+      <div class="login-err" id="login-err"></div>
+      <input type="text" id="login-user" placeholder="Username" autocomplete="off" />
+      <input type="password" id="login-pass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()" />
+      <button class="login-btn go" onclick="doLogin()">Masuk →</button>
+      <button class="login-btn cancel" onclick="closeLogin()">Batal</button>
     </div>
+  </div>
 
-    <!-- PROFIL TAB -->
-    <div class="ap-section" id="at-profil">
-      <div class="ap-divider">Info Sekolah</div>
-      <div class="field-group"><label>Status Sekolah</label><input id="f-status" type="text"/></div>
-      <div class="field-group"><label>Lokasi</label><input id="f-lokasi" type="text"/></div>
-      <div class="field-group"><label>Akreditasi</label><input id="f-akred" type="text"/></div>
-      <div class="field-group"><label>Kepala Sekolah</label><input id="f-kepsek" type="text"/></div>
-      <div class="field-group"><label>Tahun Berdiri</label><input id="f-tahun" type="text"/></div>
-      <div class="field-group"><label>NPSN</label><input id="f-npsn" type="text"/></div>
-      <div class="ap-divider">Visi</div>
-      <div class="field-group"><label>Teks Visi</label><textarea id="f-visi" style="min-height:90px;"></textarea></div>
-      <div class="ap-divider">Misi</div>
-      <div class="field-group"><label>Misi 1</label><textarea id="f-m1"></textarea></div>
-      <div class="field-group"><label>Misi 2</label><textarea id="f-m2"></textarea></div>
-      <div class="field-group"><label>Misi 3</label><textarea id="f-m3"></textarea></div>
-      <div class="field-group"><label>Misi 4</label><textarea id="f-m4"></textarea></div>
-      <div class="field-group"><label>Misi 5</label><textarea id="f-m5"></textarea></div>
-      <div class="field-group"><label>Misi 6</label><textarea id="f-m6"></textarea></div>
-      <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
-
-    <!-- GALERI TAB -->
-    <div class="ap-section" id="at-galeri">
-      <div class="ap-divider">Upload Foto Baru</div>
-      <div class="upload-zone" id="upload-zone">
-        <input type="file" accept="image/*" id="foto-input" onchange="previewFoto(this)"/>
-        <div class="uz-icon">📷</div>
-        <p>Klik atau seret foto ke sini</p>
-        <small>JPG, PNG, WebP — maks 5MB</small>
+  <!-- ADMIN PANEL -->
+  <div class="side-panel" id="admin-panel">
+    <div class="ap-head">
+      <div class="ap-head-info">
+        <h3>Panel Admin</h3><small>SDN 26 Sijunjung</small>
       </div>
-      <img id="upload-preview" class="upload-preview" alt="preview"/>
-      <div class="upload-meta">
-        <div class="field-group" style="margin:0;"><label>Judul Foto</label><input id="foto-caption" type="text" placeholder="cth: Upacara Bendera"/></div>
-        <div class="field-group" style="margin:0;"><label>Keterangan</label><input id="foto-desc" type="text" placeholder="cth: Senin, 10 Mar 2025"/></div>
+      <button class="ap-close" onclick="closePanel('admin-panel')">✕</button>
+    </div>
+    <div class="ap-tabs">
+      <button class="ap-tab active" onclick="switchTab('admin','at-beranda',this)">Beranda</button>
+      <button class="ap-tab" onclick="switchTab('admin','at-profil',this)">Profil</button>
+      <button class="ap-tab" onclick="switchTab('admin','at-galeri',this)">Galeri</button>
+      <button class="ap-tab" onclick="switchTab('admin','at-berita',this)">Berita</button>
+      <button class="ap-tab" onclick="switchTab('admin','at-kontak',this)">Kontak</button>
+    </div>
+    <div class="ap-body">
+
+      <!-- BERANDA TAB -->
+      <div class="ap-section active" id="at-beranda">
+        <div class="ap-divider">Teks Hero</div>
+        <div class="field-group"><label>Chip / Label Atas</label><input id="f-chip" type="text" /></div>
+        <div class="field-group"><label>Judul Baris 1</label><input id="f-h1a" type="text" /></div>
+        <div class="field-group"><label>Judul Baris 2 (miring/biru)</label><input id="f-h1b" type="text" /></div>
+        <div class="field-group"><label>Judul Baris 3</label><input id="f-h1c" type="text" /></div>
+        <div class="field-group"><label>Deskripsi Hero</label><textarea id="f-desc"></textarea></div>
+        <div class="ap-divider">Statistik</div>
+        <div class="field-group"><label>Angka Siswa Aktif</label><input id="f-s1" type="text" /></div>
+        <div class="field-group"><label>Label Siswa</label><input id="f-s1l" type="text" /></div>
+        <div class="field-group"><label>Angka Pengajar</label><input id="f-s2" type="text" /></div>
+        <div class="field-group"><label>Label Pengajar</label><input id="f-s2l" type="text" /></div>
+        <div class="field-group"><label>Angka Rombel</label><input id="f-s3" type="text" /></div>
+        <div class="field-group"><label>Label Rombel</label><input id="f-s3l" type="text" /></div>
+        <div class="field-group"><label>Angka/Teks Stat 4</label><input id="f-s4" type="text" /></div>
+        <div class="field-group"><label>Label Stat 4</label><input id="f-s4l" type="text" /></div>
+        <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
-      <button class="add-photo-btn" onclick="addFoto()">+ Tambahkan ke Galeri</button>
-      <div class="ap-divider">Foto di Galeri (<span id="foto-count">0</span>)</div>
-      <div class="g-admin-list" id="g-admin-list"></div>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
 
-    <!-- BERITA TAB -->
-    <div class="ap-section" id="at-berita">
-      <div class="ap-divider">Kelola Berita</div>
-      <button class="add-berita-btn" onclick="addBerita()">+ Tambah Berita Baru</button>
-      <div id="berita-admin-list"></div>
-      <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
+      <!-- PROFIL TAB -->
+      <div class="ap-section" id="at-profil">
+        <div class="ap-divider">Info Sekolah</div>
+        <div class="field-group"><label>Status Sekolah</label><input id="f-status" type="text" /></div>
+        <div class="field-group"><label>Lokasi</label><input id="f-lokasi" type="text" /></div>
+        <div class="field-group"><label>Akreditasi</label><input id="f-akred" type="text" /></div>
+        <div class="field-group"><label>Kepala Sekolah</label><input id="f-kepsek" type="text" /></div>
+        <div class="field-group"><label>Tahun Berdiri</label><input id="f-tahun" type="text" /></div>
+        <div class="field-group"><label>NPSN</label><input id="f-npsn" type="text" /></div>
+        <div class="ap-divider">Visi</div>
+        <div class="field-group"><label>Teks Visi</label><textarea id="f-visi" style="min-height:90px;"></textarea>
+        </div>
+        <div class="ap-divider">Misi</div>
+        <div class="field-group"><label>Misi 1</label><textarea id="f-m1"></textarea></div>
+        <div class="field-group"><label>Misi 2</label><textarea id="f-m2"></textarea></div>
+        <div class="field-group"><label>Misi 3</label><textarea id="f-m3"></textarea></div>
+        <div class="field-group"><label>Misi 4</label><textarea id="f-m4"></textarea></div>
+        <div class="field-group"><label>Misi 5</label><textarea id="f-m5"></textarea></div>
+        <div class="field-group"><label>Misi 6</label><textarea id="f-m6"></textarea></div>
+        <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
 
-    <!-- KONTAK TAB -->
-    <div class="ap-section" id="at-kontak">
-      <div class="ap-divider">Info Kontak</div>
-      <div class="field-group"><label>Alamat Lengkap</label><textarea id="f-alamat"></textarea></div>
-      <div class="field-group"><label>Telepon</label><input id="f-telp" type="text"/></div>
-      <div class="field-group"><label>Email</label><input id="f-email" type="text"/></div>
-      <div class="field-group"><label>Jam Operasional</label><textarea id="f-jam"></textarea></div>
-      <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      <!-- GALERI TAB -->
+      <div class="ap-section" id="at-galeri">
+        <div class="ap-divider">Upload Foto Baru</div>
+        <div class="upload-zone" id="upload-zone">
+          <input type="file" accept="image/*" id="foto-input" onchange="previewFoto(this)" />
+          <div class="uz-icon">📷</div>
+          <p>Klik atau seret foto ke sini</p>
+          <small>JPG, PNG, WebP — maks 5MB</small>
+        </div>
+        <img id="upload-preview" class="upload-preview" alt="preview" />
+        <div class="upload-meta">
+          <div class="field-group" style="margin:0;"><label>Judul Foto</label><input id="foto-caption" type="text"
+              placeholder="cth: Upacara Bendera" /></div>
+          <div class="field-group" style="margin:0;"><label>Keterangan</label><input id="foto-desc" type="text"
+              placeholder="cth: Senin, 10 Mar 2025" /></div>
+        </div>
+        <button class="add-photo-btn" onclick="addFoto()">+ Tambahkan ke Galeri</button>
+        <div class="ap-divider">Foto di Galeri (<span id="foto-count">0</span>)</div>
+        <div class="g-admin-list" id="g-admin-list"></div>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- BERITA TAB -->
+      <div class="ap-section" id="at-berita">
+        <div class="ap-divider">Kelola Berita</div>
+        <button class="add-berita-btn" onclick="addBerita()">+ Tambah Berita Baru</button>
+        <div id="berita-admin-list"></div>
+        <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- KONTAK TAB -->
+      <div class="ap-section" id="at-kontak">
+        <div class="ap-divider">Info Kontak</div>
+        <div class="field-group"><label>Alamat Lengkap</label><textarea id="f-alamat"></textarea></div>
+        <div class="field-group"><label>Telepon</label><input id="f-telp" type="text" /></div>
+        <div class="field-group"><label>Email</label><input id="f-email" type="text" /></div>
+        <div class="field-group"><label>Jam Operasional</label><textarea id="f-jam"></textarea></div>
+        <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SUPER PANEL -->
-<div class="side-panel" id="super-panel">
-  <div class="ap-head">
-    <div class="ap-head-info"><h3>👑 Superadmin</h3><small id="super-label">dimas19</small></div>
-    <button class="ap-close" onclick="closePanel('super-panel')">✕</button>
-  </div>
-  <div class="ap-tabs">
-    <button class="ap-tab active" onclick="switchTab('super','st-konten',this)">Konten</button>
-    <button class="ap-tab" onclick="switchTab('super','st-galeri',this)">Galeri</button>
-    <button class="ap-tab" onclick="switchTab('super','st-berita',this)">Berita</button>
-    <button class="ap-tab" onclick="switchTab('super','st-akun',this)">Akun</button>
-    <button class="ap-tab" onclick="switchTab('super','st-pw',this)">Password</button>
-    <button class="ap-tab" onclick="switchTab('super','st-log',this)">Log</button>
-    <button class="ap-tab" onclick="switchTab('super','st-reset',this)">Reset</button>
-  </div>
-  <div class="ap-body">
-
-    <!-- KONTEN TAB (same as admin) -->
-    <div class="ap-section active" id="st-konten">
-      <div class="ap-divider">Teks Hero</div>
-      <div class="field-group"><label>Chip / Label Atas</label><input id="sf-chip" type="text"/></div>
-      <div class="field-group"><label>Judul Baris 1</label><input id="sf-h1a" type="text"/></div>
-      <div class="field-group"><label>Judul Baris 2 (miring/biru)</label><input id="sf-h1b" type="text"/></div>
-      <div class="field-group"><label>Judul Baris 3</label><input id="sf-h1c" type="text"/></div>
-      <div class="field-group"><label>Deskripsi</label><textarea id="sf-desc"></textarea></div>
-      <div class="ap-divider">Statistik</div>
-      <div class="field-group"><label>Angka Siswa</label><input id="sf-s1" type="text"/></div>
-      <div class="field-group"><label>Label Siswa</label><input id="sf-s1l" type="text"/></div>
-      <div class="field-group"><label>Angka Pengajar</label><input id="sf-s2" type="text"/></div>
-      <div class="field-group"><label>Label Pengajar</label><input id="sf-s2l" type="text"/></div>
-      <div class="field-group"><label>Angka Rombel</label><input id="sf-s3" type="text"/></div>
-      <div class="field-group"><label>Label Rombel</label><input id="sf-s3l" type="text"/></div>
-      <div class="field-group"><label>Angka Stat 4</label><input id="sf-s4" type="text"/></div>
-      <div class="field-group"><label>Label Stat 4</label><input id="sf-s4l" type="text"/></div>
-      <div class="ap-divider">Info Sekolah</div>
-      <div class="field-group"><label>Status</label><input id="sf-status" type="text"/></div>
-      <div class="field-group"><label>Lokasi</label><input id="sf-lokasi" type="text"/></div>
-      <div class="field-group"><label>Akreditasi</label><input id="sf-akred" type="text"/></div>
-      <div class="field-group"><label>Kepala Sekolah</label><input id="sf-kepsek" type="text"/></div>
-      <div class="field-group"><label>Tahun Berdiri</label><input id="sf-tahun" type="text"/></div>
-      <div class="field-group"><label>NPSN</label><input id="sf-npsn" type="text"/></div>
-      <div class="ap-divider">Visi</div>
-      <div class="field-group"><label>Teks Visi</label><textarea id="sf-visi" style="min-height:80px;"></textarea></div>
-      <div class="ap-divider">Misi</div>
-      <div class="field-group"><label>Misi 1</label><textarea id="sf-m1"></textarea></div>
-      <div class="field-group"><label>Misi 2</label><textarea id="sf-m2"></textarea></div>
-      <div class="field-group"><label>Misi 3</label><textarea id="sf-m3"></textarea></div>
-      <div class="field-group"><label>Misi 4</label><textarea id="sf-m4"></textarea></div>
-      <div class="field-group"><label>Misi 5</label><textarea id="sf-m5"></textarea></div>
-      <div class="field-group"><label>Misi 6</label><textarea id="sf-m6"></textarea></div>
-      <div class="ap-divider">Kontak</div>
-      <div class="field-group"><label>Alamat</label><textarea id="sf-alamat"></textarea></div>
-      <div class="field-group"><label>Telepon</label><input id="sf-telp" type="text"/></div>
-      <div class="field-group"><label>Email</label><input id="sf-email" type="text"/></div>
-      <div class="field-group"><label>Jam Operasional</label><textarea id="sf-jam"></textarea></div>
-      <button class="super-save" onclick="saveAllSuper()">💾 Simpan Semua</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
-
-    <!-- GALERI SUPER -->
-    <div class="ap-section" id="st-galeri">
-      <div class="ap-divider">Upload Foto Baru</div>
-      <div class="upload-zone">
-        <input type="file" accept="image/*" id="sfoto-input" onchange="previewFotoSuper(this)"/>
-        <div class="uz-icon">📷</div>
-        <p>Klik atau seret foto ke sini</p>
-        <small>JPG, PNG, WebP — maks 5MB</small>
+  <!-- SUPER PANEL -->
+  <div class="side-panel" id="super-panel">
+    <div class="ap-head">
+      <div class="ap-head-info">
+        <h3>👑 Superadmin</h3><small id="super-label">dimas19</small>
       </div>
-      <img id="supload-preview" class="upload-preview" alt="preview"/>
-      <div class="upload-meta">
-        <div class="field-group" style="margin:0;"><label>Judul Foto</label><input id="sfoto-caption" type="text" placeholder="cth: Upacara Bendera"/></div>
-        <div class="field-group" style="margin:0;"><label>Keterangan</label><input id="sfoto-desc" type="text" placeholder="cth: Senin, 10 Mar 2025"/></div>
+      <button class="ap-close" onclick="closePanel('super-panel')">✕</button>
+    </div>
+    <div class="ap-tabs">
+      <button class="ap-tab active" onclick="switchTab('super','st-konten',this)">Konten</button>
+      <button class="ap-tab" onclick="switchTab('super','st-galeri',this)">Galeri</button>
+      <button class="ap-tab" onclick="switchTab('super','st-berita',this)">Berita</button>
+      <button class="ap-tab" onclick="switchTab('super','st-akun',this)">Akun</button>
+      <button class="ap-tab" onclick="switchTab('super','st-pw',this)">Password</button>
+      <button class="ap-tab" onclick="switchTab('super','st-log',this)">Log</button>
+      <button class="ap-tab" onclick="switchTab('super','st-reset',this)">Reset</button>
+    </div>
+    <div class="ap-body">
+
+      <!-- KONTEN TAB (same as admin) -->
+      <div class="ap-section active" id="st-konten">
+        <div class="ap-divider">Teks Hero</div>
+        <div class="field-group"><label>Chip / Label Atas</label><input id="sf-chip" type="text" /></div>
+        <div class="field-group"><label>Judul Baris 1</label><input id="sf-h1a" type="text" /></div>
+        <div class="field-group"><label>Judul Baris 2 (miring/biru)</label><input id="sf-h1b" type="text" /></div>
+        <div class="field-group"><label>Judul Baris 3</label><input id="sf-h1c" type="text" /></div>
+        <div class="field-group"><label>Deskripsi</label><textarea id="sf-desc"></textarea></div>
+        <div class="ap-divider">Statistik</div>
+        <div class="field-group"><label>Angka Siswa</label><input id="sf-s1" type="text" /></div>
+        <div class="field-group"><label>Label Siswa</label><input id="sf-s1l" type="text" /></div>
+        <div class="field-group"><label>Angka Pengajar</label><input id="sf-s2" type="text" /></div>
+        <div class="field-group"><label>Label Pengajar</label><input id="sf-s2l" type="text" /></div>
+        <div class="field-group"><label>Angka Rombel</label><input id="sf-s3" type="text" /></div>
+        <div class="field-group"><label>Label Rombel</label><input id="sf-s3l" type="text" /></div>
+        <div class="field-group"><label>Angka Stat 4</label><input id="sf-s4" type="text" /></div>
+        <div class="field-group"><label>Label Stat 4</label><input id="sf-s4l" type="text" /></div>
+        <div class="ap-divider">Info Sekolah</div>
+        <div class="field-group"><label>Status</label><input id="sf-status" type="text" /></div>
+        <div class="field-group"><label>Lokasi</label><input id="sf-lokasi" type="text" /></div>
+        <div class="field-group"><label>Akreditasi</label><input id="sf-akred" type="text" /></div>
+        <div class="field-group"><label>Kepala Sekolah</label><input id="sf-kepsek" type="text" /></div>
+        <div class="field-group"><label>Tahun Berdiri</label><input id="sf-tahun" type="text" /></div>
+        <div class="field-group"><label>NPSN</label><input id="sf-npsn" type="text" /></div>
+        <div class="ap-divider">Visi</div>
+        <div class="field-group"><label>Teks Visi</label><textarea id="sf-visi" style="min-height:80px;"></textarea>
+        </div>
+        <div class="ap-divider">Misi</div>
+        <div class="field-group"><label>Misi 1</label><textarea id="sf-m1"></textarea></div>
+        <div class="field-group"><label>Misi 2</label><textarea id="sf-m2"></textarea></div>
+        <div class="field-group"><label>Misi 3</label><textarea id="sf-m3"></textarea></div>
+        <div class="field-group"><label>Misi 4</label><textarea id="sf-m4"></textarea></div>
+        <div class="field-group"><label>Misi 5</label><textarea id="sf-m5"></textarea></div>
+        <div class="field-group"><label>Misi 6</label><textarea id="sf-m6"></textarea></div>
+        <div class="ap-divider">Kontak</div>
+        <div class="field-group"><label>Alamat</label><textarea id="sf-alamat"></textarea></div>
+        <div class="field-group"><label>Telepon</label><input id="sf-telp" type="text" /></div>
+        <div class="field-group"><label>Email</label><input id="sf-email" type="text" /></div>
+        <div class="field-group"><label>Jam Operasional</label><textarea id="sf-jam"></textarea></div>
+        <button class="super-save" onclick="saveAllSuper()">💾 Simpan Semua</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
-      <button class="add-photo-btn" onclick="addFotoSuper()">+ Tambahkan ke Galeri</button>
-      <div class="ap-divider">Foto di Galeri (<span id="sfoto-count">0</span>)</div>
-      <div class="g-admin-list" id="sg-admin-list"></div>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
 
-    <!-- BERITA SUPER -->
-    <div class="ap-section" id="st-berita">
-      <div class="ap-divider">Kelola Berita</div>
-      <button class="add-berita-btn" onclick="addBerita()">+ Tambah Berita Baru</button>
-      <div id="sberita-admin-list"></div>
-      <button class="super-save" onclick="saveAllSuper()">💾 Simpan</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
+      <!-- GALERI SUPER -->
+      <div class="ap-section" id="st-galeri">
+        <div class="ap-divider">Upload Foto Baru</div>
+        <div class="upload-zone">
+          <input type="file" accept="image/*" id="sfoto-input" onchange="previewFotoSuper(this)" />
+          <div class="uz-icon">📷</div>
+          <p>Klik atau seret foto ke sini</p>
+          <small>JPG, PNG, WebP — maks 5MB</small>
+        </div>
+        <img id="supload-preview" class="upload-preview" alt="preview" />
+        <div class="upload-meta">
+          <div class="field-group" style="margin:0;"><label>Judul Foto</label><input id="sfoto-caption" type="text"
+              placeholder="cth: Upacara Bendera" /></div>
+          <div class="field-group" style="margin:0;"><label>Keterangan</label><input id="sfoto-desc" type="text"
+              placeholder="cth: Senin, 10 Mar 2025" /></div>
+        </div>
+        <button class="add-photo-btn" onclick="addFotoSuper()">+ Tambahkan ke Galeri</button>
+        <div class="ap-divider">Foto di Galeri (<span id="sfoto-count">0</span>)</div>
+        <div class="g-admin-list" id="sg-admin-list"></div>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
 
-    <!-- AKUN -->
-    <div class="ap-section" id="st-akun">
-      <div class="super-badge">👑 Kelola Akun Admin</div>
-      <button class="add-admin-btn" onclick="document.getElementById('add-admin-form-box').style.display='block'">+ Tambah Akun Admin Baru</button>
-      <div class="add-admin-form-box" id="add-admin-form-box">
-        <div class="field-group"><label>Username</label><input id="new-admin-user" type="text" placeholder="contoh: operator1"/></div>
-        <div class="field-group"><label>Password</label><input id="new-admin-pass" type="password" placeholder="min. 6 karakter"/></div>
-        <div style="display:flex;gap:8px;">
-          <button class="ap-save" style="margin-top:0;" onclick="addAdminAccount()">Tambah</button>
-          <button class="ap-logout" style="margin-top:0;" onclick="document.getElementById('add-admin-form-box').style.display='none'">Batal</button>
+      <!-- BERITA SUPER -->
+      <div class="ap-section" id="st-berita">
+        <div class="ap-divider">Kelola Berita</div>
+        <button class="add-berita-btn" onclick="addBerita()">+ Tambah Berita Baru</button>
+        <div id="sberita-admin-list"></div>
+        <button class="super-save" onclick="saveAllSuper()">💾 Simpan</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- AKUN -->
+      <div class="ap-section" id="st-akun">
+        <div class="super-badge">👑 Kelola Akun Admin</div>
+        <button class="add-admin-btn" onclick="document.getElementById('add-admin-form-box').style.display='block'">+
+          Tambah Akun Admin Baru</button>
+        <div class="add-admin-form-box" id="add-admin-form-box">
+          <div class="field-group"><label>Username</label><input id="new-admin-user" type="text"
+              placeholder="contoh: operator1" /></div>
+          <div class="field-group"><label>Password</label><input id="new-admin-pass" type="password"
+              placeholder="min. 6 karakter" /></div>
+          <div style="display:flex;gap:8px;">
+            <button class="ap-save" style="margin-top:0;" onclick="addAdminAccount()">Tambah</button>
+            <button class="ap-logout" style="margin-top:0;"
+              onclick="document.getElementById('add-admin-form-box').style.display='none'">Batal</button>
+          </div>
+        </div>
+        <div id="admin-accounts-list"></div>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="ap-section" id="st-pw">
+        <div class="super-badge">🔐 Ubah Password</div>
+        <div class="my-pw-info">Login sebagai: <strong id="super-name-display">dimas19</strong></div>
+        <div class="ap-divider">Ganti Password Admin</div>
+        <div class="field-group"><label>Pilih Admin</label><select id="change-pw-user"></select></div>
+        <div class="field-group"><label>Password Baru</label><input id="change-pw-new" type="password"
+            placeholder="Password baru" /></div>
+        <div class="field-group"><label>Konfirmasi</label><input id="change-pw-confirm" type="password"
+            placeholder="Ulangi password baru" /></div>
+        <button class="super-save" onclick="changeAdminPw()">🔑 Ubah Password Admin</button>
+        <div class="ap-divider" style="margin-top:24px;">Ganti Password Saya</div>
+        <div class="field-group"><label>Password Lama</label><input id="super-old-pw" type="password" /></div>
+        <div class="field-group"><label>Password Baru</label><input id="super-new-pw" type="password" /></div>
+        <div class="field-group"><label>Konfirmasi</label><input id="super-confirm-pw" type="password" /></div>
+        <button class="super-save" onclick="changeSuperPw()">🔑 Ubah Password Saya</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- LOG -->
+      <div class="ap-section" id="st-log">
+        <div class="super-badge">📋 Log Aktivitas</div>
+        <div id="activity-log"></div>
+        <button class="reset-btn" style="background:var(--offwhite);color:var(--slate);border-color:var(--border);"
+          onclick="clearLog()">🗑 Hapus Semua Log</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- RESET -->
+      <div class="ap-section" id="st-reset">
+        <div class="super-badge">⚠️ Zona Berbahaya</div>
+        <p style="font-size:0.88rem;color:var(--slate);line-height:1.6;margin-bottom:16px;">Reset konten akan
+          mengembalikan semua teks dan berita ke data awal. <strong>Foto di galeri tidak ikut direset.</strong> Akun
+          admin tetap aman.</p>
+        <div
+          style="background:var(--red-l);border:1px solid rgba(198,40,40,0.2);border-radius:10px;padding:14px;margin-bottom:14px;">
+          <p style="font-size:0.85rem;font-weight:700;color:var(--red);margin-bottom:4px;">⚠️ Tidak bisa dibatalkan!</p>
+          <p style="font-size:0.82rem;color:var(--red);opacity:0.8;line-height:1.5;">Semua teks, statistik, visi misi,
+            berita, dan info kontak akan kembali ke bawaan awal.</p>
+        </div>
+        <button class="reset-btn" onclick="resetAllData()">🔄 Reset Konten ke Default</button>
+        <div class="ap-divider" style="margin-top:20px;">Hapus Semua Foto Galeri</div>
+        <button class="reset-btn" onclick="resetGaleri()">🗑 Hapus Semua Foto Galeri</button>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#beranda" class="nav-brand">
+      <div class="nav-emblem">SD</div>
+      <div class="nav-name">
+        <strong>SDN 26 Sijunjung</strong>
+        <span>Kabupaten Sijunjung</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#beranda">Beranda</a>
+      <a href="#profil">Profil</a>
+      <a href="#berita">Berita</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#kontak" class="nav-cta">Kontak</a>
+      <button class="nav-admin-btn" id="admin-nav-btn" onclick="handleAdminBtn()">⚙ Admin</button>
+    </div>
+  </nav>
+
+  <!-- BERANDA -->
+  <section id="beranda">
+    <div class="hero-inner">
+      <div class="hero-chip"><span class="dot"></span><span id="v-chip">Sekolah Dasar Negeri — Sijunjung</span></div>
+      <h1 class="hero-title">
+        <span id="v-h1a">Bersama Menuju</span><br>
+        <em id="v-h1b">Generasi</em><br>
+        <span id="v-h1c">Unggul</span>
+      </h1>
+      <p class="hero-desc" id="v-desc">SDN 26 Sijunjung berkomitmen mewujudkan pendidikan berkualitas, membentuk
+        karakter mulia, dan mencetak generasi yang siap menghadapi tantangan masa depan.</p>
+      <div class="hero-actions">
+        <a href="#profil" class="btn-primary">Lihat Profil Sekolah →</a>
+        <a href="#kontak" class="btn-ghost">Hubungi Kami</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="num" id="v-s1">250+</div>
+          <div class="lbl" id="v-s1l">Siswa Aktif</div>
+        </div>
+        <div class="h-stat">
+          <div class="num" id="v-s2">18</div>
+          <div class="lbl" id="v-s2l">Tenaga Pengajar</div>
+        </div>
+        <div class="h-stat">
+          <div class="num" id="v-s3">6</div>
+          <div class="lbl" id="v-s3l">Rombel</div>
+        </div>
+        <div class="h-stat">
+          <div class="num" id="v-s4">A</div>
+          <div class="lbl" id="v-s4l">Akreditasi</div>
         </div>
       </div>
-      <div id="admin-accounts-list"></div>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
     </div>
+  </section>
 
-    <!-- PASSWORD -->
-    <div class="ap-section" id="st-pw">
-      <div class="super-badge">🔐 Ubah Password</div>
-      <div class="my-pw-info">Login sebagai: <strong id="super-name-display">dimas19</strong></div>
-      <div class="ap-divider">Ganti Password Admin</div>
-      <div class="field-group"><label>Pilih Admin</label><select id="change-pw-user"></select></div>
-      <div class="field-group"><label>Password Baru</label><input id="change-pw-new" type="password" placeholder="Password baru"/></div>
-      <div class="field-group"><label>Konfirmasi</label><input id="change-pw-confirm" type="password" placeholder="Ulangi password baru"/></div>
-      <button class="super-save" onclick="changeAdminPw()">🔑 Ubah Password Admin</button>
-      <div class="ap-divider" style="margin-top:24px;">Ganti Password Saya</div>
-      <div class="field-group"><label>Password Lama</label><input id="super-old-pw" type="password"/></div>
-      <div class="field-group"><label>Password Baru</label><input id="super-new-pw" type="password"/></div>
-      <div class="field-group"><label>Konfirmasi</label><input id="super-confirm-pw" type="password"/></div>
-      <button class="super-save" onclick="changeSuperPw()">🔑 Ubah Password Saya</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
-
-    <!-- LOG -->
-    <div class="ap-section" id="st-log">
-      <div class="super-badge">📋 Log Aktivitas</div>
-      <div id="activity-log"></div>
-      <button class="reset-btn" style="background:var(--offwhite);color:var(--slate);border-color:var(--border);" onclick="clearLog()">🗑 Hapus Semua Log</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
-
-    <!-- RESET -->
-    <div class="ap-section" id="st-reset">
-      <div class="super-badge">⚠️ Zona Berbahaya</div>
-      <p style="font-size:0.88rem;color:var(--slate);line-height:1.6;margin-bottom:16px;">Reset konten akan mengembalikan semua teks dan berita ke data awal. <strong>Foto di galeri tidak ikut direset.</strong> Akun admin tetap aman.</p>
-      <div style="background:var(--red-l);border:1px solid rgba(198,40,40,0.2);border-radius:10px;padding:14px;margin-bottom:14px;">
-        <p style="font-size:0.85rem;font-weight:700;color:var(--red);margin-bottom:4px;">⚠️ Tidak bisa dibatalkan!</p>
-        <p style="font-size:0.82rem;color:var(--red);opacity:0.8;line-height:1.5;">Semua teks, statistik, visi misi, berita, dan info kontak akan kembali ke bawaan awal.</p>
-      </div>
-      <button class="reset-btn" onclick="resetAllData()">🔄 Reset Konten ke Default</button>
-      <div class="ap-divider" style="margin-top:20px;">Hapus Semua Foto Galeri</div>
-      <button class="reset-btn" onclick="resetGaleri()">🗑 Hapus Semua Foto Galeri</button>
-      <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav>
-  <a href="#beranda" class="nav-brand">
-    <div class="nav-emblem">SD</div>
-    <div class="nav-name">
-      <strong>SDN 26 Sijunjung</strong>
-      <span>Kabupaten Sijunjung</span>
-    </div>
-  </a>
-  <div class="nav-links">
-    <a href="#beranda">Beranda</a>
-    <a href="#profil">Profil</a>
-    <a href="#berita">Berita</a>
-    <a href="#galeri">Galeri</a>
-    <a href="#kontak" class="nav-cta">Kontak</a>
-    <button class="nav-admin-btn" id="admin-nav-btn" onclick="handleAdminBtn()">⚙ Admin</button>
-  </div>
-</nav>
-
-<!-- BERANDA -->
-<section id="beranda">
-  <div class="hero-inner">
-    <div class="hero-chip"><span class="dot"></span><span id="v-chip">Sekolah Dasar Negeri — Sijunjung</span></div>
-    <h1 class="hero-title">
-      <span id="v-h1a">Bersama Menuju</span><br>
-      <em id="v-h1b">Generasi</em><br>
-      <span id="v-h1c">Unggul</span>
-    </h1>
-    <p class="hero-desc" id="v-desc">SDN 26 Sijunjung berkomitmen mewujudkan pendidikan berkualitas, membentuk karakter mulia, dan mencetak generasi yang siap menghadapi tantangan masa depan.</p>
-    <div class="hero-actions">
-      <a href="#profil" class="btn-primary">Lihat Profil Sekolah →</a>
-      <a href="#kontak" class="btn-ghost">Hubungi Kami</a>
-    </div>
-    <div class="hero-stats">
-      <div class="h-stat"><div class="num" id="v-s1">250+</div><div class="lbl" id="v-s1l">Siswa Aktif</div></div>
-      <div class="h-stat"><div class="num" id="v-s2">18</div><div class="lbl" id="v-s2l">Tenaga Pengajar</div></div>
-      <div class="h-stat"><div class="num" id="v-s3">6</div><div class="lbl" id="v-s3l">Rombel</div></div>
-      <div class="h-stat"><div class="num" id="v-s4">A</div><div class="lbl" id="v-s4l">Akreditasi</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROFIL -->
-<section id="profil">
-  <span class="label-tag">Tentang Kami</span>
-  <h2 class="sec-title">Profil <em>Sekolah</em></h2>
-  <p class="sec-sub">Mengenal lebih dekat SDN 26 Sijunjung — visi, misi, dan identitas sekolah kami.</p>
-  <div class="profil-layout">
-    <div>
-      <div class="info-cards">
-        <div class="ic"><div class="ico">🏛️</div><label>Status</label><p id="v-status">Sekolah Dasar Negeri</p></div>
-        <div class="ic"><div class="ico">📍</div><label>Lokasi</label><p id="v-lokasi">Sijunjung, Sumatera Barat</p></div>
-        <div class="ic"><div class="ico">🎓</div><label>Akreditasi</label><p id="v-akred">A — Sangat Baik</p></div>
-        <div class="ic"><div class="ico">👨‍💼</div><label>Kepala Sekolah</label><p id="v-kepsek">—</p></div>
-        <div class="ic"><div class="ico">📅</div><label>Tahun Berdiri</label><p id="v-tahun">—</p></div>
-        <div class="ic"><div class="ico">🔢</div><label>NPSN</label><p id="v-npsn">—</p></div>
-        <div class="visi-box"><label>🌟 Visi Sekolah</label><p id="v-visi">Terwujudnya peserta didik yang cerdas, beriman, bertaqwa, dan berbudaya serta mampu bersaing di era global dengan tetap menjunjung tinggi nilai-nilai luhur bangsa.</p></div>
-      </div>
-    </div>
-    <div class="misi-side">
-      <h3>Misi Sekolah</h3>
-      <ul class="misi-list">
-        <li><div class="misi-num">1</div><p id="v-m1">Meningkatkan mutu pendidikan yang berlandaskan iman dan taqwa kepada Tuhan Yang Maha Esa</p></li>
-        <li><div class="misi-num">2</div><p id="v-m2">Menyelenggarakan pembelajaran aktif, inovatif, kreatif, efektif, dan menyenangkan (PAIKEM)</p></li>
-        <li><div class="misi-num">3</div><p id="v-m3">Menumbuhkan semangat keunggulan dan kompetisi secara intensif kepada seluruh warga sekolah</p></li>
-        <li><div class="misi-num">4</div><p id="v-m4">Menciptakan lingkungan sekolah yang bersih, indah, aman, dan nyaman sebagai sarana belajar</p></li>
-        <li><div class="misi-num">5</div><p id="v-m5">Memberdayakan peran serta masyarakat dan orang tua dalam penyelenggaraan pendidikan berkualitas</p></li>
-        <li><div class="misi-num">6</div><p id="v-m6">Mengembangkan potensi peserta didik melalui kegiatan ekstrakurikuler dan pengembangan diri</p></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- BERITA -->
-<section id="berita">
-  <span class="label-tag">Informasi</span>
-  <h2 class="sec-title">Berita & <em>Pengumuman</em></h2>
-  <p class="sec-sub">Update terkini seputar kegiatan dan pengumuman dari SDN 26 Sijunjung.</p>
-  <div class="berita-grid" id="v-berita-grid"></div>
-</section>
-
-<!-- GALERI -->
-<section id="galeri">
-  <span class="label-tag">Dokumentasi</span>
-  <h2 class="sec-title">Galeri <em>Foto</em></h2>
-  <p class="sec-sub">Momen berharga dari kegiatan belajar dan aktivitas di SDN 26 Sijunjung.</p>
-  <div class="galeri-grid" id="v-galeri-grid"></div>
-</section>
-
-<!-- KONTAK -->
-<section id="kontak">
-  <span class="label-tag">Hubungi Kami</span>
-  <h2 class="sec-title">Informasi <em>Kontak</em></h2>
-  <p class="sec-sub">Kami senang mendengar dari Anda. Kirim pesan atau kunjungi kami langsung.</p>
-  <div class="kontak-layout">
-    <div class="k-info">
-      <div class="k-row"><div class="k-icon">📍</div><div><label>Alamat</label><p id="v-alamat">Kabupaten Sijunjung, Sumatera Barat, Indonesia</p></div></div>
-      <div class="k-row"><div class="k-icon">📞</div><div><label>Telepon</label><p id="v-telp">—</p></div></div>
-      <div class="k-row"><div class="k-icon">✉️</div><div><label>Email</label><p id="v-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="364552580400455f5c43585c43585176515b575f5a1855595b">[email&#160;protected]</a></p></div></div>
-      <div class="k-row"><div class="k-icon">🕐</div><div><label>Jam Operasional</label><p id="v-jam">Senin – Jumat: 07.00 – 13.00 WIB<br>Sabtu: 07.00 – 11.00 WIB</p></div></div>
-    </div>
-    <div>
-      <div class="k-form">
-        <h3>Kirim Pesan</h3>
-        <div class="form-row">
-          <input type="text" placeholder="Nama Lengkap"/>
-          <input type="tel" placeholder="No. Telepon"/>
+  <!-- PROFIL -->
+  <section id="profil">
+    <span class="label-tag">Tentang Kami</span>
+    <h2 class="sec-title">Profil <em>Sekolah</em></h2>
+    <p class="sec-sub">Mengenal lebih dekat SDN 26 Sijunjung — visi, misi, dan identitas sekolah kami.</p>
+    <div class="profil-layout">
+      <div>
+        <div class="info-cards">
+          <div class="ic">
+            <div class="ico">🏛️</div><label>Status</label>
+            <p id="v-status">Sekolah Dasar Negeri</p>
+          </div>
+          <div class="ic">
+            <div class="ico">📍</div><label>Lokasi</label>
+            <p id="v-lokasi">Sijunjung, Sumatera Barat</p>
+          </div>
+          <div class="ic">
+            <div class="ico">🎓</div><label>Akreditasi</label>
+            <p id="v-akred">A — Sangat Baik</p>
+          </div>
+          <div class="ic">
+            <div class="ico">👨‍💼</div><label>Kepala Sekolah</label>
+            <p id="v-kepsek">—</p>
+          </div>
+          <div class="ic">
+            <div class="ico">📅</div><label>Tahun Berdiri</label>
+            <p id="v-tahun">—</p>
+          </div>
+          <div class="ic">
+            <div class="ico">🔢</div><label>NPSN</label>
+            <p id="v-npsn">—</p>
+          </div>
+          <div class="visi-box"><label>🌟 Visi Sekolah</label>
+            <p id="v-visi">Terwujudnya peserta didik yang cerdas, beriman, bertaqwa, dan berbudaya serta mampu bersaing
+              di era global dengan tetap menjunjung tinggi nilai-nilai luhur bangsa.</p>
+          </div>
         </div>
-        <input type="email" placeholder="Alamat Email"/>
-        <input type="text" placeholder="Subjek Pesan"/>
-        <textarea placeholder="Tulis pesan Anda di sini..."></textarea>
-        <button onclick="alert('✅ Pesan berhasil dikirim!\nTerima kasih, kami akan segera menghubungi Anda.')">Kirim Pesan →</button>
+      </div>
+      <div class="misi-side">
+        <h3>Misi Sekolah</h3>
+        <ul class="misi-list">
+          <li>
+            <div class="misi-num">1</div>
+            <p id="v-m1">Meningkatkan mutu pendidikan yang berlandaskan iman dan taqwa kepada Tuhan Yang Maha Esa</p>
+          </li>
+          <li>
+            <div class="misi-num">2</div>
+            <p id="v-m2">Menyelenggarakan pembelajaran aktif, inovatif, kreatif, efektif, dan menyenangkan (PAIKEM)</p>
+          </li>
+          <li>
+            <div class="misi-num">3</div>
+            <p id="v-m3">Menumbuhkan semangat keunggulan dan kompetisi secara intensif kepada seluruh warga sekolah</p>
+          </li>
+          <li>
+            <div class="misi-num">4</div>
+            <p id="v-m4">Menciptakan lingkungan sekolah yang bersih, indah, aman, dan nyaman sebagai sarana belajar</p>
+          </li>
+          <li>
+            <div class="misi-num">5</div>
+            <p id="v-m5">Memberdayakan peran serta masyarakat dan orang tua dalam penyelenggaraan pendidikan berkualitas
+            </p>
+          </li>
+          <li>
+            <div class="misi-num">6</div>
+            <p id="v-m6">Mengembangkan potensi peserta didik melalui kegiatan ekstrakurikuler dan pengembangan diri</p>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="footer-inner">
-    <div><div class="fb-name">SDN 26 Sijunjung</div><p style="font-size:0.82rem;">Sekolah Dasar Negeri — Kabupaten Sijunjung, Sumatera Barat</p></div>
-    <div class="footer-links">
-      <a href="#beranda">Beranda</a><a href="#profil">Profil</a><a href="#berita">Berita</a><a href="#galeri">Galeri</a><a href="#kontak">Kontak</a>
+  <!-- BERITA -->
+  <section id="berita">
+    <span class="label-tag">Informasi</span>
+    <h2 class="sec-title">Berita & <em>Pengumuman</em></h2>
+    <p class="sec-sub">Update terkini seputar kegiatan dan pengumuman dari SDN 26 Sijunjung.</p>
+    <div class="berita-grid" id="v-berita-grid"></div>
+  </section>
+
+  <!-- GALERI -->
+  <section id="galeri">
+    <span class="label-tag">Dokumentasi</span>
+    <h2 class="sec-title">Galeri <em>Foto</em></h2>
+    <p class="sec-sub">Momen berharga dari kegiatan belajar dan aktivitas di SDN 26 Sijunjung.</p>
+    <div class="galeri-grid" id="v-galeri-grid"></div>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="kontak">
+    <span class="label-tag">Hubungi Kami</span>
+    <h2 class="sec-title">Informasi <em>Kontak</em></h2>
+    <p class="sec-sub">Kami senang mendengar dari Anda. Kirim pesan atau kunjungi kami langsung.</p>
+    <div class="kontak-layout">
+      <div class="k-info">
+        <div class="k-row">
+          <div class="k-icon">📍</div>
+          <div><label>Alamat</label>
+            <p id="v-alamat">Kabupaten Sijunjung, Sumatera Barat, Indonesia</p>
+          </div>
+        </div>
+        <div class="k-row">
+          <div class="k-icon">📞</div>
+          <div><label>Telepon</label>
+            <p id="v-telp">—</p>
+          </div>
+        </div>
+        <div class="k-row">
+          <div class="k-icon">✉️</div>
+          <div><label>Email</label>
+            <p id="v-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                data-cfemail="364552580400455f5c43585c43585176515b575f5a1855595b">[email&#160;protected]</a></p>
+          </div>
+        </div>
+        <div class="k-row">
+          <div class="k-icon">🕐</div>
+          <div><label>Jam Operasional</label>
+            <p id="v-jam">Senin – Jumat: 07.00 – 13.00 WIB<br>Sabtu: 07.00 – 11.00 WIB</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="k-form">
+          <h3>Kirim Pesan</h3>
+          <div class="form-row">
+            <input type="text" placeholder="Nama Lengkap" />
+            <input type="tel" placeholder="No. Telepon" />
+          </div>
+          <input type="email" placeholder="Alamat Email" />
+          <input type="text" placeholder="Subjek Pesan" />
+          <textarea placeholder="Tulis pesan Anda di sini..."></textarea>
+          <button onclick="alert('✅ Pesan berhasil dikirim!\nTerima kasih, kami akan segera menghubungi Anda.')">Kirim
+            Pesan →</button>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 SDN 26 Sijunjung. Semua hak dilindungi.</span>
-    <span>Mencerdaskan Kehidupan Bangsa 🇮🇩</span>
-  </div>
-</footer>
+  </section>
 
-<!-- Firebase SDK -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, collection, getDocs, addDoc, deleteDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="fb-name">SDN 26 Sijunjung</div>
+        <p style="font-size:0.82rem;">Sekolah Dasar Negeri — Kabupaten Sijunjung, Sumatera Barat</p>
+      </div>
+      <div class="footer-links">
+        <a href="#beranda">Beranda</a><a href="#profil">Profil</a><a href="#berita">Berita</a><a
+          href="#galeri">Galeri</a><a href="#kontak">Kontak</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 SDN 26 Sijunjung. Semua hak dilindungi.</span>
+      <span>Mencerdaskan Kehidupan Bangsa 🇮🇩</span>
+    </div>
+  </footer>
 
-// ═══ FIREBASE CONFIG ═══
-const firebaseConfig = {
-  apiKey: "AIzaSyACfr2ZxtZvLAhf4bd7YaTt5Zv5Gl8S1iI",
-  authDomain: "websdn26.firebaseapp.com",
-  projectId: "websdn26",
-  storageBucket: "websdn26.firebasestorage.app",
-  messagingSenderId: "63455437311",
-  appId: "1:63455437311:web:6c65965eb0a84e7ce747ca"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, collection, getDocs, addDoc, deleteDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// ═══ CLOUDINARY CONFIG ═══
-const CLOUD_NAME = 'dksfv2fot';
-const UPLOAD_PRESET = 'sdn26_galeri';
+    // ═══ FIREBASE CONFIG ═══
+    const firebaseConfig = {
+      apiKey: "AIzaSyACfr2ZxtZvLAhf4bd7YaTt5Zv5Gl8S1iI",
+      authDomain: "websdn26.firebaseapp.com",
+      projectId: "websdn26",
+      storageBucket: "websdn26.firebasestorage.app",
+      messagingSenderId: "63455437311",
+      appId: "1:63455437311:web:6c65965eb0a84e7ce747ca"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-// ═══ FIRESTORE HELPERS ═══
-async function fsGet(col, docId) {
-  try {
-    const snap = await getDoc(doc(db, col, docId));
-    return snap.exists() ? snap.data() : null;
-  } catch(e) { console.error('fsGet error:', e); return null; }
-}
-async function fsSet(col, docId, data) {
-  try {
-    await setDoc(doc(db, col, docId), data);
-    return true;
-  } catch(e) { console.error('fsSet error:', e); return false; }
-}
-async function fsGetAll(col) {
-  try {
-    const snap = await getDocs(collection(db, col));
-    return snap.docs.map(d => ({id: d.id, ...d.data()}));
-  } catch(e) { console.error('fsGetAll error:', e); return []; }
-}
-async function fsAdd(col, data) {
-  try {
-    const ref = await addDoc(collection(db, col), data);
-    return ref.id;
-  } catch(e) { console.error('fsAdd error:', e); return null; }
-}
-async function fsDel(col, docId) {
-  try {
-    await deleteDoc(doc(db, col, docId));
-    return true;
-  } catch(e) { console.error('fsDel error:', e); return false; }
-}
+    // ═══ CLOUDINARY CONFIG ═══
+    const CLOUD_NAME = 'dksfv2fot';
+    const UPLOAD_PRESET = 'sdn26_galeri';
 
-// ═══ CLOUDINARY UPLOAD ═══
-async function uploadToCloudinary(file) {
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', UPLOAD_PRESET);
-  try {
-    showToast('⏳ Mengupload foto...', 'success');
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-      method: 'POST',
-      body: formData
-    });
-    const data = await res.json();
-    if (data.secure_url) return data.secure_url;
-    showToast('❌ Upload gagal!', 'error');
-    return null;
-  } catch(e) {
-    console.error('Cloudinary error:', e);
-    showToast('❌ Upload gagal! Cek koneksi.', 'error');
-    return null;
-  }
-}
+    // ═══ FIRESTORE HELPERS ═══
+    async function fsGet(col, docId) {
+      try {
+        const snap = await getDoc(doc(db, col, docId));
+        return snap.exists() ? snap.data() : null;
+      } catch (e) { console.error('fsGet error:', e); return null; }
+    }
+    async function fsSet(col, docId, data) {
+      try {
+        await setDoc(doc(db, col, docId), data);
+        return true;
+      } catch (e) { console.error('fsSet error:', e); return false; }
+    }
+    async function fsGetAll(col) {
+      try {
+        const snap = await getDocs(collection(db, col));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      } catch (e) { console.error('fsGetAll error:', e); return []; }
+    }
+    async function fsAdd(col, data) {
+      try {
+        const ref = await addDoc(collection(db, col), data);
+        return ref.id;
+      } catch (e) { console.error('fsAdd error:', e); return null; }
+    }
+    async function fsDel(col, docId) {
+      try {
+        await deleteDoc(doc(db, col, docId));
+        return true;
+      } catch (e) { console.error('fsDel error:', e); return false; }
+    }
 
-// ═══ DEFAULT DATA ═══
-// ═══ DEFAULT DATA ═══
-const DEF = {
-  chip:'Sekolah Dasar Negeri — Sijunjung',
-  h1a:'Bersama Menuju',h1b:'Generasi',h1c:'Unggul',
-  desc:'SDN 26 Sijunjung berkomitmen mewujudkan pendidikan berkualitas, membentuk karakter mulia, dan mencetak generasi yang siap menghadapi tantangan masa depan.',
-  s1:'250+',s1l:'Siswa Aktif',s2:'18',s2l:'Tenaga Pengajar',s3:'6',s3l:'Rombel',s4:'A',s4l:'Akreditasi',
-  status:'Sekolah Dasar Negeri',lokasi:'Sijunjung, Sumatera Barat',akred:'A — Sangat Baik',
-  kepsek:'—',tahun:'—',npsn:'—',
-  visi:'Terwujudnya peserta didik yang cerdas, beriman, bertaqwa, dan berbudaya serta mampu bersaing di era global.',
-  m1:'Meningkatkan mutu pendidikan yang berlandaskan iman dan taqwa kepada Tuhan Yang Maha Esa',
-  m2:'Menyelenggarakan pembelajaran aktif, inovatif, kreatif, efektif, dan menyenangkan (PAIKEM)',
-  m3:'Menumbuhkan semangat keunggulan dan kompetisi secara intensif kepada seluruh warga sekolah',
-  m4:'Menciptakan lingkungan sekolah yang bersih, indah, aman, dan nyaman sebagai sarana belajar',
-  m5:'Memberdayakan peran serta masyarakat dan orang tua dalam penyelenggaraan pendidikan berkualitas',
-  m6:'Mengembangkan potensi peserta didik melalui kegiatan ekstrakurikuler dan pengembangan diri',
-  alamat:'Kabupaten Sijunjung, Sumatera Barat, Indonesia',
-  telp:'—',email:'sdn26sijunjung@gmail.com',
-  jam:'Senin – Jumat: 07.00 – 13.00 WIB\nSabtu: 07.00 – 11.00 WIB',
-  berita:[
-    {emoji:'🏆',tag:'Prestasi',judul:'Siswa SDN 26 Raih Juara Lomba Matematika Tingkat Kabupaten',isi:'Keberhasilan luar biasa diraih siswa kelas 5 dalam olimpiade matematika tingkat kabupaten Sijunjung.',tanggal:'10 Maret 2025',bg:'#E3F2FD'},
-    {emoji:'📝',tag:'Pengumuman',judul:'Pendaftaran Siswa Baru Tahun Ajaran 2025/2026 Telah Dibuka',isi:'Pendaftaran siswa baru resmi dibuka. Segera daftarkan putra-putri Anda sebelum kuota penuh.',tanggal:'1 Maret 2025',bg:'#E8F5E9'},
-    {emoji:'🎨',tag:'Kegiatan',judul:'Pentas Seni dan Pameran Karya Siswa SDN 26 Sijunjung',isi:'Sekolah mengadakan pentas seni tahunan yang menampilkan kreativitas dan bakat para siswa.',tanggal:'22 Februari 2025',bg:'#FFF8E1'}
-  ]
-};
+    // ═══ CLOUDINARY UPLOAD ═══
+    async function uploadToCloudinary(file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', UPLOAD_PRESET);
+      try {
+        showToast('⏳ Mengupload foto...', 'success');
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.secure_url) return data.secure_url;
+        showToast('❌ Upload gagal!', 'error');
+        return null;
+      } catch (e) {
+        console.error('Cloudinary error:', e);
+        showToast('❌ Upload gagal! Cek koneksi.', 'error');
+        return null;
+      }
+    }
 
-// ═══ STATE ═══
-let C = JSON.parse(JSON.stringify(DEF)); // content
-let role = null, user = null;
-let lbIndex = 0;
-let pendingFotoFile = null, pendingFotoFileSuper = null;
-let galeriCache = []; // cache galeri dari Firestore
-let authCache = null; // cache auth dari Firestore
+    // ═══ DEFAULT DATA ═══
+    // ═══ DEFAULT DATA ═══
+    const DEF = {
+      chip: 'Sekolah Dasar Negeri — Sijunjung',
+      h1a: 'Bersama Menuju', h1b: 'Generasi', h1c: 'Unggul',
+      desc: 'SDN 26 Sijunjung berkomitmen mewujudkan pendidikan berkualitas, membentuk karakter mulia, dan mencetak generasi yang siap menghadapi tantangan masa depan.',
+      s1: '250+', s1l: 'Siswa Aktif', s2: '18', s2l: 'Tenaga Pengajar', s3: '6', s3l: 'Rombel', s4: 'A', s4l: 'Akreditasi',
+      status: 'Sekolah Dasar Negeri', lokasi: 'Sijunjung, Sumatera Barat', akred: 'A — Sangat Baik',
+      kepsek: '—', tahun: '—', npsn: '—',
+      visi: 'Terwujudnya peserta didik yang cerdas, beriman, bertaqwa, dan berbudaya serta mampu bersaing di era global.',
+      m1: 'Meningkatkan mutu pendidikan yang berlandaskan iman dan taqwa kepada Tuhan Yang Maha Esa',
+      m2: 'Menyelenggarakan pembelajaran aktif, inovatif, kreatif, efektif, dan menyenangkan (PAIKEM)',
+      m3: 'Menumbuhkan semangat keunggulan dan kompetisi secara intensif kepada seluruh warga sekolah',
+      m4: 'Menciptakan lingkungan sekolah yang bersih, indah, aman, dan nyaman sebagai sarana belajar',
+      m5: 'Memberdayakan peran serta masyarakat dan orang tua dalam penyelenggaraan pendidikan berkualitas',
+      m6: 'Mengembangkan potensi peserta didik melalui kegiatan ekstrakurikuler dan pengembangan diri',
+      alamat: 'Kabupaten Sijunjung, Sumatera Barat, Indonesia',
+      telp: '—', email: 'sdn26sijunjung@gmail.com',
+      jam: 'Senin – Jumat: 07.00 – 13.00 WIB\nSabtu: 07.00 – 11.00 WIB',
+      berita: [
+        { emoji: '🏆', tag: 'Prestasi', judul: 'Siswa SDN 26 Raih Juara Lomba Matematika Tingkat Kabupaten', isi: 'Keberhasilan luar biasa diraih siswa kelas 5 dalam olimpiade matematika tingkat kabupaten Sijunjung.', tanggal: '10 Maret 2025', bg: '#E3F2FD' },
+        { emoji: '📝', tag: 'Pengumuman', judul: 'Pendaftaran Siswa Baru Tahun Ajaran 2025/2026 Telah Dibuka', isi: 'Pendaftaran siswa baru resmi dibuka. Segera daftarkan putra-putri Anda sebelum kuota penuh.', tanggal: '1 Maret 2025', bg: '#E8F5E9' },
+        { emoji: '🎨', tag: 'Kegiatan', judul: 'Pentas Seni dan Pameran Karya Siswa SDN 26 Sijunjung', isi: 'Sekolah mengadakan pentas seni tahunan yang menampilkan kreativitas dan bakat para siswa.', tanggal: '22 Februari 2025', bg: '#FFF8E1' }
+      ]
+    };
 
-// ═══ AUTH (Firebase) ═══
-async function getAuth() {
-  if (authCache) return authCache;
-  const data = await fsGet('config', 'auth');
-  if (data) { authCache = data; return data; }
-  // default pertama kali
-  const def = {admins:[{user:'admin',pass:'admin123'}],super:{user:'dimas19',pass:'super123'}};
-  await fsSet('config', 'auth', def);
-  authCache = def;
-  return def;
-}
-async function saveAuth(a) {
-  authCache = a;
-  await fsSet('config', 'auth', a);
-}
+    // ═══ STATE ═══
+    let C = JSON.parse(JSON.stringify(DEF)); // content
+    let role = null, user = null;
+    let lbIndex = 0;
+    let pendingFotoFile = null, pendingFotoFileSuper = null;
+    let galeriCache = []; // cache galeri dari Firestore
+    let authCache = null; // cache auth dari Firestore
 
-// ═══ LOG (Firebase) ═══
-async function getLogs() {
-  const data = await fsGet('config', 'log');
-  return data ? (data.entries || []) : [];
-}
-async function addLog(msg) {
-  const logs = await getLogs();
-  logs.unshift({time: new Date().toLocaleString('id-ID'), msg});
-  if (logs.length > 60) logs.pop();
-  await fsSet('config', 'log', {entries: logs});
-}
-async function clearLog() {
-  if (confirm('Hapus semua log?')) {
-    await fsSet('config', 'log', {entries: []});
-    renderLog();
-    showToast('Log dihapus', 'success');
-  }
-}
-async function renderLog() {
-  const logs = await getLogs();
-  const el = document.getElementById('activity-log'); if (!el) return;
-  el.innerHTML = logs.length ? logs.map(l=>`<div class="log-item"><div class="log-time">🕐 ${l.time}</div><div class="log-msg">${l.msg}</div></div>`).join('') : '<div class="log-empty">Belum ada aktivitas tercatat.</div>';
-}
+    // ═══ AUTH (Firebase) ═══
+    async function getAuth() {
+      if (authCache) return authCache;
+      const data = await fsGet('config', 'auth');
+      if (data) { authCache = data; return data; }
+      // default pertama kali
+      const def = { admins: [{ user: 'admin', pass: 'admin123' }], super: { user: 'dimas19', pass: 'super123' } };
+      await fsSet('config', 'auth', def);
+      authCache = def;
+      return def;
+    }
+    async function saveAuth(a) {
+      authCache = a;
+      await fsSet('config', 'auth', a);
+    }
 
-// ═══ GALERI DATA (Firebase) ═══
-async function getGaleri() {
-  const docs = await fsGetAll('galeri');
-  galeriCache = docs.sort((a,b) => (b.uploadedAt||'').localeCompare(a.uploadedAt||''));
-  return galeriCache;
-}
-async function saveGaleriItem(item) {
-  return await fsAdd('galeri', item);
-}
-async function delGaleriItem(firestoreId) {
-  return await fsDel('galeri', firestoreId);
-}
+    // ═══ LOG (Firebase) ═══
+    async function getLogs() {
+      const data = await fsGet('config', 'log');
+      return data ? (data.entries || []) : [];
+    }
+    async function addLog(msg) {
+      const logs = await getLogs();
+      logs.unshift({ time: new Date().toLocaleString('id-ID'), msg });
+      if (logs.length > 60) logs.pop();
+      await fsSet('config', 'log', { entries: logs });
+    }
+    async function clearLog() {
+      if (confirm('Hapus semua log?')) {
+        await fsSet('config', 'log', { entries: [] });
+        renderLog();
+        showToast('Log dihapus', 'success');
+      }
+    }
+    async function renderLog() {
+      const logs = await getLogs();
+      const el = document.getElementById('activity-log'); if (!el) return;
+      el.innerHTML = logs.length ? logs.map(l => `<div class="log-item"><div class="log-time">🕐 ${l.time}</div><div class="log-msg">${l.msg}</div></div>`).join('') : '<div class="log-empty">Belum ada aktivitas tercatat.</div>';
+    }
 
-// ═══ LOAD KONTEN DARI FIREBASE ═══
-async function loadContent() {
-  showToast('⏳ Memuat data...', 'success');
-  const data = await fsGet('config', 'konten');
-  if (data) C = data;
-  renderAll();
-  showToast('✅ Website dimuat!', 'success');
-}
+    // ═══ GALERI DATA (Firebase) ═══
+    async function getGaleri() {
+      const docs = await fsGetAll('galeri');
+      galeriCache = docs.sort((a, b) => (b.uploadedAt || '').localeCompare(a.uploadedAt || ''));
+      return galeriCache;
+    }
+    async function saveGaleriItem(item) {
+      return await fsAdd('galeri', item);
+    }
+    async function delGaleriItem(firestoreId) {
+      return await fsDel('galeri', firestoreId);
+    }
 
-// ═══ RENDER WEBSITE ═══
-function renderAll(){
-  const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  s('v-chip',C.chip);s('v-h1a',C.h1a);s('v-h1b',C.h1b);s('v-h1c',C.h1c);s('v-desc',C.desc);
-  s('v-s1',C.s1);s('v-s1l',C.s1l);s('v-s2',C.s2);s('v-s2l',C.s2l);
-  s('v-s3',C.s3);s('v-s3l',C.s3l);s('v-s4',C.s4);s('v-s4l',C.s4l);
-  s('v-status',C.status);s('v-lokasi',C.lokasi);s('v-akred',C.akred);
-  s('v-kepsek',C.kepsek);s('v-tahun',C.tahun);s('v-npsn',C.npsn);s('v-visi',C.visi);
-  s('v-m1',C.m1);s('v-m2',C.m2);s('v-m3',C.m3);s('v-m4',C.m4);s('v-m5',C.m5);s('v-m6',C.m6);
-  s('v-alamat',C.alamat);s('v-telp',C.telp);s('v-email',C.email);
-  const je=document.getElementById('v-jam');if(je)je.innerHTML=C.jam.replace(/\n/g,'<br>');
-  renderBeritaPublic();
-  renderGaleriPublic();
-}
+    // ═══ LOAD KONTEN DARI FIREBASE ═══
+    async function loadContent() {
+      showToast('⏳ Memuat data...', 'success');
+      const data = await fsGet('config', 'konten');
+      if (data) C = data;
+      renderAll();
+      showToast('✅ Website dimuat!', 'success');
+    }
 
-function renderBeritaPublic(){
-  const g=document.getElementById('v-berita-grid');if(!g)return;
-  if(!C.berita||!C.berita.length){g.innerHTML='<p style="color:var(--slate);grid-column:1/-1;text-align:center;padding:40px 0;">Belum ada berita.</p>';return;}
-  g.innerHTML=C.berita.map(b=>`
+    // ═══ RENDER WEBSITE ═══
+    function renderAll() {
+      const s = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+      s('v-chip', C.chip); s('v-h1a', C.h1a); s('v-h1b', C.h1b); s('v-h1c', C.h1c); s('v-desc', C.desc);
+      s('v-s1', C.s1); s('v-s1l', C.s1l); s('v-s2', C.s2); s('v-s2l', C.s2l);
+      s('v-s3', C.s3); s('v-s3l', C.s3l); s('v-s4', C.s4); s('v-s4l', C.s4l);
+      s('v-status', C.status); s('v-lokasi', C.lokasi); s('v-akred', C.akred);
+      s('v-kepsek', C.kepsek); s('v-tahun', C.tahun); s('v-npsn', C.npsn); s('v-visi', C.visi);
+      s('v-m1', C.m1); s('v-m2', C.m2); s('v-m3', C.m3); s('v-m4', C.m4); s('v-m5', C.m5); s('v-m6', C.m6);
+      s('v-alamat', C.alamat); s('v-telp', C.telp); s('v-email', C.email);
+      const je = document.getElementById('v-jam'); if (je) je.innerHTML = C.jam.replace(/\n/g, '<br>');
+      renderBeritaPublic();
+      renderGaleriPublic();
+    }
+
+    function renderBeritaPublic() {
+      const g = document.getElementById('v-berita-grid'); if (!g) return;
+      if (!C.berita || !C.berita.length) { g.innerHTML = '<p style="color:var(--slate);grid-column:1/-1;text-align:center;padding:40px 0;">Belum ada berita.</p>'; return; }
+      g.innerHTML = C.berita.map(b => `
     <div class="b-card">
-      <div class="b-img" style="background:${b.bg||'#E3F2FD'}">${b.emoji||'📰'}</div>
+      <div class="b-img" style="background:${b.bg || '#E3F2FD'}">${b.emoji || '📰'}</div>
       <div class="b-body">
         <div class="b-tag">${b.tag}</div>
         <h3>${b.judul}</h3>
@@ -872,367 +2416,367 @@ function renderBeritaPublic(){
         <div class="b-date">📅 ${b.tanggal}</div>
       </div>
     </div>`).join('');
-}
+    }
 
-async function renderGaleriPublic(){
-  const g=document.getElementById('v-galeri-grid');if(!g)return;
-  g.innerHTML=`<div class="galeri-empty"><span>⏳</span><p>Memuat galeri...</p></div>`;
-  const photos=await getGaleri();
-  if(!photos.length){
-    g.innerHTML=`<div class="galeri-empty"><span>📷</span><p>Belum ada foto. Admin dapat menambahkan foto melalui panel admin.</p></div>`;
-    return;
-  }
-  g.innerHTML=photos.map((p,i)=>`
+    async function renderGaleriPublic() {
+      const g = document.getElementById('v-galeri-grid'); if (!g) return;
+      g.innerHTML = `<div class="galeri-empty"><span>⏳</span><p>Memuat galeri...</p></div>`;
+      const photos = await getGaleri();
+      if (!photos.length) {
+        g.innerHTML = `<div class="galeri-empty"><span>📷</span><p>Belum ada foto. Admin dapat menambahkan foto melalui panel admin.</p></div>`;
+        return;
+      }
+      g.innerHTML = photos.map((p, i) => `
     <div class="g-item" onclick="openLightbox(${i})">
-      <img src="${p.src}" alt="${p.caption||'Foto Sekolah'}" loading="lazy"/>
+      <img src="${p.src}" alt="${p.caption || 'Foto Sekolah'}" loading="lazy"/>
       <div class="g-overlay">
-        <div class="g-caption">${p.caption||''}</div>
-        ${p.desc?`<div class="g-desc-text">${p.desc}</div>`:''}
+        <div class="g-caption">${p.caption || ''}</div>
+        ${p.desc ? `<div class="g-desc-text">${p.desc}</div>` : ''}
       </div>
     </div>`).join('');
-}
+    }
 
-// ═══ LIGHTBOX ═══
-function openLightbox(idx){
-  const photos=galeriCache;
-  lbIndex=idx;
-  const p=photos[idx];
-  document.getElementById('lb-img').src=p.src;
-  document.getElementById('lb-caption').textContent=p.caption||'';
-  document.getElementById('lb-desc').textContent=p.desc||'';
-  document.getElementById('lightbox').classList.add('show');
-}
-function closeLightbox(){ document.getElementById('lightbox').classList.remove('show'); }
-function lbNav(dir){
-  const photos=galeriCache;
-  lbIndex=(lbIndex+dir+photos.length)%photos.length;
-  openLightbox(lbIndex);
-}
-document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+    // ═══ LIGHTBOX ═══
+    function openLightbox(idx) {
+      const photos = galeriCache;
+      lbIndex = idx;
+      const p = photos[idx];
+      document.getElementById('lb-img').src = p.src;
+      document.getElementById('lb-caption').textContent = p.caption || '';
+      document.getElementById('lb-desc').textContent = p.desc || '';
+      document.getElementById('lightbox').classList.add('show');
+    }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('show'); }
+    function lbNav(dir) {
+      const photos = galeriCache;
+      lbIndex = (lbIndex + dir + photos.length) % photos.length;
+      openLightbox(lbIndex);
+    }
+    document.getElementById('lightbox').addEventListener('click', function (e) { if (e.target === this) closeLightbox(); });
 
-// ═══ FOTO UPLOAD (Cloudinary) ═══
-function previewFoto(input){
-  const file=input.files[0]; if(!file) return;
-  if(file.size>10*1024*1024){showToast('Foto terlalu besar! Maks 10MB.','error');return;}
-  pendingFotoFile=file;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const prev=document.getElementById('upload-preview');
-    prev.src=e.target.result; prev.style.display='block';
-  };
-  reader.readAsDataURL(file);
-}
-function previewFotoSuper(input){
-  const file=input.files[0]; if(!file) return;
-  if(file.size>10*1024*1024){showToast('Foto terlalu besar! Maks 10MB.','error');return;}
-  pendingFotoFileSuper=file;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const prev=document.getElementById('supload-preview');
-    prev.src=e.target.result; prev.style.display='block';
-  };
-  reader.readAsDataURL(file);
-}
-async function addFoto(){
-  if(!pendingFotoFile){showToast('Pilih foto terlebih dahulu!','error');return;}
-  const caption=document.getElementById('foto-caption').value.trim()||'Foto Sekolah';
-  const desc=document.getElementById('foto-desc').value.trim();
-  const url = await uploadToCloudinary(pendingFotoFile);
-  if(!url) return;
-  await saveGaleriItem({src:url,caption,desc,uploadedBy:user,uploadedAt:new Date().toISOString()});
-  await addLog(`📷 ${user} menambah foto: "${caption}"`);
-  pendingFotoFile=null;
-  document.getElementById('upload-preview').style.display='none';
-  document.getElementById('upload-preview').src='';
-  document.getElementById('foto-caption').value='';
-  document.getElementById('foto-desc').value='';
-  document.getElementById('foto-input').value='';
-  await renderGaleriAdmin();
-  await renderGaleriPublic();
-  showToast('✅ Foto berhasil ditambahkan!','success');
-}
-async function addFotoSuper(){
-  if(!pendingFotoFileSuper){showToast('Pilih foto terlebih dahulu!','error');return;}
-  const caption=document.getElementById('sfoto-caption').value.trim()||'Foto Sekolah';
-  const desc=document.getElementById('sfoto-desc').value.trim();
-  const url = await uploadToCloudinary(pendingFotoFileSuper);
-  if(!url) return;
-  await saveGaleriItem({src:url,caption,desc,uploadedBy:user,uploadedAt:new Date().toISOString()});
-  await addLog(`📷 ${user} menambah foto: "${caption}"`);
-  pendingFotoFileSuper=null;
-  document.getElementById('supload-preview').style.display='none';
-  document.getElementById('supload-preview').src='';
-  document.getElementById('sfoto-caption').value='';
-  document.getElementById('sfoto-desc').value='';
-  document.getElementById('sfoto-input').value='';
-  await renderGaleriAdmin();
-  await renderGaleriPublic();
-  showToast('✅ Foto berhasil ditambahkan!','success');
-}
-async function delFoto(i){
-  const photos=galeriCache;
-  if(confirm(`Hapus foto "${photos[i].caption||'ini'}"?`)){
-    const name=photos[i].caption||'foto';
-    await delGaleriItem(photos[i].id);
-    await addLog(`🗑️ ${user} menghapus foto: "${name}"`);
-    await renderGaleriAdmin();
-    await renderGaleriPublic();
-    showToast('Foto dihapus','success');
-  }
-}
-async function renderGaleriAdmin(){
-  const photos=await getGaleri();
-  const countEls=document.querySelectorAll('#foto-count,#sfoto-count');
-  countEls.forEach(el=>el.textContent=photos.length);
-  ['g-admin-list','sg-admin-list'].forEach(listId=>{
-    const list=document.getElementById(listId); if(!list) return;
-    if(!photos.length){list.innerHTML='<div class="g-admin-empty">Belum ada foto di galeri.</div>';return;}
-    list.innerHTML=photos.map((p,i)=>`
+    // ═══ FOTO UPLOAD (Cloudinary) ═══
+    function previewFoto(input) {
+      const file = input.files[0]; if (!file) return;
+      if (file.size > 10 * 1024 * 1024) { showToast('Foto terlalu besar! Maks 10MB.', 'error'); return; }
+      pendingFotoFile = file;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const prev = document.getElementById('upload-preview');
+        prev.src = e.target.result; prev.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+    function previewFotoSuper(input) {
+      const file = input.files[0]; if (!file) return;
+      if (file.size > 10 * 1024 * 1024) { showToast('Foto terlalu besar! Maks 10MB.', 'error'); return; }
+      pendingFotoFileSuper = file;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const prev = document.getElementById('supload-preview');
+        prev.src = e.target.result; prev.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+    async function addFoto() {
+      if (!pendingFotoFile) { showToast('Pilih foto terlebih dahulu!', 'error'); return; }
+      const caption = document.getElementById('foto-caption').value.trim() || 'Foto Sekolah';
+      const desc = document.getElementById('foto-desc').value.trim();
+      const url = await uploadToCloudinary(pendingFotoFile);
+      if (!url) return;
+      await saveGaleriItem({ src: url, caption, desc, uploadedBy: user, uploadedAt: new Date().toISOString() });
+      await addLog(`📷 ${user} menambah foto: "${caption}"`);
+      pendingFotoFile = null;
+      document.getElementById('upload-preview').style.display = 'none';
+      document.getElementById('upload-preview').src = '';
+      document.getElementById('foto-caption').value = '';
+      document.getElementById('foto-desc').value = '';
+      document.getElementById('foto-input').value = '';
+      await renderGaleriAdmin();
+      await renderGaleriPublic();
+      showToast('✅ Foto berhasil ditambahkan!', 'success');
+    }
+    async function addFotoSuper() {
+      if (!pendingFotoFileSuper) { showToast('Pilih foto terlebih dahulu!', 'error'); return; }
+      const caption = document.getElementById('sfoto-caption').value.trim() || 'Foto Sekolah';
+      const desc = document.getElementById('sfoto-desc').value.trim();
+      const url = await uploadToCloudinary(pendingFotoFileSuper);
+      if (!url) return;
+      await saveGaleriItem({ src: url, caption, desc, uploadedBy: user, uploadedAt: new Date().toISOString() });
+      await addLog(`📷 ${user} menambah foto: "${caption}"`);
+      pendingFotoFileSuper = null;
+      document.getElementById('supload-preview').style.display = 'none';
+      document.getElementById('supload-preview').src = '';
+      document.getElementById('sfoto-caption').value = '';
+      document.getElementById('sfoto-desc').value = '';
+      document.getElementById('sfoto-input').value = '';
+      await renderGaleriAdmin();
+      await renderGaleriPublic();
+      showToast('✅ Foto berhasil ditambahkan!', 'success');
+    }
+    async function delFoto(i) {
+      const photos = galeriCache;
+      if (confirm(`Hapus foto "${photos[i].caption || 'ini'}"?`)) {
+        const name = photos[i].caption || 'foto';
+        await delGaleriItem(photos[i].id);
+        await addLog(`🗑️ ${user} menghapus foto: "${name}"`);
+        await renderGaleriAdmin();
+        await renderGaleriPublic();
+        showToast('Foto dihapus', 'success');
+      }
+    }
+    async function renderGaleriAdmin() {
+      const photos = await getGaleri();
+      const countEls = document.querySelectorAll('#foto-count,#sfoto-count');
+      countEls.forEach(el => el.textContent = photos.length);
+      ['g-admin-list', 'sg-admin-list'].forEach(listId => {
+        const list = document.getElementById(listId); if (!list) return;
+        if (!photos.length) { list.innerHTML = '<div class="g-admin-empty">Belum ada foto di galeri.</div>'; return; }
+        list.innerHTML = photos.map((p, i) => `
       <div class="g-admin-item">
-        <img class="g-admin-thumb" src="${p.src}" alt="${p.caption||''}"/>
+        <img class="g-admin-thumb" src="${p.src}" alt="${p.caption || ''}"/>
         <div class="g-admin-info">
-          <strong>${p.caption||'Foto Sekolah'}</strong>
-          <span>${p.desc||''} ${p.uploadedAt?'· '+new Date(p.uploadedAt).toLocaleDateString('id-ID'):''}</span>
+          <strong>${p.caption || 'Foto Sekolah'}</strong>
+          <span>${p.desc || ''} ${p.uploadedAt ? '· ' + new Date(p.uploadedAt).toLocaleDateString('id-ID') : ''}</span>
         </div>
         <button class="g-admin-del" onclick="delFoto(${i})">Hapus</button>
       </div>`).join('');
-  });
-}
+      });
+    }
 
-// ═══ BERITA ═══
-function addBerita(){ if(!C.berita)C.berita=[]; C.berita.push({emoji:'📰',tag:'Berita',judul:'Judul Berita Baru',isi:'Isi singkat berita di sini.',tanggal:new Date().toLocaleDateString('id-ID'),bg:'#E3F2FD'}); renderBeritaAdmin(); }
-function delBerita(i){ if(confirm('Hapus berita ini?')){C.berita.splice(i,1);renderBeritaAdmin();} }
-function renderBeritaAdmin(){
-  ['berita-admin-list','sberita-admin-list'].forEach(listId=>{
-    const list=document.getElementById(listId); if(!list)return;
-    list.innerHTML=(C.berita||[]).map((b,i)=>`
+    // ═══ BERITA ═══
+    function addBerita() { if (!C.berita) C.berita = []; C.berita.push({ emoji: '📰', tag: 'Berita', judul: 'Judul Berita Baru', isi: 'Isi singkat berita di sini.', tanggal: new Date().toLocaleDateString('id-ID'), bg: '#E3F2FD' }); renderBeritaAdmin(); }
+    function delBerita(i) { if (confirm('Hapus berita ini?')) { C.berita.splice(i, 1); renderBeritaAdmin(); } }
+    function renderBeritaAdmin() {
+      ['berita-admin-list', 'sberita-admin-list'].forEach(listId => {
+        const list = document.getElementById(listId); if (!list) return;
+        list.innerHTML = (C.berita || []).map((b, i) => `
       <div class="b-admin-item">
-        <div class="b-admin-head"><span>Berita #${i+1}</span><button class="b-del-btn" onclick="delBerita(${i})">Hapus</button></div>
-        <div class="field-group"><label>Emoji</label><input type="text" value="${b.emoji||''}" oninput="C.berita[${i}].emoji=this.value" style="font-size:1.1rem;width:80px;"/></div>
-        <div class="field-group"><label>Kategori</label><input type="text" value="${b.tag||''}" oninput="C.berita[${i}].tag=this.value"/></div>
-        <div class="field-group"><label>Judul</label><input type="text" value="${b.judul||''}" oninput="C.berita[${i}].judul=this.value"/></div>
-        <div class="field-group"><label>Isi Singkat</label><textarea oninput="C.berita[${i}].isi=this.value">${b.isi||''}</textarea></div>
-        <div class="field-group"><label>Tanggal</label><input type="text" value="${b.tanggal||''}" oninput="C.berita[${i}].tanggal=this.value"/></div>
+        <div class="b-admin-head"><span>Berita #${i + 1}</span><button class="b-del-btn" onclick="delBerita(${i})">Hapus</button></div>
+        <div class="field-group"><label>Emoji</label><input type="text" value="${b.emoji || ''}" oninput="C.berita[${i}].emoji=this.value" style="font-size:1.1rem;width:80px;"/></div>
+        <div class="field-group"><label>Kategori</label><input type="text" value="${b.tag || ''}" oninput="C.berita[${i}].tag=this.value"/></div>
+        <div class="field-group"><label>Judul</label><input type="text" value="${b.judul || ''}" oninput="C.berita[${i}].judul=this.value"/></div>
+        <div class="field-group"><label>Isi Singkat</label><textarea oninput="C.berita[${i}].isi=this.value">${b.isi || ''}</textarea></div>
+        <div class="field-group"><label>Tanggal</label><input type="text" value="${b.tanggal || ''}" oninput="C.berita[${i}].tanggal=this.value"/></div>
       </div>`).join('');
-  });
-}
+      });
+    }
 
-// ═══ FILL FIELDS ═══
-function fillFields(prefix){
-  const sv=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v||'';};
-  const p=prefix;
-  sv(p+'chip',C.chip);sv(p+'h1a',C.h1a);sv(p+'h1b',C.h1b);sv(p+'h1c',C.h1c);sv(p+'desc',C.desc);
-  sv(p+'s1',C.s1);sv(p+'s1l',C.s1l);sv(p+'s2',C.s2);sv(p+'s2l',C.s2l);
-  sv(p+'s3',C.s3);sv(p+'s3l',C.s3l);sv(p+'s4',C.s4);sv(p+'s4l',C.s4l);
-  sv(p+'status',C.status);sv(p+'lokasi',C.lokasi);sv(p+'akred',C.akred);
-  sv(p+'kepsek',C.kepsek);sv(p+'tahun',C.tahun);sv(p+'npsn',C.npsn);sv(p+'visi',C.visi);
-  sv(p+'m1',C.m1);sv(p+'m2',C.m2);sv(p+'m3',C.m3);sv(p+'m4',C.m4);sv(p+'m5',C.m5);sv(p+'m6',C.m6);
-  sv(p+'alamat',C.alamat);sv(p+'telp',C.telp);sv(p+'email',C.email);sv(p+'jam',C.jam);
-}
-function gatherFields(prefix){
-  const gv=id=>{const e=document.getElementById(id);return e?e.value:'';};
-  const p=prefix;
-  C.chip=gv(p+'chip');C.h1a=gv(p+'h1a');C.h1b=gv(p+'h1b');C.h1c=gv(p+'h1c');C.desc=gv(p+'desc');
-  C.s1=gv(p+'s1');C.s1l=gv(p+'s1l');C.s2=gv(p+'s2');C.s2l=gv(p+'s2l');
-  C.s3=gv(p+'s3');C.s3l=gv(p+'s3l');C.s4=gv(p+'s4');C.s4l=gv(p+'s4l');
-  C.status=gv(p+'status');C.lokasi=gv(p+'lokasi');C.akred=gv(p+'akred');
-  C.kepsek=gv(p+'kepsek');C.tahun=gv(p+'tahun');C.npsn=gv(p+'npsn');C.visi=gv(p+'visi');
-  C.m1=gv(p+'m1');C.m2=gv(p+'m2');C.m3=gv(p+'m3');C.m4=gv(p+'m4');C.m5=gv(p+'m5');C.m6=gv(p+'m6');
-  C.alamat=gv(p+'alamat');C.telp=gv(p+'telp');C.email=gv(p+'email');C.jam=gv(p+'jam');
-}
-async function saveAll(){
-  gatherFields('f-');
-  await fsSet('config', 'konten', C);
-  await addLog(`✏️ ${user} menyimpan perubahan konten`);
-  renderAll(); showToast('✅ Perubahan disimpan!','success');
-}
-async function saveAllSuper(){
-  gatherFields('sf-');
-  await fsSet('config', 'konten', C);
-  await addLog(`✏️ ${user} menyimpan perubahan konten`);
-  renderAll(); showToast('✅ Perubahan disimpan!','success');
-}
+    // ═══ FILL FIELDS ═══
+    function fillFields(prefix) {
+      const sv = (id, v) => { const e = document.getElementById(id); if (e) e.value = v || ''; };
+      const p = prefix;
+      sv(p + 'chip', C.chip); sv(p + 'h1a', C.h1a); sv(p + 'h1b', C.h1b); sv(p + 'h1c', C.h1c); sv(p + 'desc', C.desc);
+      sv(p + 's1', C.s1); sv(p + 's1l', C.s1l); sv(p + 's2', C.s2); sv(p + 's2l', C.s2l);
+      sv(p + 's3', C.s3); sv(p + 's3l', C.s3l); sv(p + 's4', C.s4); sv(p + 's4l', C.s4l);
+      sv(p + 'status', C.status); sv(p + 'lokasi', C.lokasi); sv(p + 'akred', C.akred);
+      sv(p + 'kepsek', C.kepsek); sv(p + 'tahun', C.tahun); sv(p + 'npsn', C.npsn); sv(p + 'visi', C.visi);
+      sv(p + 'm1', C.m1); sv(p + 'm2', C.m2); sv(p + 'm3', C.m3); sv(p + 'm4', C.m4); sv(p + 'm5', C.m5); sv(p + 'm6', C.m6);
+      sv(p + 'alamat', C.alamat); sv(p + 'telp', C.telp); sv(p + 'email', C.email); sv(p + 'jam', C.jam);
+    }
+    function gatherFields(prefix) {
+      const gv = id => { const e = document.getElementById(id); return e ? e.value : ''; };
+      const p = prefix;
+      C.chip = gv(p + 'chip'); C.h1a = gv(p + 'h1a'); C.h1b = gv(p + 'h1b'); C.h1c = gv(p + 'h1c'); C.desc = gv(p + 'desc');
+      C.s1 = gv(p + 's1'); C.s1l = gv(p + 's1l'); C.s2 = gv(p + 's2'); C.s2l = gv(p + 's2l');
+      C.s3 = gv(p + 's3'); C.s3l = gv(p + 's3l'); C.s4 = gv(p + 's4'); C.s4l = gv(p + 's4l');
+      C.status = gv(p + 'status'); C.lokasi = gv(p + 'lokasi'); C.akred = gv(p + 'akred');
+      C.kepsek = gv(p + 'kepsek'); C.tahun = gv(p + 'tahun'); C.npsn = gv(p + 'npsn'); C.visi = gv(p + 'visi');
+      C.m1 = gv(p + 'm1'); C.m2 = gv(p + 'm2'); C.m3 = gv(p + 'm3'); C.m4 = gv(p + 'm4'); C.m5 = gv(p + 'm5'); C.m6 = gv(p + 'm6');
+      C.alamat = gv(p + 'alamat'); C.telp = gv(p + 'telp'); C.email = gv(p + 'email'); C.jam = gv(p + 'jam');
+    }
+    async function saveAll() {
+      gatherFields('f-');
+      await fsSet('config', 'konten', C);
+      await addLog(`✏️ ${user} menyimpan perubahan konten`);
+      renderAll(); showToast('✅ Perubahan disimpan!', 'success');
+    }
+    async function saveAllSuper() {
+      gatherFields('sf-');
+      await fsSet('config', 'konten', C);
+      await addLog(`✏️ ${user} menyimpan perubahan konten`);
+      renderAll(); showToast('✅ Perubahan disimpan!', 'success');
+    }
 
-// ═══ SUPERADMIN ═══
-async function renderAdminAccounts(){
-  const auth=await getAuth(); const list=document.getElementById('admin-accounts-list'); if(!list)return;
-  list.innerHTML=auth.admins.length?auth.admins.map((a,i)=>`
+    // ═══ SUPERADMIN ═══
+    async function renderAdminAccounts() {
+      const auth = await getAuth(); const list = document.getElementById('admin-accounts-list'); if (!list) return;
+      list.innerHTML = auth.admins.length ? auth.admins.map((a, i) => `
     <div class="admin-account-card">
       <div class="ac-head"><span class="ac-name">👤 ${a.user}</span><button class="ac-del" onclick="delAdminAccount(${i})">Hapus</button></div>
-      <p style="font-size:0.78rem;color:var(--slate);">Password: ${'•'.repeat(Math.min(a.pass.length,10))}</p>
-    </div>`).join(''):'<p style="color:var(--slate);font-size:0.88rem;">Belum ada akun admin.</p>';
-}
-async function addAdminAccount(){
-  const u=document.getElementById('new-admin-user').value.trim();
-  const p=document.getElementById('new-admin-pass').value;
-  if(!u||!p){showToast('Username dan password wajib diisi!','error');return;}
-  if(p.length<6){showToast('Password minimal 6 karakter!','error');return;}
-  const auth=await getAuth();
-  if(auth.admins.find(a=>a.user===u)){showToast('Username sudah ada!','error');return;}
-  auth.admins.push({user:u,pass:p}); await saveAuth(auth);
-  document.getElementById('new-admin-user').value='';document.getElementById('new-admin-pass').value='';
-  document.getElementById('add-admin-form-box').style.display='none';
-  await addLog(`👤 ${user} menambah akun admin: ${u}`);
-  renderAdminAccounts(); showToast(`✅ Akun "${u}" berhasil ditambah!`,'success');
-}
-async function delAdminAccount(i){
-  const auth=await getAuth();
-  if(confirm(`Hapus akun "${auth.admins[i].user}"?`)){
-    const n=auth.admins[i].user; auth.admins.splice(i,1); await saveAuth(auth);
-    await addLog(`🗑️ ${user} menghapus akun admin: ${n}`);
-    renderAdminAccounts(); showToast('Akun dihapus','success');
-  }
-}
-async function populatePwSelect(){
-  const auth=await getAuth(); const sel=document.getElementById('change-pw-user'); if(!sel)return;
-  sel.innerHTML=auth.admins.map(a=>`<option value="${a.user}">${a.user}</option>`).join('');
-}
-async function changeAdminPw(){
-  const sel=document.getElementById('change-pw-user');
-  const np=document.getElementById('change-pw-new').value;
-  const cp=document.getElementById('change-pw-confirm').value;
-  if(!np||!cp){showToast('Isi semua field!','error');return;}
-  if(np!==cp){showToast('Konfirmasi tidak cocok!','error');return;}
-  if(np.length<6){showToast('Password minimal 6 karakter!','error');return;}
-  const auth=await getAuth(); const idx=auth.admins.findIndex(a=>a.user===sel.value);
-  if(idx===-1){showToast('Admin tidak ditemukan!','error');return;}
-  auth.admins[idx].pass=np; await saveAuth(auth);
-  document.getElementById('change-pw-new').value='';document.getElementById('change-pw-confirm').value='';
-  await addLog(`🔑 ${user} mengganti password admin: ${sel.value}`);
-  showToast(`✅ Password "${sel.value}" berhasil diubah!`,'success');
-}
-async function changeSuperPw(){
-  const old=document.getElementById('super-old-pw').value;
-  const np=document.getElementById('super-new-pw').value;
-  const cp=document.getElementById('super-confirm-pw').value;
-  const auth=await getAuth();
-  if(old!==auth.super.pass){showToast('Password lama salah!','error');return;}
-  if(!np||!cp){showToast('Isi semua field!','error');return;}
-  if(np!==cp){showToast('Konfirmasi tidak cocok!','error');return;}
-  if(np.length<6){showToast('Min 6 karakter!','error');return;}
-  auth.super.pass=np; await saveAuth(auth);
-  ['super-old-pw','super-new-pw','super-confirm-pw'].forEach(id=>document.getElementById(id).value='');
-  await addLog(`🔑 ${user} mengubah password superadmin`);
-  showToast('✅ Password superadmin diubah!','success');
-}
-async function resetAllData(){
-  if(confirm('Reset semua data konten ke default?\nFoto galeri tidak ikut direset.')){
-    C=JSON.parse(JSON.stringify(DEF));
-    await fsSet('config','konten',C);
-    await addLog(`🔄 ${user} mereset semua konten ke default`);
-    renderAll(); fillFields('sf-');
-    showToast('✅ Konten direset ke default!','success');
-  }
-}
-async function resetGaleri(){
-  if(confirm('Hapus SEMUA foto galeri?\nTindakan tidak bisa dibatalkan!')){
-    const photos = await getGaleri();
-    for(const p of photos) await fsDel('galeri', p.id);
-    galeriCache = [];
-    await addLog(`🗑️ ${user} menghapus semua foto galeri`);
-    renderGaleriAdmin(); renderGaleriPublic();
-    showToast('✅ Semua foto galeri dihapus!','success');
-  }
-}
-// ═══ LOGIN / LOGOUT ═══
-function handleAdminBtn(){
-  if(role==='admin') togglePanel('admin-panel');
-  else if(role==='super') togglePanel('super-panel');
-  else{ document.getElementById('login-overlay').classList.add('show'); setTimeout(()=>document.getElementById('login-user').focus(),80); }
-}
-async function doLogin(){
-  const u=document.getElementById('login-user').value.trim();
-  const p=document.getElementById('login-pass').value;
-  const err=document.getElementById('login-err');
-  const auth=await getAuth();
-  if(u===auth.super.user&&p===auth.super.pass){
-    role='super'; user=u; closeLogin();
-    openPanel('super-panel');
-    const btn=document.getElementById('admin-nav-btn');
-    btn.textContent='👑 '+u; btn.className='nav-admin-btn active-super';
-    document.getElementById('super-label').textContent=u;
-    document.getElementById('super-name-display').textContent=u;
-    fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect();
-    addLog(`👑 Superadmin "${u}" login`);
-    return;
-  }
-  const adm=auth.admins.find(a=>a.user===u&&a.pass===p);
-  if(adm){
-    role='admin'; user=u; closeLogin();
-    openPanel('admin-panel');
-    const btn=document.getElementById('admin-nav-btn');
-    btn.textContent='⚙ '+u; btn.className='nav-admin-btn active-admin';
-    fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin();
-    addLog(`✅ Admin "${u}" login`);
-    return;
-  }
-  err.style.display='block'; err.textContent='❌ Username atau password salah.';
-  document.getElementById('login-pass').value=''; document.getElementById('login-pass').focus();
-}
-function closeLogin(){
-  document.getElementById('login-overlay').classList.remove('show');
-  document.getElementById('login-user').value='';document.getElementById('login-pass').value='';
-  document.getElementById('login-err').style.display='none';
-}
-function openPanel(id){ document.getElementById(id).classList.add('show'); }
-function closePanel(id){ document.getElementById(id).classList.remove('show'); }
-function togglePanel(id){ const p=document.getElementById(id); if(p.classList.contains('show'))p.classList.remove('show'); else{ openPanel(id); if(id==='admin-panel'){fillFields('f-');renderBeritaAdmin();renderGaleriAdmin();} if(id==='super-panel'){fillFields('sf-');renderBeritaAdmin();renderGaleriAdmin();renderAdminAccounts();renderLog();populatePwSelect();} } }
-async function doLogout(){
-  await addLog(`🚪 "${user}" logout`);
-  role=null; user=null;
-  closePanel('admin-panel'); closePanel('super-panel');
-  const btn=document.getElementById('admin-nav-btn');
-  btn.textContent='⚙ Admin'; btn.className='nav-admin-btn';
-  showToast('Berhasil logout','success');
-}
+      <p style="font-size:0.78rem;color:var(--slate);">Password: ${'•'.repeat(Math.min(a.pass.length, 10))}</p>
+    </div>`).join('') : '<p style="color:var(--slate);font-size:0.88rem;">Belum ada akun admin.</p>';
+    }
+    async function addAdminAccount() {
+      const u = document.getElementById('new-admin-user').value.trim();
+      const p = document.getElementById('new-admin-pass').value;
+      if (!u || !p) { showToast('Username dan password wajib diisi!', 'error'); return; }
+      if (p.length < 6) { showToast('Password minimal 6 karakter!', 'error'); return; }
+      const auth = await getAuth();
+      if (auth.admins.find(a => a.user === u)) { showToast('Username sudah ada!', 'error'); return; }
+      auth.admins.push({ user: u, pass: p }); await saveAuth(auth);
+      document.getElementById('new-admin-user').value = ''; document.getElementById('new-admin-pass').value = '';
+      document.getElementById('add-admin-form-box').style.display = 'none';
+      await addLog(`👤 ${user} menambah akun admin: ${u}`);
+      renderAdminAccounts(); showToast(`✅ Akun "${u}" berhasil ditambah!`, 'success');
+    }
+    async function delAdminAccount(i) {
+      const auth = await getAuth();
+      if (confirm(`Hapus akun "${auth.admins[i].user}"?`)) {
+        const n = auth.admins[i].user; auth.admins.splice(i, 1); await saveAuth(auth);
+        await addLog(`🗑️ ${user} menghapus akun admin: ${n}`);
+        renderAdminAccounts(); showToast('Akun dihapus', 'success');
+      }
+    }
+    async function populatePwSelect() {
+      const auth = await getAuth(); const sel = document.getElementById('change-pw-user'); if (!sel) return;
+      sel.innerHTML = auth.admins.map(a => `<option value="${a.user}">${a.user}</option>`).join('');
+    }
+    async function changeAdminPw() {
+      const sel = document.getElementById('change-pw-user');
+      const np = document.getElementById('change-pw-new').value;
+      const cp = document.getElementById('change-pw-confirm').value;
+      if (!np || !cp) { showToast('Isi semua field!', 'error'); return; }
+      if (np !== cp) { showToast('Konfirmasi tidak cocok!', 'error'); return; }
+      if (np.length < 6) { showToast('Password minimal 6 karakter!', 'error'); return; }
+      const auth = await getAuth(); const idx = auth.admins.findIndex(a => a.user === sel.value);
+      if (idx === -1) { showToast('Admin tidak ditemukan!', 'error'); return; }
+      auth.admins[idx].pass = np; await saveAuth(auth);
+      document.getElementById('change-pw-new').value = ''; document.getElementById('change-pw-confirm').value = '';
+      await addLog(`🔑 ${user} mengganti password admin: ${sel.value}`);
+      showToast(`✅ Password "${sel.value}" berhasil diubah!`, 'success');
+    }
+    async function changeSuperPw() {
+      const old = document.getElementById('super-old-pw').value;
+      const np = document.getElementById('super-new-pw').value;
+      const cp = document.getElementById('super-confirm-pw').value;
+      const auth = await getAuth();
+      if (old !== auth.super.pass) { showToast('Password lama salah!', 'error'); return; }
+      if (!np || !cp) { showToast('Isi semua field!', 'error'); return; }
+      if (np !== cp) { showToast('Konfirmasi tidak cocok!', 'error'); return; }
+      if (np.length < 6) { showToast('Min 6 karakter!', 'error'); return; }
+      auth.super.pass = np; await saveAuth(auth);
+      ['super-old-pw', 'super-new-pw', 'super-confirm-pw'].forEach(id => document.getElementById(id).value = '');
+      await addLog(`🔑 ${user} mengubah password superadmin`);
+      showToast('✅ Password superadmin diubah!', 'success');
+    }
+    async function resetAllData() {
+      if (confirm('Reset semua data konten ke default?\nFoto galeri tidak ikut direset.')) {
+        C = JSON.parse(JSON.stringify(DEF));
+        await fsSet('config', 'konten', C);
+        await addLog(`🔄 ${user} mereset semua konten ke default`);
+        renderAll(); fillFields('sf-');
+        showToast('✅ Konten direset ke default!', 'success');
+      }
+    }
+    async function resetGaleri() {
+      if (confirm('Hapus SEMUA foto galeri?\nTindakan tidak bisa dibatalkan!')) {
+        const photos = await getGaleri();
+        for (const p of photos) await fsDel('galeri', p.id);
+        galeriCache = [];
+        await addLog(`🗑️ ${user} menghapus semua foto galeri`);
+        renderGaleriAdmin(); renderGaleriPublic();
+        showToast('✅ Semua foto galeri dihapus!', 'success');
+      }
+    }
+    // ═══ LOGIN / LOGOUT ═══
+    function handleAdminBtn() {
+      if (role === 'admin') togglePanel('admin-panel');
+      else if (role === 'super') togglePanel('super-panel');
+      else { document.getElementById('login-overlay').classList.add('show'); setTimeout(() => document.getElementById('login-user').focus(), 80); }
+    }
+    async function doLogin() {
+      const u = document.getElementById('login-user').value.trim();
+      const p = document.getElementById('login-pass').value;
+      const err = document.getElementById('login-err');
+      const auth = await getAuth();
+      if (u === auth.super.user && p === auth.super.pass) {
+        role = 'super'; user = u; closeLogin();
+        openPanel('super-panel');
+        const btn = document.getElementById('admin-nav-btn');
+        btn.textContent = '👑 ' + u; btn.className = 'nav-admin-btn active-super';
+        document.getElementById('super-label').textContent = u;
+        document.getElementById('super-name-display').textContent = u;
+        fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect();
+        addLog(`👑 Superadmin "${u}" login`);
+        return;
+      }
+      const adm = auth.admins.find(a => a.user === u && a.pass === p);
+      if (adm) {
+        role = 'admin'; user = u; closeLogin();
+        openPanel('admin-panel');
+        const btn = document.getElementById('admin-nav-btn');
+        btn.textContent = '⚙ ' + u; btn.className = 'nav-admin-btn active-admin';
+        fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin();
+        addLog(`✅ Admin "${u}" login`);
+        return;
+      }
+      err.style.display = 'block'; err.textContent = '❌ Username atau password salah.';
+      document.getElementById('login-pass').value = ''; document.getElementById('login-pass').focus();
+    }
+    function closeLogin() {
+      document.getElementById('login-overlay').classList.remove('show');
+      document.getElementById('login-user').value = ''; document.getElementById('login-pass').value = '';
+      document.getElementById('login-err').style.display = 'none';
+    }
+    function openPanel(id) { document.getElementById(id).classList.add('show'); }
+    function closePanel(id) { document.getElementById(id).classList.remove('show'); }
+    function togglePanel(id) { const p = document.getElementById(id); if (p.classList.contains('show')) p.classList.remove('show'); else { openPanel(id); if (id === 'admin-panel') { fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin(); } if (id === 'super-panel') { fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect(); } } }
+    async function doLogout() {
+      await addLog(`🚪 "${user}" logout`);
+      role = null; user = null;
+      closePanel('admin-panel'); closePanel('super-panel');
+      const btn = document.getElementById('admin-nav-btn');
+      btn.textContent = '⚙ Admin'; btn.className = 'nav-admin-btn';
+      showToast('Berhasil logout', 'success');
+    }
 
-// ═══ TAB SWITCH ═══
-function switchTab(panel,id,btn){
-  const panelEl=document.getElementById(panel==='admin'?'admin-panel':'super-panel');
-  panelEl.querySelectorAll('.ap-section').forEach(s=>s.classList.remove('active'));
-  panelEl.querySelectorAll('.ap-tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active'); btn.classList.add('active');
-  if(id==='at-berita'||id==='st-berita') renderBeritaAdmin();
-  if(id==='at-galeri'||id==='st-galeri') renderGaleriAdmin();
-  if(id==='st-log') renderLog();
-  if(id==='st-akun') renderAdminAccounts();
-  if(id==='st-pw') populatePwSelect();
-}
+    // ═══ TAB SWITCH ═══
+    function switchTab(panel, id, btn) {
+      const panelEl = document.getElementById(panel === 'admin' ? 'admin-panel' : 'super-panel');
+      panelEl.querySelectorAll('.ap-section').forEach(s => s.classList.remove('active'));
+      panelEl.querySelectorAll('.ap-tab').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active'); btn.classList.add('active');
+      if (id === 'at-berita' || id === 'st-berita') renderBeritaAdmin();
+      if (id === 'at-galeri' || id === 'st-galeri') renderGaleriAdmin();
+      if (id === 'st-log') renderLog();
+      if (id === 'st-akun') renderAdminAccounts();
+      if (id === 'st-pw') populatePwSelect();
+    }
 
-// ═══ TOAST ═══
-function showToast(msg,type='success'){ const t=document.getElementById('toast'); t.textContent=msg; t.className='save-toast '+type+' show'; clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),3000); }
+    // ═══ TOAST ═══
+    function showToast(msg, type = 'success') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'save-toast ' + type + ' show'; clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 3000); }
 
-// ═══ INIT ═══
-loadContent();
+    // ═══ INIT ═══
+    loadContent();
 
-// ═══ EXPOSE KE WINDOW (wajib karena pakai type="module") ═══
-window.handleAdminBtn = handleAdminBtn;
-window.doLogin = doLogin;
-window.closeLogin = closeLogin;
-window.closePanel = closePanel;
-window.togglePanel = togglePanel;
-window.doLogout = doLogout;
-window.switchTab = switchTab;
-window.saveAll = saveAll;
-window.saveAllSuper = saveAllSuper;
-window.addBerita = addBerita;
-window.delBerita = delBerita;
-window.addFoto = addFoto;
-window.addFotoSuper = addFotoSuper;
-window.delFoto = delFoto;
-window.previewFoto = previewFoto;
-window.previewFotoSuper = previewFotoSuper;
-window.openLightbox = openLightbox;
-window.closeLightbox = closeLightbox;
-window.lbNav = lbNav;
-window.addAdminAccount = addAdminAccount;
-window.delAdminAccount = delAdminAccount;
-window.changeAdminPw = changeAdminPw;
-window.changeSuperPw = changeSuperPw;
-window.resetAllData = resetAllData;
-window.resetGaleri = resetGaleri;
-window.clearLog = clearLog;
-window.populatePwSelect = populatePwSelect;
-window.renderAdminAccounts = renderAdminAccounts;
+    // ═══ EXPOSE KE WINDOW (wajib karena pakai type="module") ═══
+    window.handleAdminBtn = handleAdminBtn;
+    window.doLogin = doLogin;
+    window.closeLogin = closeLogin;
+    window.closePanel = closePanel;
+    window.togglePanel = togglePanel;
+    window.doLogout = doLogout;
+    window.switchTab = switchTab;
+    window.saveAll = saveAll;
+    window.saveAllSuper = saveAllSuper;
+    window.addBerita = addBerita;
+    window.delBerita = delBerita;
+    window.addFoto = addFoto;
+    window.addFotoSuper = addFotoSuper;
+    window.delFoto = delFoto;
+    window.previewFoto = previewFoto;
+    window.previewFotoSuper = previewFotoSuper;
+    window.openLightbox = openLightbox;
+    window.closeLightbox = closeLightbox;
+    window.lbNav = lbNav;
+    window.addAdminAccount = addAdminAccount;
+    window.delAdminAccount = delAdminAccount;
+    window.changeAdminPw = changeAdminPw;
+    window.changeSuperPw = changeSuperPw;
+    window.resetAllData = resetAllData;
+    window.resetGaleri = resetGaleri;
+    window.clearLog = clearLog;
+    window.populatePwSelect = populatePwSelect;
+    window.renderAdminAccounts = renderAdminAccounts;
 
-</script>
+  </script>
