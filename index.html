@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>SDN 26 Sijunjung</title>
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap"
@@ -1903,34 +1903,154 @@
     }
 
     @media(max-width:900px) {
+
+      /* NAV */
       .nav-links {
         display: none;
       }
 
+      nav {
+        padding: 0 4%;
+      }
+
+      /* HERO */
+      #beranda {
+        padding: 90px 5% 60px;
+      }
+
+      h1.hero-title {
+        font-size: clamp(2.2rem, 8vw, 3.5rem);
+      }
+
+      .hero-stats {
+        gap: 20px;
+      }
+
+      .h-stat .num {
+        font-size: 1.6rem;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 60px 5%;
+      }
+
+      /* PROFIL */
       .profil-layout,
       .kontak-layout {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
       }
 
+      .info-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      /* GALERI */
       .galeri-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
       }
 
+      /* BERITA */
       .berita-grid {
         grid-template-columns: 1fr;
       }
 
+      /* KONTAK FORM */
       .form-row {
         grid-template-columns: 1fr;
       }
 
+      /* PANEL */
       .side-panel {
-        width: 100%;
+        width: 100% !important;
+      }
+
+      #super-panel {
+        width: 100% !important;
+      }
+
+      body.panel-open {
+        margin-left: 0 !important;
+      }
+
+      .ap-tabs {
+        overflow-x: auto;
+      }
+
+      .ap-tab {
+        padding: 10px 10px;
+        font-size: 0.65rem;
       }
 
       .upload-meta {
         grid-template-columns: 1fr;
+      }
+
+      /* LOGIN */
+      .login-box {
+        width: 90vw;
+        padding: 28px 20px;
+      }
+
+      /* FOOTER */
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    @media(max-width:480px) {
+
+      /* Extra small phones */
+      h1.hero-title {
+        font-size: clamp(1.9rem, 9vw, 2.8rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .info-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .galeri-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 14px;
+      }
+
+      .h-stat {
+        min-width: 70px;
+      }
+
+      .ap-head {
+        padding: 14px 16px 12px;
+      }
+
+      .ap-body {
+        padding: 14px 14px;
       }
     }
 
