@@ -1933,6 +1933,55 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* SCROLL ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* PARTICLES */
+    @keyframes floatParticle {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      25% {
+        transform: translateY(-20px) translateX(10px);
+      }
+
+      50% {
+        transform: translateY(-10px) translateX(-15px);
+      }
+
+      75% {
+        transform: translateY(-25px) translateX(8px);
+      }
+    }
+
+    /* HOVER SMOOTH CARDS */
+    .ic,
+    .b-card,
+    .g-item {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+    }
+
+    .ic:hover,
+    .b-card:hover {
+      transform: translateY(-6px) scale(1.01) !important;
+    }
+
+    .g-item:hover {
+      transform: scale(1.04) !important;
+    }
   </style>
 </head>
 
@@ -3201,6 +3250,93 @@
 
     // ═══ TOAST ═══
     function showToast(msg, type = 'success') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'save-toast ' + type + ' show'; clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 3000); }
+
+    // ═══ ANIMASI ═══
+
+    // 1. SCROLL ANIMATION
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('section, .ic, .b-card, .g-item, .k-row').forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+
+    // 2. COUNTER ANIMASI STATISTIK
+    function animateCounter(el, target, duration = 1800) {
+      const isPlus = target.toString().includes('+');
+      const num = parseInt(target);
+      let start = 0;
+      const step = Math.ceil(num / (duration / 16));
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= num) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = start + (isPlus ? '+' : '');
+        }
+      }, 16);
+    }
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const val = el.textContent.trim();
+          if (/\d/.test(val)) animateCounter(el, val);
+          statsObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.h-stat .num').forEach(el => statsObserver.observe(el));
+
+    // 3. TYPING EFFECT HERO
+    function typeWriter(el, text, speed = 60) {
+      el.textContent = '';
+      let i = 0;
+      const timer = setInterval(() => {
+        el.textContent += text[i];
+        i++;
+        if (i >= text.length) clearInterval(timer);
+      }, speed);
+    }
+    setTimeout(() => {
+      const h1b = document.getElementById('v-h1b');
+      if (h1b) {
+        const text = h1b.textContent;
+        typeWriter(h1b, text);
+      }
+    }, 600);
+
+    // 4. PARTICLES HERO
+    function createParticles() {
+      const hero = document.getElementById('beranda');
+      if (!hero) return;
+      for (let i = 0; i < 28; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'particle';
+        dot.style.cssText = `
+          position:absolute;
+          width:${Math.random() * 4 + 2}px;
+          height:${Math.random() * 4 + 2}px;
+          background:rgba(66,165,245,${Math.random() * 0.4 + 0.1});
+          border-radius:50%;
+          left:${Math.random() * 100}%;
+          top:${Math.random() * 100}%;
+          animation: floatParticle ${Math.random() * 8 + 6}s ease-in-out infinite;
+          animation-delay:${Math.random() * 5}s;
+          pointer-events:none;
+          z-index:0;
+        `;
+        hero.appendChild(dot);
+      }
+    }
+    createParticles();
 
     // ═══ INIT ═══
     loadContent();
