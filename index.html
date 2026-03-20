@@ -49,7 +49,7 @@
     }
 
     body.panel-open {
-      margin-left: 500px;
+      margin-left: 720px;
     }
 
     ::-webkit-scrollbar {
@@ -171,14 +171,13 @@
       border-color: #F57F17;
     }
 
-
     /* HERO */
     #beranda {
       min-height: 100vh;
       background: var(--navy);
       display: flex;
       align-items: center;
-      padding: 160px 6% 80px;
+      padding: 100px 6% 80px;
       position: relative;
       overflow: hidden;
     }
@@ -187,8 +186,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(60deg, transparent 40%, rgba(21, 101, 192, 0.08) 41%, rgba(21, 101, 192, 0.08) 60%, transparent 61%),
-        linear-gradient(120deg, transparent 30%, rgba(66, 165, 245, 0.05) 31%, rgba(66, 165, 245, 0.05) 55%, transparent 56%);
+      background: linear-gradient(60deg, transparent 40%, rgba(21, 101, 192, 0.08) 41%, rgba(21, 101, 192, 0.08) 60%, transparent 61%), linear-gradient(120deg, transparent 30%, rgba(66, 165, 245, 0.05) 31%, rgba(66, 165, 245, 0.05) 55%, transparent 56%);
     }
 
     #beranda::after {
@@ -204,20 +202,10 @@
       pointer-events: none;
     }
 
-    .hero-flex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
+    .hero-inner {
       position: relative;
       z-index: 1;
-      gap: 40px;
-    }
-
-    .hero-inner {
-      flex: 1;
-      min-width: 300px;
-      max-width: 580px;
+      max-width: 680px;
     }
 
     .hero-chip {
@@ -245,7 +233,7 @@
 
     h1.hero-title {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
       color: white;
       line-height: 1.05;
       margin-bottom: 24px;
@@ -261,33 +249,8 @@
       color: rgba(255, 255, 255, 0.6);
       font-size: 1.05rem;
       line-height: 1.75;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
       max-width: 500px;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 36px;
-      margin-bottom: 36px;
-      padding-bottom: 36px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      flex-wrap: wrap;
-    }
-
-    .h-stat .num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: white;
-      line-height: 1;
-    }
-
-    .h-stat .lbl {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.45);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      margin-top: 4px;
-      text-transform: uppercase;
     }
 
     .hero-actions {
@@ -339,73 +302,29 @@
       transform: translateY(-2px);
     }
 
-    /* HERO ILLUSTRATION */
-    .hero-illustration {
-      flex-shrink: 0;
+    .hero-stats {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 400px;
+      gap: 36px;
+      margin-top: 52px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
     }
 
-    .float-slow {
-      animation: floatA 5s ease-in-out infinite;
+    .h-stat .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: white;
+      line-height: 1;
     }
 
-    .float-med {
-      animation: floatB 4s ease-in-out infinite;
-    }
-
-    .float-fast {
-      animation: floatA 3s ease-in-out infinite;
-    }
-
-    .float-slow2 {
-      animation: floatB 6s ease-in-out infinite 0.5s;
-    }
-
-    .float-fast2 {
-      animation: floatA 3.5s ease-in-out infinite 1s;
-    }
-
-    .twinkle {
-      animation: twinkleAnim 2s ease-in-out infinite;
-    }
-
-    @keyframes floatA {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-12px);
-      }
-    }
-
-    @keyframes floatB {
-
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    @keyframes twinkleAnim {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
+    .h-stat .lbl {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+      text-transform: uppercase;
     }
 
     /* SECTIONS */
@@ -604,6 +523,10 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .g-item .g-emoji {
+      font-size: 3rem;
     }
 
     .g-overlay {
@@ -1118,7 +1041,7 @@
       color: #546E7A;
     }
 
-    /* SIDE PANEL */
+    /* ═══ SIDE PANEL — BLUE WHITE REDESIGN ═══ */
     .side-panel {
       display: none;
       position: fixed;
@@ -1646,6 +1569,19 @@
       border: 1px solid rgba(21, 101, 192, 0.1);
     }
 
+    .g-admin-thumb-emoji {
+      width: 60px;
+      height: 48px;
+      border-radius: 7px;
+      flex-shrink: 0;
+      background: #E3F2FD;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      border: 1px solid rgba(21, 101, 192, 0.1);
+    }
+
     .g-admin-info {
       flex: 1;
       min-width: 0;
@@ -1972,6 +1908,158 @@
       animation: fadeUp 0.55s ease 0.32s both;
     }
 
+    @media(max-width:900px) {
+
+      /* NAV */
+      .nav-links {
+        display: none;
+      }
+
+      nav {
+        padding: 0 4%;
+      }
+
+      /* HERO */
+      #beranda {
+        padding: 90px 5% 60px;
+      }
+
+      h1.hero-title {
+        font-size: clamp(2.2rem, 8vw, 3.5rem);
+      }
+
+      .hero-stats {
+        gap: 20px;
+      }
+
+      .h-stat .num {
+        font-size: 1.6rem;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 60px 5%;
+      }
+
+      /* PROFIL */
+      .profil-layout,
+      .kontak-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .info-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      /* GALERI */
+      .galeri-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      /* BERITA */
+      .berita-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* KONTAK FORM */
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      /* PANEL */
+      .side-panel {
+        width: 100% !important;
+      }
+
+      #super-panel {
+        width: 100% !important;
+      }
+
+      body.panel-open {
+        margin-left: 0 !important;
+      }
+
+      .ap-tabs {
+        overflow-x: auto;
+      }
+
+      .ap-tab {
+        padding: 10px 10px;
+        font-size: 0.65rem;
+      }
+
+      .upload-meta {
+        grid-template-columns: 1fr;
+      }
+
+      /* LOGIN */
+      .login-box {
+        width: 90vw;
+        padding: 28px 20px;
+      }
+
+      /* FOOTER */
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    @media(max-width:480px) {
+
+      /* Extra small phones */
+      h1.hero-title {
+        font-size: clamp(1.9rem, 9vw, 2.8rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .info-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .galeri-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 14px;
+      }
+
+      .h-stat {
+        min-width: 70px;
+      }
+
+      .ap-head {
+        padding: 14px 16px 12px;
+      }
+
+      .ap-body {
+        padding: 14px 14px;
+      }
+    }
+
     /* SCROLL ANIMATION */
     .fade-in {
       opacity: 0;
@@ -2021,157 +2109,85 @@
       transform: scale(1.04) !important;
     }
 
-    /* RESPONSIVE */
-    @media(max-width:900px) {
-      .nav-links {
-        display: none;
+    /* HERO ILLUSTRATION */
+    .hero-illustration {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+    }
+
+    .float-slow {
+      animation: floatA 5s ease-in-out infinite;
+    }
+
+    .float-med {
+      animation: floatB 4s ease-in-out infinite;
+    }
+
+    .float-fast {
+      animation: floatA 3s ease-in-out infinite;
+    }
+
+    .float-slow2 {
+      animation: floatB 6s ease-in-out infinite 0.5s;
+    }
+
+    .float-fast2 {
+      animation: floatA 3.5s ease-in-out infinite 1s;
+    }
+
+    .twinkle {
+      animation: twinkleAnim 2s ease-in-out infinite;
+    }
+
+    @keyframes floatA {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
 
-      nav {
-        padding: 0 4%;
-      }
-
-      #beranda {
-        padding: 140px 5% 60px;
-      }
-
-      h1.hero-title {
-        font-size: clamp(2.2rem, 8vw, 3.5rem);
-      }
-
-      .hero-stats {
-        gap: 20px;
-      }
-
-      .h-stat .num {
-        font-size: 1.6rem;
-      }
-
-      section {
-        padding: 60px 5%;
-      }
-
-      .profil-layout,
-      .kontak-layout {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .info-cards {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .galeri-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .berita-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .side-panel {
-        width: 100% !important;
-      }
-
-      #super-panel {
-        width: 100% !important;
-      }
-
-      body.panel-open {
-        margin-left: 0 !important;
-      }
-
-      .ap-tabs {
-        overflow-x: auto;
-      }
-
-      .ap-tab {
-        padding: 10px 10px;
-        font-size: 0.65rem;
-      }
-
-      .upload-meta {
-        grid-template-columns: 1fr;
-      }
-
-      .login-box {
-        width: 90vw;
-        padding: 28px 20px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .footer-links {
-        justify-content: center;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .hero-illustration {
-        display: none;
-      }
-
-      .stats-bar {
-        display: none;
+      50% {
+        transform: translateY(-12px);
       }
     }
 
-    @media(max-width:480px) {
-      h1.hero-title {
-        font-size: clamp(1.9rem, 9vw, 2.8rem);
+    @keyframes floatB {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
 
-      .hero-actions {
-        flex-direction: column;
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes twinkleAnim {
+
+      0%,
+      100% {
+        opacity: 1;
       }
 
-      .btn-primary,
-      .btn-ghost {
-        width: 100%;
-        justify-content: center;
+      50% {
+        opacity: 0.3;
       }
+    }
 
-      .info-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .galeri-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stats {
-        gap: 14px;
-      }
-
-      .h-stat {
-        min-width: 70px;
-      }
-
-      .ap-head {
-        padding: 14px 16px 12px;
-      }
-
-      .ap-body {
-        padding: 14px 14px;
+    @media(max-width:900px) {
+      .hero-illustration {
+        display: none;
       }
     }
   </style>
 </head>
 
 <body>
+
   <div class="save-toast" id="toast"></div>
 
   <!-- LIGHTBOX -->
@@ -2195,6 +2211,7 @@
       <input type="password" id="login-pass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()" />
       <button class="login-btn go" onclick="doLogin()">Masuk →</button>
       <button class="login-btn cancel" onclick="closeLogin()">Batal</button>
+
     </div>
   </div>
 
@@ -2219,6 +2236,8 @@
       <button class="ap-tab" onclick="switchTab('admin','at-kontak',this)">Kontak</button>
     </div>
     <div class="ap-body">
+
+      <!-- BERANDA TAB -->
       <div class="ap-section active" id="at-beranda">
         <div class="ap-divider">Teks Hero</div>
         <div class="field-group"><label>Chip / Label Atas</label><input id="f-chip" type="text" /></div>
@@ -2238,6 +2257,8 @@
         <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- PROFIL TAB -->
       <div class="ap-section" id="at-profil">
         <div class="ap-divider">Info Sekolah</div>
         <div class="field-group"><label>Status Sekolah</label><input id="f-status" type="text" /></div>
@@ -2259,13 +2280,15 @@
         <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- GALERI TAB -->
       <div class="ap-section" id="at-galeri">
         <div class="ap-divider">Upload Foto Baru</div>
-        <div class="upload-zone">
+        <div class="upload-zone" id="upload-zone">
           <input type="file" accept="image/*" id="foto-input" onchange="previewFoto(this)" />
           <div class="uz-icon">📷</div>
           <p>Klik atau seret foto ke sini</p>
-          <small>JPG, PNG, WebP — maks 10MB</small>
+          <small>JPG, PNG, WebP — maks 5MB</small>
         </div>
         <img id="upload-preview" class="upload-preview" alt="preview" />
         <div class="upload-meta">
@@ -2279,6 +2302,8 @@
         <div class="g-admin-list" id="g-admin-list"></div>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- BERITA TAB -->
       <div class="ap-section" id="at-berita">
         <div class="ap-divider">Kelola Berita</div>
         <button class="add-berita-btn" onclick="addBerita()">+ Tambah Berita Baru</button>
@@ -2286,6 +2311,8 @@
         <button class="ap-save" onclick="saveAll()">💾 Simpan</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- PESAN TAB -->
       <div class="ap-section" id="at-pesan">
         <div class="ap-divider">Pesan Masuk</div>
         <div id="pesan-list-admin">
@@ -2293,6 +2320,8 @@
         </div>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- KONTAK TAB -->
       <div class="ap-section" id="at-kontak">
         <div class="ap-divider">Info Kontak</div>
         <div class="field-group"><label>Alamat Lengkap</label><textarea id="f-alamat"></textarea></div>
@@ -2329,6 +2358,8 @@
       <button class="ap-tab" onclick="switchTab('super','st-reset',this)">Reset</button>
     </div>
     <div class="ap-body">
+
+      <!-- KONTEN TAB (same as admin) -->
       <div class="ap-section active" id="st-konten">
         <div class="ap-divider">Teks Hero</div>
         <div class="field-group"><label>Chip / Label Atas</label><input id="sf-chip" type="text" /></div>
@@ -2370,13 +2401,15 @@
         <button class="super-save" onclick="saveAllSuper()">💾 Simpan Semua</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- GALERI SUPER -->
       <div class="ap-section" id="st-galeri">
         <div class="ap-divider">Upload Foto Baru</div>
         <div class="upload-zone">
           <input type="file" accept="image/*" id="sfoto-input" onchange="previewFotoSuper(this)" />
           <div class="uz-icon">📷</div>
           <p>Klik atau seret foto ke sini</p>
-          <small>JPG, PNG, WebP — maks 10MB</small>
+          <small>JPG, PNG, WebP — maks 5MB</small>
         </div>
         <img id="supload-preview" class="upload-preview" alt="preview" />
         <div class="upload-meta">
@@ -2390,6 +2423,8 @@
         <div class="g-admin-list" id="sg-admin-list"></div>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- BERITA SUPER -->
       <div class="ap-section" id="st-berita">
         <div class="ap-divider">Kelola Berita</div>
         <button class="add-berita-btn" onclick="addBerita()">+ Tambah Berita Baru</button>
@@ -2397,6 +2432,8 @@
         <button class="super-save" onclick="saveAllSuper()">💾 Simpan</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- AKUN -->
       <div class="ap-section" id="st-akun">
         <div class="super-badge">👑 Kelola Akun Admin</div>
         <button class="add-admin-btn" onclick="document.getElementById('add-admin-form-box').style.display='block'">+
@@ -2415,6 +2452,8 @@
         <div id="admin-accounts-list"></div>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- PASSWORD -->
       <div class="ap-section" id="st-pw">
         <div class="super-badge">🔐 Ubah Password</div>
         <div class="my-pw-info">Login sebagai: <strong id="super-name-display">dimas19</strong></div>
@@ -2432,6 +2471,8 @@
         <button class="super-save" onclick="changeSuperPw()">🔑 Ubah Password Saya</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- LOG -->
       <div class="ap-section" id="st-log">
         <div class="super-badge">📋 Log Aktivitas</div>
         <div id="activity-log"></div>
@@ -2439,17 +2480,13 @@
           onclick="clearLog()">🗑 Hapus Semua Log</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
-      <div class="ap-section" id="st-pesan">
-        <div class="super-badge">📬 Pesan Masuk</div>
-        <div id="pesan-list">
-          <p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Memuat pesan...</p>
-        </div>
-        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
-      </div>
+
+      <!-- WALLPAPER -->
       <div class="ap-section" id="st-wallpaper">
         <div class="super-badge">🖼️ Ganti Wallpaper Panel</div>
         <p style="font-size:0.82rem;color:#546E7A;margin-bottom:16px;line-height:1.6;">Pilih warna atau upload foto
           sebagai background panel superadmin.</p>
+
         <div class="ap-divider">Pilih Warna</div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
           <div onclick="setWallpaperColor('#FFF8F0')"
@@ -2477,6 +2514,7 @@
             style="height:48px;border-radius:8px;background:#ffffff;border:2px solid #CFD8DC;cursor:pointer;transition:transform 0.2s;"
             onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
         </div>
+
         <div class="ap-divider">Custom Warna</div>
         <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;">
           <input type="color" id="wp-color-picker" value="#FFF8F0"
@@ -2485,6 +2523,7 @@
             style="flex:1;background:linear-gradient(135deg,#E65100,#F57F17);color:white;border:none;padding:10px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;">Terapkan
             Warna</button>
         </div>
+
         <div class="ap-divider">Upload Foto</div>
         <div class="upload-zone" style="margin-bottom:10px;position:relative;">
           <input type="file" accept="image/*" onchange="setWallpaperImage(this)"
@@ -2493,11 +2532,23 @@
           <p>Klik untuk upload foto wallpaper</p>
           <small>JPG, PNG — maks 5MB</small>
         </div>
+
         <button onclick="resetWallpaper()"
           style="width:100%;background:#FFEBEE;color:#C62828;border:1.5px solid #FFCDD2;padding:10px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;margin-bottom:8px;transition:all 0.2s;">🔄
           Reset ke Default</button>
         <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
       </div>
+
+      <!-- PESAN MASUK -->
+      <div class="ap-section" id="st-pesan">
+        <div class="super-badge">📬 Pesan Masuk</div>
+        <div id="pesan-list">
+          <p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Memuat pesan...</p>
+        </div>
+        <button class="ap-logout" onclick="doLogout()">🚪 Keluar</button>
+      </div>
+
+      <!-- RESET -->
       <div class="ap-section" id="st-reset">
         <div class="super-badge">⚠️ Zona Berbahaya</div>
         <p style="font-size:0.88rem;color:var(--slate);line-height:1.6;margin-bottom:16px;">Reset konten akan
@@ -2539,122 +2590,142 @@
 
   <!-- BERANDA -->
   <section id="beranda">
-    <div class="hero-flex">
-      <div class="hero-inner">
+    <div
+      style="display:flex;align-items:center;justify-content:space-between;width:100%;position:relative;z-index:1;gap:40px;">
+      <div class="hero-inner" style="max-width:580px;">
         <div class="hero-chip"><span class="dot"></span><span id="v-chip">Sekolah Dasar Negeri — Sijunjung</span></div>
         <h1 class="hero-title">
-          <span id="v-h1a">Bersama Menuju</span>
-          <em id="v-h1b">Generasi Unggul</em>
+          <span id="v-h1a">Bersama Menuju</span><br>
+          <em id="v-h1b">Generasi</em><br>
+          <span id="v-h1c">Unggul</span>
         </h1>
         <p class="hero-desc" id="v-desc">SDN 26 Sijunjung berkomitmen mewujudkan pendidikan berkualitas, membentuk
           karakter mulia, dan mencetak generasi yang siap menghadapi tantangan masa depan.</p>
-
-      </div>
-
-      <!-- STATS KANAN -->
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:20px;flex-shrink:0;">
-        <!-- TOMBOL DI ATAS STATS -->
-        <div class="hero-actions" style="justify-content:flex-end;">
-          <a href="#profil" class="btn-primary">Lihat Profil Sekolah →</a>
-          <a href="#kontak" class="btn-ghost">Hubungi Kami</a>
-        </div>
-        style="display:flex;gap:24px;background:rgba(255,255,255,0.06);border:1px solid
-        rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:16px 24px;border-radius:14px;">
-        <div class="h-stat">
-          <div class="num" id="v-s1">250+</div>
-          <div class="lbl" id="v-s1l">Siswa Aktif</div>
-        </div>
-        <div class="h-stat">
-          <div class="num" id="v-s2">18</div>
-          <div class="lbl" id="v-s2l">Tenaga Pengajar</div>
-        </div>
-        <div class="h-stat">
-          <div class="num" id="v-s3">6</div>
-          <div class="lbl" id="v-s3l">Rombel</div>
-        </div>
-        <div class="h-stat">
-          <div class="num" id="v-s4">A</div>
-          <div class="lbl" id="v-s4l">Akreditasi</div>
-        </div>
-      </div>
-
-      <!-- ILUSTRASI HERO -->
-      <div class="hero-illustration">
-        <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg"
-          style="width:100%;max-width:380px;filter:drop-shadow(0 20px 40px rgba(21,101,192,0.3));">
-          <g class="float-slow">
-            <rect x="60" y="280" width="90" height="110" rx="8" fill="#1565C0" opacity="0.9" />
-            <rect x="65" y="285" width="80" height="100" rx="6" fill="#1976D2" />
-            <rect x="72" y="298" width="60" height="4" rx="2" fill="rgba(255,255,255,0.6)" />
-            <rect x="72" y="308" width="50" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
-            <rect x="72" y="318" width="55" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
-            <rect x="72" y="328" width="45" height="4" rx="2" fill="rgba(255,255,255,0.3)" />
-            <text x="105" y="278" font-size="22" text-anchor="middle">📚</text>
-          </g>
-          <g class="float-fast">
-            <rect x="250" y="300" width="80" height="100" rx="8" fill="#0B2545" opacity="0.9" />
-            <rect x="255" y="305" width="70" height="90" rx="6" fill="#1565C0" />
-            <rect x="262" y="318" width="50" height="4" rx="2" fill="rgba(255,255,255,0.6)" />
-            <rect x="262" y="328" width="40" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
-            <rect x="262" y="338" width="46" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
-            <text x="290" y="298" font-size="20" text-anchor="middle">✏️</text>
-          </g>
-          <g class="float-med" style="transform-origin:200px 200px;">
-            <circle cx="155" cy="110" r="38" fill="#FDBCB4" />
-            <ellipse cx="155" cy="85" rx="38" ry="22" fill="#3E2723" />
-            <ellipse cx="130" cy="100" rx="14" ry="18" fill="#3E2723" />
-            <ellipse cx="180" cy="100" rx="14" ry="18" fill="#3E2723" />
-            <circle cx="144" cy="112" r="4" fill="#333" />
-            <circle cx="166" cy="112" r="4" fill="#333" />
-            <path d="M146 125 Q155 133 164 125" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <rect x="122" y="148" width="66" height="80" rx="10" fill="white" opacity="0.95" />
-            <polygon points="155,152 150,175 155,185 160,175" fill="#C62828" />
-            <rect x="122" y="220" width="28" height="60" rx="6" fill="#1565C0" />
-            <rect x="158" y="220" width="28" height="60" rx="6" fill="#1565C0" />
-            <rect x="188" y="155" width="35" height="50" rx="8" fill="#F57F17" />
-            <rect x="183" y="162" width="8" height="35" rx="4" fill="#E65100" />
-            <ellipse cx="136" cy="282" rx="18" ry="10" fill="#333" />
-            <ellipse cx="172" cy="282" rx="18" ry="10" fill="#333" />
-          </g>
-          <g class="float-slow2" style="transform-origin:260px 200px;">
-            <circle cx="260" cy="115" r="36" fill="#FDBCB4" />
-            <ellipse cx="260" cy="90" rx="36" ry="20" fill="#1A1A1A" />
-            <rect x="224" y="90" width="16" height="70" rx="8" fill="#1A1A1A" />
-            <rect x="296" y="90" width="16" height="70" rx="8" fill="#1A1A1A" />
-            <ellipse cx="236" cy="88" rx="12" ry="8" fill="#E91E63" transform="rotate(-20,236,88)" />
-            <ellipse cx="284" cy="88" rx="12" ry="8" fill="#E91E63" transform="rotate(20,284,88)" />
-            <circle cx="250" cy="117" r="4" fill="#333" />
-            <circle cx="270" cy="117" r="4" fill="#333" />
-            <path d="M252 130 Q260 138 268 130" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <ellipse cx="242" cy="124" rx="8" ry="5" fill="#FFB3BA" opacity="0.6" />
-            <ellipse cx="278" cy="124" rx="8" ry="5" fill="#FFB3BA" opacity="0.6" />
-            <rect x="228" y="151" width="64" height="78" rx="10" fill="white" opacity="0.95" />
-            <rect x="222" y="222" width="76" height="55" rx="8" fill="#1565C0" />
-            <ellipse cx="244" cy="285" rx="17" ry="9" fill="#333" />
-            <ellipse cx="276" cy="285" rx="17" ry="9" fill="#333" />
-          </g>
-          <g class="twinkle">
-            <circle cx="50" cy="60" r="4" fill="#42A5F5" opacity="0.8" />
-            <circle cx="350" cy="80" r="3" fill="#42A5F5" opacity="0.6" />
-            <circle cx="320" cy="260" r="5" fill="#42A5F5" opacity="0.5" />
-            <circle cx="80" cy="240" r="3" fill="#42A5F5" opacity="0.7" />
-            <circle cx="200" cy="30" r="4" fill="#90CAF9" opacity="0.6" />
-            <circle cx="370" cy="180" r="3" fill="#90CAF9" opacity="0.5" />
-          </g>
-          <g class="float-fast2">
-            <rect x="148" y="20" width="104" height="64" rx="10" fill="rgba(21,101,192,0.85)"
-              stroke="rgba(66,165,245,0.4)" stroke-width="1.5" />
-            <text x="200" y="45" font-size="11" fill="rgba(255,255,255,0.7)" text-anchor="middle"
-              font-family="sans-serif" font-weight="700">NILAI UJIAN</text>
-            <text x="200" y="68" font-size="22" fill="#42A5F5" text-anchor="middle" font-family="sans-serif"
-              font-weight="900">100 🌟</text>
-          </g>
-        </svg>
         <div class="hero-actions">
           <a href="#profil" class="btn-primary">Lihat Profil Sekolah →</a>
           <a href="#kontak" class="btn-ghost">Hubungi Kami</a>
         </div>
+        <div class="hero-stats">
+          <div class="h-stat">
+            <div class="num" id="v-s1">250+</div>
+            <div class="lbl" id="v-s1l">Siswa Aktif</div>
+          </div>
+          <div class="h-stat">
+            <div class="num" id="v-s2">18</div>
+            <div class="lbl" id="v-s2l">Tenaga Pengajar</div>
+          </div>
+          <div class="h-stat">
+            <div class="num" id="v-s3">6</div>
+            <div class="lbl" id="v-s3l">Rombel</div>
+          </div>
+          <div class="h-stat">
+            <div class="num" id="v-s4">A</div>
+            <div class="lbl" id="v-s4l">Akreditasi</div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- ILUSTRASI HERO -->
+    <div class="hero-illustration">
+      <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg"
+        style="width:100%;max-width:380px;filter:drop-shadow(0 20px 40px rgba(21,101,192,0.3));">
+        <!-- BUKU -->
+        <g class="float-slow">
+          <rect x="60" y="280" width="90" height="110" rx="8" fill="#1565C0" opacity="0.9" />
+          <rect x="65" y="285" width="80" height="100" rx="6" fill="#1976D2" />
+          <rect x="72" y="298" width="60" height="4" rx="2" fill="rgba(255,255,255,0.6)" />
+          <rect x="72" y="308" width="50" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+          <rect x="72" y="318" width="55" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+          <rect x="72" y="328" width="45" height="4" rx="2" fill="rgba(255,255,255,0.3)" />
+          <text x="105" y="278" font-size="22" text-anchor="middle">📚</text>
+        </g>
+
+        <!-- BUKU 2 -->
+        <g class="float-fast">
+          <rect x="250" y="300" width="80" height="100" rx="8" fill="#0B2545" opacity="0.9" />
+          <rect x="255" y="305" width="70" height="90" rx="6" fill="#1565C0" />
+          <rect x="262" y="318" width="50" height="4" rx="2" fill="rgba(255,255,255,0.6)" />
+          <rect x="262" y="328" width="40" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+          <rect x="262" y="338" width="46" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+          <text x="290" y="298" font-size="20" text-anchor="middle">✏️</text>
+        </g>
+
+        <!-- ANAK 1 (laki-laki) -->
+        <g class="float-med" style="transform-origin:200px 200px;">
+          <!-- Kepala -->
+          <circle cx="155" cy="110" r="38" fill="#FDBCB4" />
+          <!-- Rambut -->
+          <ellipse cx="155" cy="85" rx="38" ry="22" fill="#3E2723" />
+          <ellipse cx="130" cy="100" rx="14" ry="18" fill="#3E2723" />
+          <ellipse cx="180" cy="100" rx="14" ry="18" fill="#3E2723" />
+          <!-- Wajah -->
+          <circle cx="144" cy="112" r="4" fill="#333" />
+          <circle cx="166" cy="112" r="4" fill="#333" />
+          <path d="M146 125 Q155 133 164 125" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round" />
+          <!-- Seragam putih -->
+          <rect x="122" y="148" width="66" height="80" rx="10" fill="white" opacity="0.95" />
+          <!-- Dasi merah -->
+          <polygon points="155,152 150,175 155,185 160,175" fill="#C62828" />
+          <!-- Celana -->
+          <rect x="122" y="220" width="28" height="60" rx="6" fill="#1565C0" />
+          <rect x="158" y="220" width="28" height="60" rx="6" fill="#1565C0" />
+          <!-- Tas -->
+          <rect x="188" y="155" width="35" height="50" rx="8" fill="#F57F17" />
+          <rect x="183" y="162" width="8" height="35" rx="4" fill="#E65100" />
+          <!-- Sepatu -->
+          <ellipse cx="136" cy="282" rx="18" ry="10" fill="#333" />
+          <ellipse cx="172" cy="282" rx="18" ry="10" fill="#333" />
+        </g>
+
+        <!-- ANAK 2 (perempuan) -->
+        <g class="float-slow2" style="transform-origin:260px 200px;">
+          <!-- Kepala -->
+          <circle cx="260" cy="115" r="36" fill="#FDBCB4" />
+          <!-- Rambut panjang -->
+          <ellipse cx="260" cy="90" rx="36" ry="20" fill="#1A1A1A" />
+          <rect x="224" y="90" width="16" height="70" rx="8" fill="#1A1A1A" />
+          <rect x="296" y="90" width="16" height="70" rx="8" fill="#1A1A1A" />
+          <!-- Pita -->
+          <ellipse cx="236" cy="88" rx="12" ry="8" fill="#E91E63" transform="rotate(-20,236,88)" />
+          <ellipse cx="284" cy="88" rx="12" ry="8" fill="#E91E63" transform="rotate(20,284,88)" />
+          <!-- Wajah -->
+          <circle cx="250" cy="117" r="4" fill="#333" />
+          <circle cx="270" cy="117" r="4" fill="#333" />
+          <path d="M252 130 Q260 138 268 130" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round" />
+          <!-- Pipi merah -->
+          <ellipse cx="242" cy="124" rx="8" ry="5" fill="#FFB3BA" opacity="0.6" />
+          <ellipse cx="278" cy="124" rx="8" ry="5" fill="#FFB3BA" opacity="0.6" />
+          <!-- Seragam putih -->
+          <rect x="228" y="151" width="64" height="78" rx="10" fill="white" opacity="0.95" />
+          <!-- Rok -->
+          <rect x="222" y="222" width="76" height="55" rx="8" fill="#1565C0" />
+          <!-- Sepatu -->
+          <ellipse cx="244" cy="285" rx="17" ry="9" fill="#333" />
+          <ellipse cx="276" cy="285" rx="17" ry="9" fill="#333" />
+        </g>
+
+        <!-- BINTANG DEKORASI -->
+        <g class="twinkle">
+          <circle cx="50" cy="60" r="4" fill="#42A5F5" opacity="0.8" />
+          <circle cx="350" cy="80" r="3" fill="#42A5F5" opacity="0.6" />
+          <circle cx="320" cy="260" r="5" fill="#42A5F5" opacity="0.5" />
+          <circle cx="80" cy="240" r="3" fill="#42A5F5" opacity="0.7" />
+          <circle cx="200" cy="30" r="4" fill="#90CAF9" opacity="0.6" />
+          <circle cx="370" cy="180" r="3" fill="#90CAF9" opacity="0.5" />
+        </g>
+
+        <!-- PAPAN NILAI -->
+        <g class="float-fast2">
+          <rect x="148" y="20" width="104" height="64" rx="10" fill="rgba(21,101,192,0.85)"
+            stroke="rgba(66,165,245,0.4)" stroke-width="1.5" />
+          <text x="200" y="45" font-size="11" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-family="sans-serif"
+            font-weight="700">NILAI UJIAN</text>
+          <text x="200" y="68" font-size="22" fill="#42A5F5" text-anchor="middle" font-family="sans-serif"
+            font-weight="900">100 🌟</text>
+        </g>
+      </svg>
+    </div>
     </div>
   </section>
 
@@ -2767,7 +2838,8 @@
         <div class="k-row">
           <div class="k-icon">✉️</div>
           <div><label>Email</label>
-            <p id="v-email">sdn26sijunjung@gmail.com</p>
+            <p id="v-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                data-cfemail="364552580400455f5c43585c43585176515b575f5a1855595b">[email&#160;protected]</a></p>
           </div>
         </div>
         <div class="k-row">
@@ -2778,11 +2850,14 @@
         </div>
       </div>
       <div>
-        <div style="border-radius:14px;overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow);">
+        <!-- GOOGLE MAPS -->
+        <div
+          style="border-radius:14px;overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow);margin-bottom:0;">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.507045200769!2d100.98868647472368!3d-0.7157083992773176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e2b19d6c25b0a0b%3A0x592011e4425316d0!2sSD%20Negeri%2026%20Sijunjung!5e0!3m2!1sid!2sid!4v1773991434037!5m2!1sid!2sid"
             width="100%" height="280" style="border:0;display:block;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
         <div class="k-form">
           <h3>Kirim Pesan</h3>
@@ -2816,10 +2891,12 @@
     </div>
   </footer>
 
+  <!-- Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc, collection, getDocs, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, setDoc, collection, getDocs, addDoc, deleteDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+    // ═══ FIREBASE CONFIG ═══
     const firebaseConfig = {
       apiKey: "AIzaSyACfr2ZxtZvLAhf4bd7YaTt5Zv5Gl8S1iI",
       authDomain: "websdn26.firebaseapp.com",
@@ -2831,46 +2908,69 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
+    // ═══ CLOUDINARY CONFIG ═══
     const CLOUD_NAME = 'dksfv2fot';
     const UPLOAD_PRESET = 'sdn26_galeri';
 
+    // ═══ FIRESTORE HELPERS ═══
     async function fsGet(col, docId) {
-      try { const snap = await getDoc(doc(db, col, docId)); return snap.exists() ? snap.data() : null; }
-      catch (e) { console.error('fsGet error:', e); return null; }
+      try {
+        const snap = await getDoc(doc(db, col, docId));
+        return snap.exists() ? snap.data() : null;
+      } catch (e) { console.error('fsGet error:', e); return null; }
     }
     async function fsSet(col, docId, data) {
-      try { await setDoc(doc(db, col, docId), data); return true; }
-      catch (e) { console.error('fsSet error:', e); return false; }
+      try {
+        await setDoc(doc(db, col, docId), data);
+        return true;
+      } catch (e) { console.error('fsSet error:', e); return false; }
     }
     async function fsGetAll(col) {
-      try { const snap = await getDocs(collection(db, col)); return snap.docs.map(d => ({ id: d.id, ...d.data() })); }
-      catch (e) { console.error('fsGetAll error:', e); return []; }
+      try {
+        const snap = await getDocs(collection(db, col));
+        return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      } catch (e) { console.error('fsGetAll error:', e); return []; }
     }
     async function fsAdd(col, data) {
-      try { const ref = await addDoc(collection(db, col), data); return ref.id; }
-      catch (e) { console.error('fsAdd error:', e); return null; }
+      try {
+        const ref = await addDoc(collection(db, col), data);
+        return ref.id;
+      } catch (e) { console.error('fsAdd error:', e); return null; }
     }
     async function fsDel(col, docId) {
-      try { await deleteDoc(doc(db, col, docId)); return true; }
-      catch (e) { console.error('fsDel error:', e); return false; }
+      try {
+        await deleteDoc(doc(db, col, docId));
+        return true;
+      } catch (e) { console.error('fsDel error:', e); return false; }
     }
 
+    // ═══ CLOUDINARY UPLOAD ═══
     async function uploadToCloudinary(file) {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('upload_preset', UPLOAD_PRESET);
       try {
         showToast('⏳ Mengupload foto...', 'success');
-        const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, { method: 'POST', body: formData });
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+          method: 'POST',
+          body: formData
+        });
         const data = await res.json();
         if (data.secure_url) return data.secure_url;
-        showToast('❌ Upload gagal!', 'error'); return null;
-      } catch (e) { console.error('Cloudinary error:', e); showToast('❌ Upload gagal! Cek koneksi.', 'error'); return null; }
+        showToast('❌ Upload gagal!', 'error');
+        return null;
+      } catch (e) {
+        console.error('Cloudinary error:', e);
+        showToast('❌ Upload gagal! Cek koneksi.', 'error');
+        return null;
+      }
     }
 
+    // ═══ DEFAULT DATA ═══
+    // ═══ DEFAULT DATA ═══
     const DEF = {
       chip: 'Sekolah Dasar Negeri — Sijunjung',
-      h1a: 'Bersama Menuju', h1b: 'Generasi Unggul', h1c: '',
+      h1a: 'Bersama Menuju', h1b: 'Generasi', h1c: 'Unggul',
       desc: 'SDN 26 Sijunjung berkomitmen mewujudkan pendidikan berkualitas, membentuk karakter mulia, dan mencetak generasi yang siap menghadapi tantangan masa depan.',
       s1: '250+', s1l: 'Siswa Aktif', s2: '18', s2l: 'Tenaga Pengajar', s3: '6', s3l: 'Rombel', s4: 'A', s4l: 'Akreditasi',
       status: 'Sekolah Dasar Negeri', lokasi: 'Sijunjung, Sumatera Barat', akred: 'A — Sangat Baik',
@@ -2892,21 +2992,35 @@
       ]
     };
 
-    let C = JSON.parse(JSON.stringify(DEF));
-    let role = null, user = null, lbIndex = 0;
+    // ═══ STATE ═══
+    let C = JSON.parse(JSON.stringify(DEF)); // content
+    let role = null, user = null;
+    let lbIndex = 0;
     let pendingFotoFile = null, pendingFotoFileSuper = null;
-    let galeriCache = [], authCache = null;
+    let galeriCache = []; // cache galeri dari Firestore
+    let authCache = null; // cache auth dari Firestore
 
+    // ═══ AUTH (Firebase) ═══
     async function getAuth() {
       if (authCache) return authCache;
       const data = await fsGet('config', 'auth');
       if (data) { authCache = data; return data; }
+      // default pertama kali
       const def = { admins: [{ user: 'admin', pass: 'admin123' }], super: { user: 'dimas19', pass: 'super123' } };
-      await fsSet('config', 'auth', def); authCache = def; return def;
+      await fsSet('config', 'auth', def);
+      authCache = def;
+      return def;
     }
-    async function saveAuth(a) { authCache = a; await fsSet('config', 'auth', a); }
+    async function saveAuth(a) {
+      authCache = a;
+      await fsSet('config', 'auth', a);
+    }
 
-    async function getLogs() { const data = await fsGet('config', 'log'); return data ? (data.entries || []) : []; }
+    // ═══ LOG (Firebase) ═══
+    async function getLogs() {
+      const data = await fsGet('config', 'log');
+      return data ? (data.entries || []) : [];
+    }
     async function addLog(msg) {
       const logs = await getLogs();
       logs.unshift({ time: new Date().toLocaleString('id-ID'), msg });
@@ -2914,7 +3028,11 @@
       await fsSet('config', 'log', { entries: logs });
     }
     async function clearLog() {
-      if (confirm('Hapus semua log?')) { await fsSet('config', 'log', { entries: [] }); renderLog(); showToast('Log dihapus', 'success'); }
+      if (confirm('Hapus semua log?')) {
+        await fsSet('config', 'log', { entries: [] });
+        renderLog();
+        showToast('Log dihapus', 'success');
+      }
     }
     async function renderLog() {
       const logs = await getLogs();
@@ -2922,14 +3040,20 @@
       el.innerHTML = logs.length ? logs.map(l => `<div class="log-item"><div class="log-time">🕐 ${l.time}</div><div class="log-msg">${l.msg}</div></div>`).join('') : '<div class="log-empty">Belum ada aktivitas tercatat.</div>';
     }
 
+    // ═══ GALERI DATA (Firebase) ═══
     async function getGaleri() {
       const docs = await fsGetAll('galeri');
       galeriCache = docs.sort((a, b) => (b.uploadedAt || '').localeCompare(a.uploadedAt || ''));
       return galeriCache;
     }
-    async function saveGaleriItem(item) { return await fsAdd('galeri', item); }
-    async function delGaleriItem(id) { return await fsDel('galeri', id); }
+    async function saveGaleriItem(item) {
+      return await fsAdd('galeri', item);
+    }
+    async function delGaleriItem(firestoreId) {
+      return await fsDel('galeri', firestoreId);
+    }
 
+    // ═══ LOAD KONTEN DARI FIREBASE ═══
     async function loadContent() {
       showToast('⏳ Memuat data...', 'success');
       const data = await fsGet('config', 'konten');
@@ -2938,14 +3062,12 @@
       showToast('✅ Website dimuat!', 'success');
     }
 
+    // ═══ RENDER WEBSITE ═══
     function renderAll() {
       const s = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
-      s('v-chip', C.chip); s('v-h1a', C.h1a); s('v-h1b', C.h1b);
+      s('v-chip', C.chip); s('v-h1a', C.h1a); s('v-h1b', C.h1b); s('v-h1c', C.h1c); s('v-desc', C.desc);
       s('v-s1', C.s1); s('v-s1l', C.s1l); s('v-s2', C.s2); s('v-s2l', C.s2l);
       s('v-s3', C.s3); s('v-s3l', C.s3l); s('v-s4', C.s4); s('v-s4l', C.s4l);
-      // sync stats bar
-      s('vs-s1', C.s1); s('vs-s1l', C.s1l); s('vs-s2', C.s2); s('vs-s2l', C.s2l);
-      s('vs-s3', C.s3); s('vs-s3l', C.s3l); s('vs-s4', C.s4); s('vs-s4l', C.s4l);
       s('v-status', C.status); s('v-lokasi', C.lokasi); s('v-akred', C.akred);
       s('v-kepsek', C.kepsek); s('v-tahun', C.tahun); s('v-npsn', C.npsn); s('v-visi', C.visi);
       s('v-m1', C.m1); s('v-m2', C.m2); s('v-m3', C.m3); s('v-m4', C.m4); s('v-m5', C.m5); s('v-m6', C.m6);
@@ -2959,49 +3081,63 @@
       const g = document.getElementById('v-berita-grid'); if (!g) return;
       if (!C.berita || !C.berita.length) { g.innerHTML = '<p style="color:var(--slate);grid-column:1/-1;text-align:center;padding:40px 0;">Belum ada berita.</p>'; return; }
       g.innerHTML = C.berita.map(b => `
-        <div class="b-card">
-          <div class="b-img" style="background:${b.bg || '#E3F2FD'}">${b.emoji || '📰'}</div>
-          <div class="b-body">
-            <div class="b-tag">${b.tag}</div>
-            <h3>${b.judul}</h3>
-            <p>${b.isi}</p>
-            <div class="b-date">📅 ${b.tanggal}</div>
-          </div>
-        </div>`).join('');
+    <div class="b-card">
+      <div class="b-img" style="background:${b.bg || '#E3F2FD'}">${b.emoji || '📰'}</div>
+      <div class="b-body">
+        <div class="b-tag">${b.tag}</div>
+        <h3>${b.judul}</h3>
+        <p>${b.isi}</p>
+        <div class="b-date">📅 ${b.tanggal}</div>
+      </div>
+    </div>`).join('');
     }
 
     async function renderGaleriPublic() {
       const g = document.getElementById('v-galeri-grid'); if (!g) return;
       g.innerHTML = `<div class="galeri-empty"><span>⏳</span><p>Memuat galeri...</p></div>`;
       const photos = await getGaleri();
-      if (!photos.length) { g.innerHTML = `<div class="galeri-empty"><span>📷</span><p>Belum ada foto.</p></div>`; return; }
+      if (!photos.length) {
+        g.innerHTML = `<div class="galeri-empty"><span>📷</span><p>Belum ada foto. Admin dapat menambahkan foto melalui panel admin.</p></div>`;
+        return;
+      }
       g.innerHTML = photos.map((p, i) => `
-        <div class="g-item" onclick="openLightbox(${i})">
-          <img src="${p.src}" alt="${p.caption || 'Foto Sekolah'}" loading="lazy"/>
-          <div class="g-overlay">
-            <div class="g-caption">${p.caption || ''}</div>
-            ${p.desc ? `<div class="g-desc-text">${p.desc}</div>` : ''}
-          </div>
-        </div>`).join('');
+    <div class="g-item" onclick="openLightbox(${i})">
+      <img src="${p.src}" alt="${p.caption || 'Foto Sekolah'}" loading="lazy"/>
+      <div class="g-overlay">
+        <div class="g-caption">${p.caption || ''}</div>
+        ${p.desc ? `<div class="g-desc-text">${p.desc}</div>` : ''}
+      </div>
+    </div>`).join('');
     }
 
+    // ═══ LIGHTBOX ═══
     function openLightbox(idx) {
-      const photos = galeriCache; lbIndex = idx; const p = photos[idx];
+      const photos = galeriCache;
+      lbIndex = idx;
+      const p = photos[idx];
       document.getElementById('lb-img').src = p.src;
       document.getElementById('lb-caption').textContent = p.caption || '';
       document.getElementById('lb-desc').textContent = p.desc || '';
       document.getElementById('lightbox').classList.add('show');
     }
     function closeLightbox() { document.getElementById('lightbox').classList.remove('show'); }
-    function lbNav(dir) { lbIndex = (lbIndex + dir + galeriCache.length) % galeriCache.length; openLightbox(lbIndex); }
+    function lbNav(dir) {
+      const photos = galeriCache;
+      lbIndex = (lbIndex + dir + photos.length) % photos.length;
+      openLightbox(lbIndex);
+    }
     document.getElementById('lightbox').addEventListener('click', function (e) { if (e.target === this) closeLightbox(); });
 
+    // ═══ FOTO UPLOAD (Cloudinary) ═══
     function previewFoto(input) {
       const file = input.files[0]; if (!file) return;
       if (file.size > 10 * 1024 * 1024) { showToast('Foto terlalu besar! Maks 10MB.', 'error'); return; }
       pendingFotoFile = file;
       const reader = new FileReader();
-      reader.onload = e => { const prev = document.getElementById('upload-preview'); prev.src = e.target.result; prev.style.display = 'block'; };
+      reader.onload = e => {
+        const prev = document.getElementById('upload-preview');
+        prev.src = e.target.result; prev.style.display = 'block';
+      };
       reader.readAsDataURL(file);
     }
     function previewFotoSuper(input) {
@@ -3009,14 +3145,18 @@
       if (file.size > 10 * 1024 * 1024) { showToast('Foto terlalu besar! Maks 10MB.', 'error'); return; }
       pendingFotoFileSuper = file;
       const reader = new FileReader();
-      reader.onload = e => { const prev = document.getElementById('supload-preview'); prev.src = e.target.result; prev.style.display = 'block'; };
+      reader.onload = e => {
+        const prev = document.getElementById('supload-preview');
+        prev.src = e.target.result; prev.style.display = 'block';
+      };
       reader.readAsDataURL(file);
     }
     async function addFoto() {
       if (!pendingFotoFile) { showToast('Pilih foto terlebih dahulu!', 'error'); return; }
       const caption = document.getElementById('foto-caption').value.trim() || 'Foto Sekolah';
       const desc = document.getElementById('foto-desc').value.trim();
-      const url = await uploadToCloudinary(pendingFotoFile); if (!url) return;
+      const url = await uploadToCloudinary(pendingFotoFile);
+      if (!url) return;
       await saveGaleriItem({ src: url, caption, desc, uploadedBy: user, uploadedAt: new Date().toISOString() });
       await addLog(`📷 ${user} menambah foto: "${caption}"`);
       pendingFotoFile = null;
@@ -3025,14 +3165,16 @@
       document.getElementById('foto-caption').value = '';
       document.getElementById('foto-desc').value = '';
       document.getElementById('foto-input').value = '';
-      await renderGaleriAdmin(); await renderGaleriPublic();
+      await renderGaleriAdmin();
+      await renderGaleriPublic();
       showToast('✅ Foto berhasil ditambahkan!', 'success');
     }
     async function addFotoSuper() {
       if (!pendingFotoFileSuper) { showToast('Pilih foto terlebih dahulu!', 'error'); return; }
       const caption = document.getElementById('sfoto-caption').value.trim() || 'Foto Sekolah';
       const desc = document.getElementById('sfoto-desc').value.trim();
-      const url = await uploadToCloudinary(pendingFotoFileSuper); if (!url) return;
+      const url = await uploadToCloudinary(pendingFotoFileSuper);
+      if (!url) return;
       await saveGaleriItem({ src: url, caption, desc, uploadedBy: user, uploadedAt: new Date().toISOString() });
       await addLog(`📷 ${user} menambah foto: "${caption}"`);
       pendingFotoFileSuper = null;
@@ -3041,57 +3183,63 @@
       document.getElementById('sfoto-caption').value = '';
       document.getElementById('sfoto-desc').value = '';
       document.getElementById('sfoto-input').value = '';
-      await renderGaleriAdmin(); await renderGaleriPublic();
+      await renderGaleriAdmin();
+      await renderGaleriPublic();
       showToast('✅ Foto berhasil ditambahkan!', 'success');
     }
     async function delFoto(i) {
       const photos = galeriCache;
       if (confirm(`Hapus foto "${photos[i].caption || 'ini'}"?`)) {
+        const name = photos[i].caption || 'foto';
         await delGaleriItem(photos[i].id);
-        await addLog(`🗑️ ${user} menghapus foto: "${photos[i].caption || 'foto'}"`);
-        await renderGaleriAdmin(); await renderGaleriPublic();
+        await addLog(`🗑️ ${user} menghapus foto: "${name}"`);
+        await renderGaleriAdmin();
+        await renderGaleriPublic();
         showToast('Foto dihapus', 'success');
       }
     }
     async function renderGaleriAdmin() {
       const photos = await getGaleri();
-      document.querySelectorAll('#foto-count,#sfoto-count').forEach(el => el.textContent = photos.length);
+      const countEls = document.querySelectorAll('#foto-count,#sfoto-count');
+      countEls.forEach(el => el.textContent = photos.length);
       ['g-admin-list', 'sg-admin-list'].forEach(listId => {
         const list = document.getElementById(listId); if (!list) return;
         if (!photos.length) { list.innerHTML = '<div class="g-admin-empty">Belum ada foto di galeri.</div>'; return; }
         list.innerHTML = photos.map((p, i) => `
-          <div class="g-admin-item">
-            <img class="g-admin-thumb" src="${p.src}" alt="${p.caption || ''}"/>
-            <div class="g-admin-info">
-              <strong>${p.caption || 'Foto Sekolah'}</strong>
-              <span>${p.desc || ''} ${p.uploadedAt ? '· ' + new Date(p.uploadedAt).toLocaleDateString('id-ID') : ''}</span>
-            </div>
-            <button class="g-admin-del" onclick="delFoto(${i})">Hapus</button>
-          </div>`).join('');
+      <div class="g-admin-item">
+        <img class="g-admin-thumb" src="${p.src}" alt="${p.caption || ''}"/>
+        <div class="g-admin-info">
+          <strong>${p.caption || 'Foto Sekolah'}</strong>
+          <span>${p.desc || ''} ${p.uploadedAt ? '· ' + new Date(p.uploadedAt).toLocaleDateString('id-ID') : ''}</span>
+        </div>
+        <button class="g-admin-del" onclick="delFoto(${i})">Hapus</button>
+      </div>`).join('');
       });
     }
 
+    // ═══ BERITA ═══
     function addBerita() { if (!C.berita) C.berita = []; C.berita.push({ emoji: '📰', tag: 'Berita', judul: 'Judul Berita Baru', isi: 'Isi singkat berita di sini.', tanggal: new Date().toLocaleDateString('id-ID'), bg: '#E3F2FD' }); renderBeritaAdmin(); }
     function delBerita(i) { if (confirm('Hapus berita ini?')) { C.berita.splice(i, 1); renderBeritaAdmin(); } }
     function renderBeritaAdmin() {
       ['berita-admin-list', 'sberita-admin-list'].forEach(listId => {
         const list = document.getElementById(listId); if (!list) return;
         list.innerHTML = (C.berita || []).map((b, i) => `
-          <div class="b-admin-item">
-            <div class="b-admin-head"><span>Berita #${i + 1}</span><button class="b-del-btn" onclick="delBerita(${i})">Hapus</button></div>
-            <div class="field-group"><label>Emoji</label><input type="text" value="${b.emoji || ''}" oninput="C.berita[${i}].emoji=this.value" style="font-size:1.1rem;width:80px;"/></div>
-            <div class="field-group"><label>Kategori</label><input type="text" value="${b.tag || ''}" oninput="C.berita[${i}].tag=this.value"/></div>
-            <div class="field-group"><label>Judul</label><input type="text" value="${b.judul || ''}" oninput="C.berita[${i}].judul=this.value"/></div>
-            <div class="field-group"><label>Isi Singkat</label><textarea oninput="C.berita[${i}].isi=this.value">${b.isi || ''}</textarea></div>
-            <div class="field-group"><label>Tanggal</label><input type="text" value="${b.tanggal || ''}" oninput="C.berita[${i}].tanggal=this.value"/></div>
-          </div>`).join('');
+      <div class="b-admin-item">
+        <div class="b-admin-head"><span>Berita #${i + 1}</span><button class="b-del-btn" onclick="delBerita(${i})">Hapus</button></div>
+        <div class="field-group"><label>Emoji</label><input type="text" value="${b.emoji || ''}" oninput="C.berita[${i}].emoji=this.value" style="font-size:1.1rem;width:80px;"/></div>
+        <div class="field-group"><label>Kategori</label><input type="text" value="${b.tag || ''}" oninput="C.berita[${i}].tag=this.value"/></div>
+        <div class="field-group"><label>Judul</label><input type="text" value="${b.judul || ''}" oninput="C.berita[${i}].judul=this.value"/></div>
+        <div class="field-group"><label>Isi Singkat</label><textarea oninput="C.berita[${i}].isi=this.value">${b.isi || ''}</textarea></div>
+        <div class="field-group"><label>Tanggal</label><input type="text" value="${b.tanggal || ''}" oninput="C.berita[${i}].tanggal=this.value"/></div>
+      </div>`).join('');
       });
     }
 
+    // ═══ FILL FIELDS ═══
     function fillFields(prefix) {
       const sv = (id, v) => { const e = document.getElementById(id); if (e) e.value = v || ''; };
       const p = prefix;
-      sv(p + 'chip', C.chip); sv(p + 'h1a', C.h1a); sv(p + 'h1b', C.h1b); sv(p + 'h1c', C.h1c || ''); sv(p + 'desc', C.desc);
+      sv(p + 'chip', C.chip); sv(p + 'h1a', C.h1a); sv(p + 'h1b', C.h1b); sv(p + 'h1c', C.h1c); sv(p + 'desc', C.desc);
       sv(p + 's1', C.s1); sv(p + 's1l', C.s1l); sv(p + 's2', C.s2); sv(p + 's2l', C.s2l);
       sv(p + 's3', C.s3); sv(p + 's3l', C.s3l); sv(p + 's4', C.s4); sv(p + 's4l', C.s4l);
       sv(p + 'status', C.status); sv(p + 'lokasi', C.lokasi); sv(p + 'akred', C.akred);
@@ -3123,13 +3271,14 @@
       renderAll(); showToast('✅ Perubahan disimpan!', 'success');
     }
 
+    // ═══ SUPERADMIN ═══
     async function renderAdminAccounts() {
       const auth = await getAuth(); const list = document.getElementById('admin-accounts-list'); if (!list) return;
       list.innerHTML = auth.admins.length ? auth.admins.map((a, i) => `
-        <div class="admin-account-card">
-          <div class="ac-head"><span class="ac-name">👤 ${a.user}</span><button class="ac-del" onclick="delAdminAccount(${i})">Hapus</button></div>
-          <p style="font-size:0.78rem;color:var(--slate);">Password: ${'•'.repeat(Math.min(a.pass.length, 10))}</p>
-        </div>`).join('') : '<p style="color:var(--slate);font-size:0.88rem;">Belum ada akun admin.</p>';
+    <div class="admin-account-card">
+      <div class="ac-head"><span class="ac-name">👤 ${a.user}</span><button class="ac-del" onclick="delAdminAccount(${i})">Hapus</button></div>
+      <p style="font-size:0.78rem;color:var(--slate);">Password: ${'•'.repeat(Math.min(a.pass.length, 10))}</p>
+    </div>`).join('') : '<p style="color:var(--slate);font-size:0.88rem;">Belum ada akun admin.</p>';
     }
     async function addAdminAccount() {
       const u = document.getElementById('new-admin-user').value.trim();
@@ -3204,6 +3353,7 @@
       }
     }
 
+    // ═══ PESAN MASUK ═══
     async function kirimPesan() {
       const nama = document.getElementById('pesan-nama').value.trim();
       const telp = document.getElementById('pesan-telp').value.trim();
@@ -3211,7 +3361,11 @@
       const subjek = document.getElementById('pesan-subjek').value.trim();
       const isi = document.getElementById('pesan-isi').value.trim();
       if (!nama || !isi) { showToast('Nama dan pesan wajib diisi!', 'error'); return; }
-      await fsAdd('pesan', { nama, telp, email, subjek, isi, waktu: new Date().toISOString(), dibaca: false });
+      await fsAdd('pesan', {
+        nama, telp, email, subjek, isi,
+        waktu: new Date().toISOString(),
+        dibaca: false
+      });
       document.getElementById('pesan-nama').value = '';
       document.getElementById('pesan-telp').value = '';
       document.getElementById('pesan-email').value = '';
@@ -3219,11 +3373,15 @@
       document.getElementById('pesan-isi').value = '';
       showToast('✅ Pesan berhasil dikirim! Terima kasih.', 'success');
     }
+
     async function renderPesan() {
       const list = document.getElementById('pesan-list'); if (!list) return;
       const pesans = await fsGetAll('pesan');
       pesans.sort((a, b) => (b.waktu || '').localeCompare(a.waktu || ''));
-      if (!pesans.length) { list.innerHTML = '<p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Belum ada pesan masuk.</p>'; return; }
+      if (!pesans.length) {
+        list.innerHTML = '<p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Belum ada pesan masuk.</p>';
+        return;
+      }
       list.innerHTML = pesans.map(p => `
         <div style="background:white;border:1.5px solid rgba(230,81,0,0.12);border-radius:10px;padding:14px;margin-bottom:10px;">
           <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
@@ -3239,57 +3397,79 @@
           <p style="font-size:0.85rem;color:#0B2545;line-height:1.6;background:#F0F6FF;padding:10px;border-radius:7px;">${p.isi}</p>
         </div>`).join('');
     }
+
     async function renderPesanAdmin() {
       const list = document.getElementById('pesan-list-admin'); if (!list) return;
       const pesans = await fsGetAll('pesan');
       pesans.sort((a, b) => (b.waktu || '').localeCompare(a.waktu || ''));
-      if (!pesans.length) { list.innerHTML = '<p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Belum ada pesan masuk.</p>'; return; }
+      if (!pesans.length) {
+        list.innerHTML = '<p style="color:#90A4AE;font-size:0.85rem;text-align:center;padding:24px 0;">Belum ada pesan masuk.</p>';
+        return;
+      }
       list.innerHTML = pesans.map(p => `
-        <div style="background:white;border:1.5px solid rgba(21,101,192,0.1);border-radius:10px;padding:14px;margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
-            <div>
-              <strong style="font-size:0.88rem;color:#0B2545;">👤 ${p.nama}</strong>
-              <span style="font-size:0.72rem;color:#90A4AE;margin-left:8px;">📅 ${new Date(p.waktu).toLocaleString('id-ID')}</span>
-            </div>
-            <button onclick="hapusPesanAdmin('${p.id}')" style="background:#FFEBEE;color:#C62828;border:1px solid #FFCDD2;padding:4px 10px;border-radius:6px;font-size:0.72rem;font-weight:700;cursor:pointer;">Hapus</button>
-          </div>
-          ${p.telp ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">📞 ${p.telp}</p>` : ''}
-          ${p.email ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">✉️ ${p.email}</p>` : ''}
-          ${p.subjek ? `<p style="font-size:0.82rem;font-weight:700;color:#1565C0;margin-bottom:6px;">📌 ${p.subjek}</p>` : ''}
-          <p style="font-size:0.85rem;color:#0B2545;line-height:1.6;background:#F0F6FF;padding:10px;border-radius:7px;">${p.isi}</p>
-        </div>`).join('');
-    }
-    async function hapusPesan(id) {
-      if (confirm('Hapus pesan ini?')) { await fsDel('pesan', id); renderPesan(); showToast('Pesan dihapus', 'success'); }
-    }
-    async function hapusPesanAdmin(id) {
-      if (confirm('Hapus pesan ini?')) { await fsDel('pesan', id); renderPesanAdmin(); showToast('Pesan dihapus', 'success'); }
+    <div style="background:white;border:1.5px solid rgba(21,101,192,0.1);border-radius:10px;padding:14px;margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
+        <div>
+          <strong style="font-size:0.88rem;color:#0B2545;">👤 ${p.nama}</strong>
+          <span style="font-size:0.72rem;color:#90A4AE;margin-left:8px;">📅 ${new Date(p.waktu).toLocaleString('id-ID')}</span>
+        </div>
+        <button onclick="hapusPesanAdmin('${p.id}')" style="background:#FFEBEE;color:#C62828;border:1px solid #FFCDD2;padding:4px 10px;border-radius:6px;font-size:0.72rem;font-weight:700;cursor:pointer;">Hapus</button>
+      </div>
+      ${p.telp ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">📞 ${p.telp}</p>` : ''}
+      ${p.email ? `<p style="font-size:0.78rem;color:#546E7A;margin-bottom:4px;">✉️ ${p.email}</p>` : ''}
+      ${p.subjek ? `<p style="font-size:0.82rem;font-weight:700;color:#1565C0;margin-bottom:6px;">📌 ${p.subjek}</p>` : ''}
+      <p style="font-size:0.85rem;color:#0B2545;line-height:1.6;background:#F0F6FF;padding:10px;border-radius:7px;">${p.isi}</p>
+    </div>`).join('');
     }
 
+    async function hapusPesanAdmin(id) {
+      if (confirm('Hapus pesan ini?')) {
+        await fsDel('pesan', id);
+        renderPesanAdmin();
+        showToast('Pesan dihapus', 'success');
+      }
+    }
+
+    async function hapusPesan(id) {
+      if (confirm('Hapus pesan ini?')) {
+        await fsDel('pesan', id);
+        renderPesan();
+        showToast('Pesan dihapus', 'success');
+      }
+    }
+
+    // ═══ WALLPAPER SUPER PANEL ═══
     function setWallpaperColor(color) {
-      document.getElementById('super-panel').style.background = color;
+      const panel = document.getElementById('super-panel');
+      panel.style.background = color;
+      // simpan ke localStorage biar tetap saat refresh
       localStorage.setItem('super_wallpaper_type', 'color');
       localStorage.setItem('super_wallpaper_value', color);
       showToast('✅ Wallpaper diubah!', 'success');
     }
+
     function setWallpaperImage(input) {
       const file = input.files[0]; if (!file) return;
       if (file.size > 5 * 1024 * 1024) { showToast('Foto terlalu besar! Maks 5MB.', 'error'); return; }
       const reader = new FileReader();
       reader.onload = e => {
-        document.getElementById('super-panel').style.background = `url('${e.target.result}') center/cover no-repeat`;
+        const panel = document.getElementById('super-panel');
+        panel.style.background = `url('${e.target.result}') center/cover no-repeat`;
         localStorage.setItem('super_wallpaper_type', 'image');
         localStorage.setItem('super_wallpaper_value', e.target.result);
         showToast('✅ Wallpaper foto diterapkan!', 'success');
       };
       reader.readAsDataURL(file);
     }
+
     function resetWallpaper() {
-      document.getElementById('super-panel').style.background = '#FFF8F0';
+      const panel = document.getElementById('super-panel');
+      panel.style.background = '#FFF8F0';
       localStorage.removeItem('super_wallpaper_type');
       localStorage.removeItem('super_wallpaper_value');
       showToast('✅ Wallpaper direset!', 'success');
     }
+
     function loadWallpaper() {
       const type = localStorage.getItem('super_wallpaper_type');
       const value = localStorage.getItem('super_wallpaper_value');
@@ -3299,6 +3479,7 @@
       if (type === 'image') panel.style.background = `url('${value}') center/cover no-repeat`;
     }
 
+    // ═══ LOGIN / LOGOUT ═══
     function handleAdminBtn() {
       if (role === 'admin') togglePanel('admin-panel');
       else if (role === 'super') togglePanel('super-panel');
@@ -3310,21 +3491,25 @@
       const err = document.getElementById('login-err');
       const auth = await getAuth();
       if (u === auth.super.user && p === auth.super.pass) {
-        role = 'super'; user = u; closeLogin(); openPanel('super-panel');
+        role = 'super'; user = u; closeLogin();
+        openPanel('super-panel');
         const btn = document.getElementById('admin-nav-btn');
         btn.textContent = '👑 ' + u; btn.className = 'nav-admin-btn active-super';
         document.getElementById('super-label').textContent = u;
         document.getElementById('super-name-display').textContent = u;
         fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect();
-        addLog(`👑 Superadmin "${u}" login`); return;
+        addLog(`👑 Superadmin "${u}" login`);
+        return;
       }
       const adm = auth.admins.find(a => a.user === u && a.pass === p);
       if (adm) {
-        role = 'admin'; user = u; closeLogin(); openPanel('admin-panel');
+        role = 'admin'; user = u; closeLogin();
+        openPanel('admin-panel');
         const btn = document.getElementById('admin-nav-btn');
         btn.textContent = '⚙ ' + u; btn.className = 'nav-admin-btn active-admin';
         fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin();
-        addLog(`✅ Admin "${u}" login`); return;
+        addLog(`✅ Admin "${u}" login`);
+        return;
       }
       err.style.display = 'block'; err.textContent = '❌ Username atau password salah.';
       document.getElementById('login-pass').value = ''; document.getElementById('login-pass').focus();
@@ -3346,8 +3531,9 @@
     }
     function togglePanel(id) {
       const p = document.getElementById(id);
-      if (p.classList.contains('show')) { closePanel(id); }
-      else {
+      if (p.classList.contains('show')) {
+        closePanel(id);
+      } else {
         openPanel(id);
         if (id === 'admin-panel') { fillFields('f-'); renderBeritaAdmin(); renderGaleriAdmin(); }
         if (id === 'super-panel') { fillFields('sf-'); renderBeritaAdmin(); renderGaleriAdmin(); renderAdminAccounts(); renderLog(); populatePwSelect(); }
@@ -3362,6 +3548,7 @@
       showToast('Berhasil logout', 'success');
     }
 
+    // ═══ TAB SWITCH ═══
     function switchTab(panel, id, btn) {
       const panelEl = document.getElementById(panel === 'admin' ? 'admin-panel' : 'super-panel');
       panelEl.querySelectorAll('.ap-section').forEach(s => s.classList.remove('active'));
@@ -3374,36 +3561,49 @@
       if (id === 'st-pw') populatePwSelect();
       if (id === 'st-pesan') renderPesan();
       if (id === 'at-pesan') renderPesanAdmin();
+      if (id === 'st-wallpaper') { } // tidak perlu render apapun
     }
 
-    function showToast(msg, type = 'success') {
-      const t = document.getElementById('toast');
-      t.textContent = msg; t.className = 'save-toast ' + type + ' show';
-      clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 3000);
-    }
+    // ═══ TOAST ═══
+    function showToast(msg, type = 'success') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'save-toast ' + type + ' show'; clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 3000); }
 
-    // ANIMASI
+    // ═══ ANIMASI ═══
+
+    // 1. SCROLL ANIMATION
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); } });
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
     }, { threshold: 0.15 });
     document.querySelectorAll('section, .ic, .b-card, .g-item, .k-row').forEach(el => {
-      el.classList.add('fade-in'); observer.observe(el);
+      el.classList.add('fade-in');
+      observer.observe(el);
     });
 
+    // 2. COUNTER ANIMASI STATISTIK
     function animateCounter(el, target, duration = 1800) {
       const isPlus = target.toString().includes('+');
-      const num = parseInt(target); let start = 0;
+      const num = parseInt(target);
+      let start = 0;
       const step = Math.ceil(num / (duration / 16));
       const timer = setInterval(() => {
         start += step;
-        if (start >= num) { el.textContent = target; clearInterval(timer); }
-        else { el.textContent = start + (isPlus ? '+' : ''); }
+        if (start >= num) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = start + (isPlus ? '+' : '');
+        }
       }, 16);
     }
     const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const el = entry.target; const val = el.textContent.trim();
+          const el = entry.target;
+          const val = el.textContent.trim();
           if (/\d/.test(val)) animateCounter(el, val);
           statsObserver.unobserve(el);
         }
@@ -3411,30 +3611,54 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('.h-stat .num').forEach(el => statsObserver.observe(el));
 
+    // 3. TYPING EFFECT HERO
     function typeWriter(el, text, speed = 60) {
-      el.textContent = ''; let i = 0;
-      const timer = setInterval(() => { el.textContent += text[i]; i++; if (i >= text.length) clearInterval(timer); }, speed);
+      el.textContent = '';
+      let i = 0;
+      const timer = setInterval(() => {
+        el.textContent += text[i];
+        i++;
+        if (i >= text.length) clearInterval(timer);
+      }, speed);
     }
     setTimeout(() => {
       const h1b = document.getElementById('v-h1b');
-      if (h1b) { const text = h1b.textContent; typeWriter(h1b, text); }
+      if (h1b) {
+        const text = h1b.textContent;
+        typeWriter(h1b, text);
+      }
     }, 600);
 
+    // 4. PARTICLES HERO
     function createParticles() {
-      const hero = document.getElementById('beranda'); if (!hero) return;
+      const hero = document.getElementById('beranda');
+      if (!hero) return;
       for (let i = 0; i < 28; i++) {
         const dot = document.createElement('div');
-        dot.style.cssText = `position:absolute;width:${Math.random() * 4 + 2}px;height:${Math.random() * 4 + 2}px;background:rgba(66,165,245,${Math.random() * 0.4 + 0.1});border-radius:50%;left:${Math.random() * 100}%;top:${Math.random() * 100}%;animation:floatParticle ${Math.random() * 8 + 6}s ease-in-out infinite;animation-delay:${Math.random() * 5}s;pointer-events:none;z-index:0;`;
+        dot.className = 'particle';
+        dot.style.cssText = `
+          position:absolute;
+          width:${Math.random() * 4 + 2}px;
+          height:${Math.random() * 4 + 2}px;
+          background:rgba(66,165,245,${Math.random() * 0.4 + 0.1});
+          border-radius:50%;
+          left:${Math.random() * 100}%;
+          top:${Math.random() * 100}%;
+          animation: floatParticle ${Math.random() * 8 + 6}s ease-in-out infinite;
+          animation-delay:${Math.random() * 5}s;
+          pointer-events:none;
+          z-index:0;
+        `;
         hero.appendChild(dot);
       }
     }
     createParticles();
 
-    // INIT
+    // ═══ INIT ═══
     loadContent();
     loadWallpaper();
 
-    // EXPOSE KE WINDOW
+    // ═══ EXPOSE KE WINDOW (wajib karena pakai type="module") ═══
     window.handleAdminBtn = handleAdminBtn;
     window.doLogin = doLogin;
     window.closeLogin = closeLogin;
@@ -3470,7 +3694,5 @@
     window.setWallpaperColor = setWallpaperColor;
     window.setWallpaperImage = setWallpaperImage;
     window.resetWallpaper = resetWallpaper;
-  </script>
-</body>
 
-</html>
+  </script>
